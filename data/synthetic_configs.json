@@ -1,0 +1,750 @@
+{
+  "fetch-fetch_readable-v001": {
+    "type": "random_failure",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "fail_rate": 0.0
+  },
+  "fetch-fetch_readable-v002": {
+    "type": "random_failure",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "fail_rate": 0.35
+  },
+  "fetch-fetch_readable-v003": {
+    "type": "truncate",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "max_chars": 80
+  },
+  "fetch-fetch_readable-v004": {
+    "type": "stale",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
+    "stale_rate": 0.6
+  },
+  "fetch-fetch_url-v005": {
+    "type": "random_failure",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "fail_rate": 0.0
+  },
+  "fetch-fetch_url-v006": {
+    "type": "random_failure",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "fail_rate": 0.35
+  },
+  "fetch-fetch_url-v007": {
+    "type": "truncate",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "max_chars": 80
+  },
+  "fetch-fetch_url-v008": {
+    "type": "stale",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
+    "stale_rate": 0.6
+  },
+  "search-fetch_content-v009": {
+    "type": "random_failure",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "fetch_content",
+    "fail_rate": 0.0
+  },
+  "search-fetch_content-v010": {
+    "type": "random_failure",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "fetch_content",
+    "fail_rate": 0.35
+  },
+  "search-fetch_content-v011": {
+    "type": "truncate",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "fetch_content",
+    "max_chars": 80
+  },
+  "search-fetch_content-v012": {
+    "type": "stale",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "fetch_content",
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
+    "stale_rate": 0.6
+  },
+  "fetch-fetch-v013": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "fail_rate": 0.0
+  },
+  "fetch-fetch-v014": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "fail_rate": 0.35
+  },
+  "fetch-fetch-v015": {
+    "type": "truncate",
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "max_chars": 80
+  },
+  "fetch-fetch-v016": {
+    "type": "stale",
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
+    "stale_rate": 0.6
+  },
+  "pdf-read-pdf-v017": {
+    "type": "random_failure",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "fail_rate": 0.0
+  },
+  "pdf-read-pdf-v018": {
+    "type": "random_failure",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "fail_rate": 0.35
+  },
+  "pdf-read-pdf-v019": {
+    "type": "truncate",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "max_chars": 80
+  },
+  "pdf-read-pdf-v020": {
+    "type": "stale",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
+    "stale_rate": 0.6
+  },
+  "pdf-extract_form_fields-v021": {
+    "type": "random_failure",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "fail_rate": 0.0
+  },
+  "pdf-extract_form_fields-v022": {
+    "type": "random_failure",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "fail_rate": 0.35
+  },
+  "pdf-extract_form_fields-v023": {
+    "type": "truncate",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "max_chars": 80
+  },
+  "pdf-extract_form_fields-v024": {
+    "type": "stale",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
+    "stale_rate": 0.6
+  },
+  "pdf-extract_text-v025": {
+    "type": "random_failure",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "fail_rate": 0.0
+  },
+  "pdf-extract_text-v026": {
+    "type": "random_failure",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "fail_rate": 0.35
+  },
+  "pdf-extract_text-v027": {
+    "type": "truncate",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "max_chars": 80
+  },
+  "pdf-extract_text-v028": {
+    "type": "stale",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
+    "stale_rate": 0.6
+  },
+  "pdf-read_pdf-v029": {
+    "type": "random_failure",
+    "real_server_id": "pdf-reader-mcp",
+    "real_tool_name": "read_pdf",
+    "fail_rate": 0.0
+  },
+  "pdf-read_pdf-v030": {
+    "type": "random_failure",
+    "real_server_id": "pdf-reader-mcp",
+    "real_tool_name": "read_pdf",
+    "fail_rate": 0.35
+  },
+  "pdf-read_pdf-v031": {
+    "type": "truncate",
+    "real_server_id": "pdf-reader-mcp",
+    "real_tool_name": "read_pdf",
+    "max_chars": 80
+  },
+  "pdf-read_pdf-v032": {
+    "type": "stale",
+    "real_server_id": "pdf-reader-mcp",
+    "real_tool_name": "read_pdf",
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
+    "stale_rate": 0.6
+  },
+  "search-search-v033": {
+    "type": "random_failure",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "fail_rate": 0.0
+  },
+  "search-search-v034": {
+    "type": "random_failure",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "fail_rate": 0.35
+  },
+  "search-search-v035": {
+    "type": "truncate",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "max_chars": 80
+  },
+  "search-search-v036": {
+    "type": "stale",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
+    "stale_rate": 0.6
+  },
+  "search-search-v037": {
+    "type": "random_failure",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "fail_rate": 0.0
+  },
+  "search-search-v038": {
+    "type": "random_failure",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "fail_rate": 0.35
+  },
+  "search-search-v039": {
+    "type": "truncate",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "max_chars": 80
+  },
+  "search-search-v040": {
+    "type": "stale",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
+    "stale_rate": 0.6
+  },
+  "filesystem-read_file-v041": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "fail_rate": 0.0
+  },
+  "filesystem-read_file-v042": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "fail_rate": 0.35
+  },
+  "filesystem-read_file-v043": {
+    "type": "truncate",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "max_chars": 80
+  },
+  "filesystem-read_file-v044": {
+    "type": "stale",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "stale_rate": 0.6
+  },
+  "filesystem-list_directory-v045": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "fail_rate": 0.0
+  },
+  "filesystem-list_directory-v046": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "fail_rate": 0.35
+  },
+  "filesystem-list_directory-v047": {
+    "type": "truncate",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "max_chars": 80
+  },
+  "filesystem-list_directory-v048": {
+    "type": "stale",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "stale_rate": 0.6
+  },
+  "filesystem-get_file_info-v049": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "fail_rate": 0.0
+  },
+  "filesystem-get_file_info-v050": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "fail_rate": 0.35
+  },
+  "filesystem-get_file_info-v051": {
+    "type": "truncate",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "max_chars": 80
+  },
+  "filesystem-get_file_info-v052": {
+    "type": "stale",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "stale_rate": 0.6
+  },
+  "filesystem-search_files-v053": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "search_files",
+    "fail_rate": 0.0
+  },
+  "filesystem-search_files-v054": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "search_files",
+    "fail_rate": 0.35
+  },
+  "filesystem-search_files-v055": {
+    "type": "truncate",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "search_files",
+    "max_chars": 80
+  },
+  "filesystem-search_files-v056": {
+    "type": "stale",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "search_files",
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "stale_rate": 0.6
+  },
+  "fetch-fetch_readable-v057": {
+    "type": "niche",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "works_for": [
+      "paulgraham.com",
+      "gnu.org",
+      "motherfuckingwebsite"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.85
+  },
+  "fetch-fetch_readable-v058": {
+    "type": "niche",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "works_for": [
+      "react.dev",
+      "news.ycombinator"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.7
+  },
+  "fetch-fetch_url-v059": {
+    "type": "niche",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "works_for": [
+      "paulgraham.com",
+      "gnu.org",
+      "motherfuckingwebsite"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.85
+  },
+  "fetch-fetch_url-v060": {
+    "type": "niche",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "works_for": [
+      "react.dev",
+      "news.ycombinator"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.7
+  },
+  "pdf-read-pdf-v061": {
+    "type": "niche",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "works_for": [
+      "w9.pdf",
+      "fillable_sample.pdf",
+      "form_example.pdf"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "pdf-read-pdf-v062": {
+    "type": "niche",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "works_for": [
+      "attention.pdf",
+      "dummy.pdf"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.75
+  },
+  "pdf-extract_form_fields-v063": {
+    "type": "niche",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "works_for": [
+      "w9.pdf",
+      "fillable_sample.pdf",
+      "form_example.pdf"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "pdf-extract_form_fields-v064": {
+    "type": "niche",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "works_for": [
+      "attention.pdf",
+      "dummy.pdf"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.75
+  },
+  "search-search-v065": {
+    "type": "niche",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "works_for": [
+      "Stripe",
+      "Python requests",
+      "RFC",
+      "FAISS",
+      "mcp model context"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.7
+  },
+  "search-search-v066": {
+    "type": "niche",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "works_for": [
+      "OpenAI",
+      "NVIDIA",
+      "log4j",
+      "CVE"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.7
+  },
+  "search-search-v067": {
+    "type": "niche",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "works_for": [
+      "Stripe",
+      "Python requests",
+      "RFC",
+      "FAISS",
+      "mcp model context"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.7
+  },
+  "search-search-v068": {
+    "type": "niche",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "works_for": [
+      "OpenAI",
+      "NVIDIA",
+      "log4j",
+      "CVE"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.7
+  },
+  "filesystem-read_file-v069": {
+    "type": "niche",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "works_for": [
+      "read",
+      "list",
+      "show",
+      "contents"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "filesystem-read_file-v070": {
+    "type": "niche",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "works_for": [
+      "create",
+      "write",
+      "mkdir",
+      "new file"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "filesystem-list_directory-v071": {
+    "type": "niche",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "works_for": [
+      "read",
+      "list",
+      "show",
+      "contents"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "filesystem-list_directory-v072": {
+    "type": "niche",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "works_for": [
+      "create",
+      "write",
+      "mkdir",
+      "new file"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "fetch-fetch_readable-v073": {
+    "type": "random_failure",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "fail_rate": 0.05
+  },
+  "fetch-fetch_readable-v074": {
+    "type": "random_failure",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "fail_rate": 0.2
+  },
+  "fetch-fetch_readable-v075": {
+    "type": "truncate",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "max_chars": 120
+  },
+  "fetch-fetch_readable-v076": {
+    "type": "stale",
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
+    "stale_rate": 0.65
+  },
+  "fetch-fetch_url-v077": {
+    "type": "random_failure",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "fail_rate": 0.05
+  },
+  "fetch-fetch_url-v078": {
+    "type": "random_failure",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "fail_rate": 0.2
+  },
+  "fetch-fetch_url-v079": {
+    "type": "truncate",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "max_chars": 120
+  },
+  "fetch-fetch_url-v080": {
+    "type": "stale",
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
+    "stale_rate": 0.65
+  },
+  "pdf-read-pdf-v081": {
+    "type": "random_failure",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "fail_rate": 0.05
+  },
+  "pdf-read-pdf-v082": {
+    "type": "random_failure",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "fail_rate": 0.2
+  },
+  "pdf-read-pdf-v083": {
+    "type": "truncate",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "max_chars": 120
+  },
+  "pdf-read-pdf-v084": {
+    "type": "stale",
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
+    "stale_rate": 0.65
+  },
+  "pdf-extract_form_fields-v085": {
+    "type": "random_failure",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "fail_rate": 0.05
+  },
+  "pdf-extract_form_fields-v086": {
+    "type": "random_failure",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "fail_rate": 0.2
+  },
+  "pdf-extract_form_fields-v087": {
+    "type": "truncate",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "max_chars": 120
+  },
+  "pdf-extract_form_fields-v088": {
+    "type": "stale",
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
+    "stale_rate": 0.65
+  },
+  "search-search-v089": {
+    "type": "random_failure",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "fail_rate": 0.05
+  },
+  "search-search-v090": {
+    "type": "random_failure",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "fail_rate": 0.2
+  },
+  "search-search-v091": {
+    "type": "truncate",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "max_chars": 120
+  },
+  "search-search-v092": {
+    "type": "stale",
+    "real_server_id": "open-websearch",
+    "real_tool_name": "search",
+    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
+    "stale_rate": 0.65
+  },
+  "search-search-v093": {
+    "type": "random_failure",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "fail_rate": 0.05
+  },
+  "search-search-v094": {
+    "type": "random_failure",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "fail_rate": 0.2
+  },
+  "search-search-v095": {
+    "type": "truncate",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "max_chars": 120
+  },
+  "search-search-v096": {
+    "type": "stale",
+    "real_server_id": "duckduckgo-mcp",
+    "real_tool_name": "search",
+    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
+    "stale_rate": 0.65
+  },
+  "filesystem-read_file-v097": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "fail_rate": 0.05
+  },
+  "filesystem-read_file-v098": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "fail_rate": 0.2
+  },
+  "filesystem-read_file-v099": {
+    "type": "truncate",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "max_chars": 120
+  },
+  "filesystem-read_file-v100": {
+    "type": "stale",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_file",
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "stale_rate": 0.65
+  },
+  "filesystem-list_directory-v101": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "fail_rate": 0.05
+  },
+  "filesystem-list_directory-v102": {
+    "type": "random_failure",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "fail_rate": 0.2
+  },
+  "filesystem-list_directory-v103": {
+    "type": "truncate",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "max_chars": 120
+  },
+  "filesystem-list_directory-v104": {
+    "type": "stale",
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "stale_rate": 0.65
+  }
+}

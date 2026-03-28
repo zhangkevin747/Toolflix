@@ -1,0 +1,8 @@
+CLAUDE.md
+.venv
+control-room
+.env
+.gitignore
+data/pdfs
+data/.fixtures_snapshot__pycache__/
+src/data/
