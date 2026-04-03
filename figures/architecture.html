@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toolflix Architecture</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #1a1a1a;
+  }
+
+  .container {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  /* Panels */
+  .panel {
+    border: 2px solid #d0d0d0;
+    border-style: dashed;
+    padding: 20px 24px 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .panel + .panel { border-left: none; }
+  .panel-title {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Boxes */
+  .node {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 6px;
+    padding: 10px 16px;
+    text-align: center;
+    position: relative;
+    font-size: 13px;
+  }
+  .node.blue { background: #E3F2FD; border-color: #1976D2; }
+  .node.purple { background: #F3E5F5; border-color: #7B1FA2; }
+  .node.green { background: #E8F5E9; border-color: #388E3C; }
+  .node.amber { background: #FFF8E1; border-color: #F9A825; }
+  .node.red { background: #FFEBEE; border-color: #D32F2F; }
+  .node.gray { background: #F5F5F5; border-color: #757575; }
+
+  .node-label { font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+  .node-sub { font-size: 11px; color: #555; line-height: 1.4; }
+  .node-dim { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #888; margin-top: 3px; }
+
+  /* Icons */
+  .icon { font-size: 32px; margin: 4px 0; }
+  .icon-sm { font-size: 20px; }
+
+  /* Arrows */
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-size: 13px;
+    padding: 2px 0;
+    position: relative;
+  }
+  .arrow-v { flex-direction: column; margin: 6px 0; }
+  .arrow-h { flex-direction: row; margin: 0 8px; }
+  .arrow-v::before {
+    content: '';
+    width: 2px;
+    height: 20px;
+    background: #333;
+  }
+  .arrow-v::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #333;
+  }
+  .arrow-h::before {
+    content: '';
+    height: 2px;
+    width: 24px;
+    background: #333;
+  }
+  .arrow-h::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #333;
+  }
+  .arrow-label-text {
+    font-size: 10px;
+    color: #777;
+    font-style: italic;
+    position: absolute;
+    white-space: nowrap;
+  }
+  .arrow-v .arrow-label-text { right: -70px; top: 8px; }
+  .arrow-h .arrow-label-text { top: -14px; }
+
+  /* Trunk detail box */
+  .trunk-container {
+    border: 2px solid #7B1FA2;
+    border-radius: 8px;
+    background: #FAFAFE;
+    padding: 14px;
+    width: 100%;
+  }
+  .trunk-header {
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #4A148C;
+  }
+  .trunk-cells {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .trunk-cell {
+    background: #F3E5F5;
+    border: 1px solid #CE93D8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+  }
+  .trunk-cell-label { font-weight: 600; font-size: 11px; color: #4A148C; }
+  .trunk-cell-sub { font-size: 10px; color: #666; margin-top: 2px; line-height: 1.3; }
+  .trunk-mlp {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #7B1FA2;
+    margin-top: 8px;
+  }
+
+  /* Heads row */
+  .heads-row {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .head-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Wide features */
+  .wide-features {
+    background: #FFF8E1;
+    border: 2px solid #F9A825;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+    width: fit-content;
+  }
+  .wide-features .wf-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: #F57F17;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  /* Score box */
+  .score-box {
+    background: #FFEBEE;
+    border: 2px solid #D32F2F;
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    width: 100%;
+  }
+  .score-formula {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .score-note {
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  /* Feedback loop */
+  .feedback-arrow {
+    border: 2px dashed #999;
+    border-radius: 0 0 12px 12px;
+    border-top: none;
+    height: 30px;
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+  }
+  .feedback-label {
+    font-size: 10px;
+    color: #999;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  /* Tool pool illustration */
+  .tool-pool {
+    display: flex;
+    gap: 3px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 200px;
+    margin: 6px auto;
+  }
+  .tool-chip {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid;
+  }
+  .tool-chip.good { background: #C8E6C9; border-color: #66BB6A; }
+  .tool-chip.ok { background: #FFF9C4; border-color: #FFEE58; }
+  .tool-chip.bad { background: #FFCDD2; border-color: #EF5350; }
+  .tool-chip.real { background: #BBDEFB; border-color: #42A5F5; }
+
+  .pool-legend {
+    display: flex;
+    gap: 10px;
+    font-size: 9px;
+    color: #777;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .pool-legend span { display: flex; align-items: center; gap: 3px; }
+
+  /* Connecting line between panels */
+  .cross-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    position: relative;
+  }
+  .cross-arrow::before {
+    content: '';
+    height: 2px;
+    width: 20px;
+    background: #333;
+  }
+  .cross-arrow::after {
+    content: '';
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 8px solid #333;
+  }
+
+  /* Plus sign between wide and quality */
+  .plus-sign {
+    font-size: 18px;
+    font-weight: 700;
+    color: #999;
+    margin: 0 2px;
+    align-self: center;
+  }
+
+  .h-connector {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+    margin: 8px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Panel 1: Task Decomposition -->
+  <div class="panel" style="width: 200px;">
+    <div class="panel-title">Task Decomposition</div>
+
+    <div class="icon">🌐</div>
+    <div style="font-size: 11px; color: #555; margin-bottom: 8px;">User Task</div>
+
+    <div class="node gray" style="width: 160px;">
+      <div class="node-sub" style="font-style: italic;">"Extract text from<br>data/pdfs/attention.pdf"</div>
+    </div>
+
+    <div class="arrow arrow-v"><span class="arrow-label-text"></span></div>
+
+    <div class="icon">🤖</div>
+    <div style="font-size: 11px; color: #555; margin-bottom: 4px;">LLM Agent</div>
+
+    <div class="node blue" style="width: 160px;">
+      <div class="node-label">Decompose</div>
+      <div class="node-sub">Call 1: extract<br>capability query</div>
+    </div>
+
+    <div class="arrow arrow-v"><span class="arrow-label-text"></span></div>
+
+    <div class="node" style="width: 160px; border-style: dashed;">
+      <div class="node-dim" style="color: #333; font-size: 11px;">q = "I need a tool that<br>extracts text from a<br>local PDF file"</div>
+    </div>
+
+    <div style="flex: 1;"></div>
+  </div>
+
+  <div class="cross-arrow"></div>
+
+  <!-- Panel 2: Retrieve & Rerank -->
+  <div class="panel" style="width: 480px;">
+    <div class="panel-title">Retrieve &amp; Rerank</div>
+
+    <!-- Retriever -->
+    <div class="node blue" style="width: 280px;">
+      <div class="node-label">Hybrid Retriever</div>
+      <div class="node-sub">0.7 · cos(φ(q), φ(d<sub>t</sub>)) + 0.3 · keyword</div>
+      <div class="node-dim">Top-100 from 163 endpoints</div>
+    </div>
+
+    <!-- Tool pool -->
+    <div class="tool-pool" style="margin: 8px auto;">
+      <div class="tool-chip real"></div><div class="tool-chip real"></div><div class="tool-chip good"></div>
+      <div class="tool-chip ok"></div><div class="tool-chip bad"></div><div class="tool-chip real"></div>
+      <div class="tool-chip good"></div><div class="tool-chip bad"></div><div class="tool-chip ok"></div>
+      <div class="tool-chip real"></div><div class="tool-chip good"></div><div class="tool-chip bad"></div>
+      <div class="tool-chip ok"></div><div class="tool-chip real"></div><div class="tool-chip good"></div>
+      <div class="tool-chip bad"></div><div class="tool-chip real"></div><div class="tool-chip ok"></div>
+      <div class="tool-chip good"></div><div class="tool-chip bad"></div>
+    </div>
+    <div class="pool-legend">
+      <span><div class="tool-chip real" style="width:8px;height:8px;"></div> real</span>
+      <span><div class="tool-chip good" style="width:8px;height:8px;"></div> reliable clone</span>
+      <span><div class="tool-chip ok" style="width:8px;height:8px;"></div> flaky</span>
+      <span><div class="tool-chip bad" style="width:8px;height:8px;"></div> unreliable</span>
+    </div>
+
+    <div class="arrow arrow-v" style="margin: 8px 0;">
+      <span class="arrow-label-text" style="right: -80px;">100 candidates</span>
+    </div>
+
+    <!-- Deep Trunk -->
+    <div class="trunk-container">
+      <div class="trunk-header">Shared Deep Trunk</div>
+      <div class="trunk-cells">
+        <div class="trunk-cell">
+          <div class="trunk-cell-label">Projections</div>
+          <div class="trunk-cell-sub">W<sub>q</sub>·φ(q) → 64d<br>W<sub>d</sub>·φ(d<sub>t</sub>) → 64d</div>
+        </div>
+        <div class="trunk-cell">
+          <div class="trunk-cell-label">Interactions</div>
+          <div class="trunk-cell-sub">cos(q,d)  q⊙d  q−d<br>129 features</div>
+        </div>
+        <div class="trunk-cell">
+          <div class="trunk-cell-label">Learned e<sub>t</sub></div>
+          <div class="trunk-cell-sub">32d embedding<br>diverges from φ(d<sub>t</sub>)</div>
+        </div>
+      </div>
+      <div class="trunk-mlp">concat → MLP: 161 → 64 → 32 → <b>h</b></div>
+    </div>
+
+    <div class="arrow arrow-v" style="margin: 6px 0;">
+      <span class="arrow-label-text" style="right: -40px;">h ∈ ℝ³²</span>
+    </div>
+
+    <!-- Two heads -->
+    <div class="heads-row">
+      <div class="head-col">
+        <div class="node green" style="width: 100%;">
+          <div class="node-label">Relevance Head</div>
+          <div class="node-sub">Deep only. Learns<br>query-tool affinity.</div>
+          <div class="node-dim">h → 16 → 1 → r(q,t)</div>
+        </div>
+        <div style="font-size: 9px; color: #388E3C; margin-top: 3px; font-style: italic;">
+          "personalized rec"
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding-top: 8px;">
+        <div class="wide-features">
+          <div class="wf-title">Wide (6d)</div>
+          success_rate<br>
+          usage_count<br>
+          co_occurrence<br>
+          ...
+        </div>
+        <div style="font-size: 16px; color: #F9A825;">→</div>
+      </div>
+
+      <div class="head-col">
+        <div class="node amber" style="width: 100%;">
+          <div class="node-label">Quality Head</div>
+          <div class="node-sub">Wide + deep. Memorizes<br>per-tool reliability.</div>
+          <div class="node-dim">[h‖w] → 16 → 1 → s(q,t)</div>
+        </div>
+        <div style="font-size: 9px; color: #F57F17; margin-top: 3px; font-style: italic;">
+          "star rating"
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow arrow-v" style="margin: 6px 0;"></div>
+
+    <!-- Score combination -->
+    <div class="score-box">
+      <div class="score-formula">score = α · r(q,t) + (1−α) · s(q,t)</div>
+      <div class="score-note">α: 0.80 (cold start) → 0.35 (converged)</div>
+    </div>
+
+    <div class="arrow arrow-v" style="margin: 4px 0;"></div>
+    <div style="font-size: 11px; font-weight: 600; color: #D32F2F; margin-bottom: 6px;">→ Top 5</div>
+
+    <div style="background: #FAFAFA; border: 1.5px solid #DDD; border-radius: 6px; padding: 8px 12px; width: 100%; font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.7;">
+      <span style="color: #388E3C;">❶ 92%</span> fabriqa/read-pdf<br>
+      <span style="color: #689F38;">❷ 78%</span> mcp-pdf-forms/extract_text<br>
+      <span style="color: #F9A825;">❸ 61%</span> pdf-reader-mcp/read_pdf<br>
+      <span style="color: #EF6C00;">❹ 45%</span> pdf-v043/read-pdf <span style="color: #999; font-size: 9px;">(clone)</span><br>
+      <span style="color: #D32F2F;">❺ 30%</span> pdf-v018/read-pdf <span style="color: #999; font-size: 9px;">(clone)</span>
+    </div>
+  </div>
+
+  <div class="cross-arrow"></div>
+
+  <!-- Panel 3: Execute & Learn -->
+  <div class="panel" style="width: 200px;">
+    <div class="panel-title">Execute &amp; Learn</div>
+
+    <div class="icon">🔧</div>
+    <div style="font-size: 11px; color: #555; margin-bottom: 6px;">MCP Tool Call</div>
+
+    <div class="node" style="width: 170px;">
+      <div class="node-label">Select &amp; Call</div>
+      <div class="node-sub">Call 2: agent selects<br>and calls <b>fabriqa/read-pdf</b></div>
+      <div class="node-dim">read-pdf({file: "attention.pdf"})</div>
+    </div>
+
+    <div class="arrow arrow-v"></div>
+
+    <div class="node gray" style="width: 170px;">
+      <div class="node-sub" style="font-size: 10px; text-align: left; font-family: 'JetBrains Mono', monospace; line-height: 1.5;">
+        ✓ "Attention Is All You<br>Need. Ashish Vaswani..."
+      </div>
+    </div>
+
+    <div class="arrow arrow-v"></div>
+
+    <!-- Rating -->
+    <div class="icon" style="font-size: 24px;">🤖</div>
+    <div class="node blue" style="width: 170px;">
+      <div class="node-label">Rate</div>
+      <div class="node-sub">Call 3: <b>success=true</b><br>score=4, "returned full<br>text from PDF"</div>
+    </div>
+
+    <div class="arrow arrow-v">
+      <span class="arrow-label-text" style="right: -60px;">feedback</span>
+    </div>
+
+    <!-- Online learning -->
+    <div style="border: 2px dashed #1976D2; border-radius: 8px; padding: 12px; width: 100%; text-align: center;">
+      <div style="font-weight: 700; font-size: 12px; color: #1565C0; margin-bottom: 8px;">Online Learning</div>
+
+      <div class="node" style="width: 140px; margin: 0 auto 6px; border-color: #F9A825; background: #FFF8E1;">
+        <div class="node-sub" style="font-size: 10px;"><b>Wide:</b> update stats<br>every task (O(1))</div>
+      </div>
+
+      <div class="node" style="width: 140px; margin: 0 auto; border-color: #7B1FA2; background: #F3E5F5;">
+        <div class="node-sub" style="font-size: 10px;"><b>Deep:</b> retrain on<br>replay buffer / 50 tasks</div>
+      </div>
+    </div>
+
+    <div style="font-size: 11px; color: #999; text-align: center; font-style: italic; margin-top: 6px;">
+      ↻ pairwise margin loss · 68K params
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
