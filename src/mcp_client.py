@@ -20,7 +20,18 @@ def _load_synthetic_configs():
     return {}
 
 
+def _load_real_installs():
+    """Cache install configs for real (non-synthetic) servers."""
+    tools_path = Path(__file__).parent.parent / "data" / "tools.json"
+    if not tools_path.exists():
+        return {}
+    with open(tools_path) as f:
+        servers = json.load(f)
+    return {s["id"]: s.get("install", {}) for s in servers if "_synthetic" not in s}
+
+
 _SYNTHETIC_CONFIGS = _load_synthetic_configs()
+_REAL_INSTALLS = _load_real_installs()
 
 
 class MCPClient:
@@ -106,13 +117,7 @@ class MCPClient:
 
     def _get_real_install(self, server_id: str) -> dict:
         """Look up install config for a real (non-synthetic) server."""
-        tools_path = Path(__file__).parent.parent / "data" / "tools.json"
-        with open(tools_path) as f:
-            servers = json.load(f)
-        for s in servers:
-            if s["id"] == server_id and "_synthetic" not in s:
-                return s.get("install", {})
-        return {}
+        return _REAL_INSTALLS.get(server_id, {})
 
     def _call_real(self, server_id: str, tool_name: str, arguments: dict,
                    install: dict) -> dict:

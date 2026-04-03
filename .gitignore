@@ -6,3 +6,9 @@ control-room
 data/pdfs
 data/.fixtures_snapshot__pycache__/
 src/data/
+.claude
+blog_post.md
+neurips.tex
+references.bib
+figures
+data

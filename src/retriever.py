@@ -52,16 +52,35 @@ class Retriever:
                     "category": server.get("category", ""),
                 }
 
+    def _keyword_score(self, query: str, text: str) -> float:
+        """Simple keyword overlap score (BM25-lite)."""
+        query_terms = set(query.lower().split())
+        text_terms = set(text.lower().split())
+        overlap = len(query_terms & text_terms)
+        return overlap / (len(query_terms) + 1)
+
     def retrieve(self, query: str, top_k: int = 5) -> list[dict]:
-        """Return top-N candidate endpoints for a given query."""
+        """Return top-N candidate endpoints using hybrid retrieval.
+
+        Combines cosine similarity (semantic) with keyword overlap (lexical)
+        for better recall — catches tools the embedding model misses.
+        """
         with self._encode_lock:
             query_emb = self.model.encode([query])[0]
         query_norm = np.linalg.norm(query_emb)
 
-        # Cosine similarity
+        # Cosine similarity (semantic)
         sims = np.dot(self.endpoint_embeddings, query_emb) / (self.endpoint_norms * query_norm)
 
-        top_indices = np.argsort(sims)[::-1]
+        # Hybrid score: semantic + keyword overlap
+        scores = np.zeros(len(self.endpoints))
+        for idx, ep in enumerate(self.endpoints):
+            text = ep.get("full_text", ep.get("tool_name", ""))
+            kw_score = self._keyword_score(query, text)
+            # Weighted combination: 0.7 semantic + 0.3 keyword
+            scores[idx] = 0.7 * sims[idx] + 0.3 * kw_score
+
+        top_indices = np.argsort(scores)[::-1]
 
         results = []
         for idx in top_indices:
@@ -74,7 +93,7 @@ class Retriever:
             tool_info = self.tool_index.get(key, {})
             results.append({
                 **tool_info,
-                "similarity": float(sims[idx]),
+                "similarity": float(scores[idx]),
             })
 
         return results

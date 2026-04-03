@@ -420,7 +420,7 @@ class Reranker:
         # --- Phase 1: Relevance head (deep only, zero wide) ---
         # The "personalized recommendation" — learns query-tool affinity
         # through embeddings only. No access to aggregate stats.
-        rel_epochs = int(epochs * 0.4)
+        rel_epochs = max(1, int(epochs * 0.4))
         rel_params = (list(self.model.query_proj.parameters()) +
                       list(self.model.desc_proj.parameters()) +
                       list(self.model.endpoint_embeddings.parameters()) +
@@ -443,7 +443,7 @@ class Reranker:
         # --- Phase 2: Quality head (wide + deep) ---
         # The "star rating" — learns tool-specific success from aggregate
         # stats (wide) plus deep features for generalization.
-        qual_epochs = int(epochs * 0.4)
+        qual_epochs = max(1, int(epochs * 0.4))
         qual_params = (list(self.model.quality_head.parameters()) +
                        list(self.model.deep_net.parameters()))
         qual_optimizer = torch.optim.Adam(qual_params, lr=lr)
@@ -460,7 +460,7 @@ class Reranker:
         qual_loss = loss.item()
 
         # --- Phase 3: Joint fine-tune (both heads, shared trunk) ---
-        joint_epochs = epochs - rel_epochs - qual_epochs
+        joint_epochs = max(1, epochs - rel_epochs - qual_epochs)
         joint_optimizer = torch.optim.Adam(self.model.parameters(), lr=lr * 0.3)
 
         for epoch in range(joint_epochs):

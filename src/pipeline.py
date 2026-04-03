@@ -31,7 +31,7 @@ from agent import Agent
 class Pipeline:
     """Runs the full agentic loop over a set of tasks."""
 
-    def __init__(self, data_dir: str = "../data", retrieve_k: int = 10,
+    def __init__(self, data_dir: str = "../data", retrieve_k: int = 100,
                  rerank_k: int = 5, use_reranker: bool = True,
                  batch_train_every: int = 50, concurrency: int = 1):
         self.data_dir = Path(data_dir)
