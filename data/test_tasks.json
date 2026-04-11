@@ -1,138 +1,28 @@
 [
   {
-    "category": "pdf",
-    "task": "Get the metadata (author, title, page count) from data/pdfs/form_example.pdf.",
-    "artifact": "data/pdfs/form_example.pdf"
+    "category": "wikipedia",
+    "task": "Look up climate change on Wikipedia and give me the top results.",
+    "artifact": "climate change"
   },
   {
     "category": "filesystem",
-    "task": "Search for the string 'TODO' in all files under data/fixtures/project/.",
-    "artifact": "data/fixtures/project/"
-  },
-  {
-    "category": "fetch",
-    "task": "Scrape https://medium.com/@karpathy/software-2-0-a64152b37c35 and tell me the page title and first paragraph.",
-    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
-  },
-  {
-    "category": "search",
-    "task": "Research rust vs go performance comparison and give me links to the best resources.",
-    "artifact": "rust vs go performance comparison"
-  },
-  {
-    "category": "fetch",
-    "task": "Fetch the page at https://news.ycombinator.com and tell me how many words are on it.",
-    "artifact": "https://news.ycombinator.com"
-  },
-  {
-    "category": "filesystem",
-    "task": "Search for the string 'TODO' in all files under data/fixtures/.",
-    "artifact": "data/fixtures/"
-  },
-  {
-    "category": "filesystem",
-    "task": "Find all .py files under data/fixtures/config.json.",
-    "artifact": "data/fixtures/config.json"
-  },
-  {
-    "category": "search",
-    "task": "Research Stripe PaymentIntents API documentation and give me links to the best resources.",
-    "artifact": "Stripe PaymentIntents API documentation"
-  },
-  {
-    "category": "filesystem",
-    "task": "Search for the string 'TODO' in all files under data/fixtures/deeply/nested/path/to/file.txt.",
-    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
-  },
-  {
-    "category": "search",
-    "task": "Search online for best open source alternatives to Figma and return the URLs of relevant pages.",
-    "artifact": "best open source alternatives to Figma"
-  },
-  {
-    "category": "fetch",
-    "task": "Go to https://news.ycombinator.com and extract all headings and subheadings.",
-    "artifact": "https://news.ycombinator.com"
-  },
-  {
-    "category": "filesystem",
-    "task": "List all the files in data/fixtures/project/tests/.",
+    "task": "What files are in data/fixtures/project/tests/?",
     "artifact": "data/fixtures/project/tests/"
   },
   {
-    "category": "search",
-    "task": "Find me the most authoritative source for best open source alternatives to Figma.",
-    "artifact": "best open source alternatives to Figma"
+    "category": "wikipedia",
+    "task": "Search Wikipedia for machine learning and list the most relevant articles.",
+    "artifact": "machine learning"
   },
   {
-    "category": "fetch",
-    "task": "Get the content of https://en.wikipedia.org/wiki/Large_language_model and tell me what it's about.",
-    "artifact": "https://en.wikipedia.org/wiki/Large_language_model"
-  },
-  {
-    "category": "fetch",
-    "task": "Go to https://react.dev/learn and extract all headings and subheadings.",
-    "artifact": "https://react.dev/learn"
-  },
-  {
-    "category": "fetch",
-    "task": "Get the content of https://news.ycombinator.com and tell me what it's about.",
-    "artifact": "https://news.ycombinator.com"
-  },
-  {
-    "category": "filesystem",
-    "task": "Read the contents of data/fixtures/deeply/nested/path/to/file.txt.",
-    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+    "category": "excel",
+    "task": "Add a SUM formula to the bottom of the first numeric column in data/fixtures/sales_data.xlsx (sheet: Sales).",
+    "artifact": "data/fixtures/sales_data.xlsx"
   },
   {
     "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/dummy.pdf",
+    "task": "Read this PDF and summarize its key findings: data/pdfs/dummy.pdf",
     "artifact": "data/pdfs/dummy.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Search the web and find how to implement RAG with LangChain.",
-    "artifact": "how to implement RAG with LangChain"
-  },
-  {
-    "category": "pdf",
-    "task": "Read this research paper and explain the methodology: data/pdfs/form_example.pdf",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "How many pages does data/pdfs/attention.pdf have?",
-    "artifact": "data/pdfs/attention.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/form_example.pdf and search for mentions of 'model'.",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Research FAISS IVF vs HNSW index tradeoffs and give me links to the best resources.",
-    "artifact": "FAISS IVF vs HNSW index tradeoffs"
-  },
-  {
-    "category": "search",
-    "task": "Find recent information about NVIDIA earnings report 2024.",
-    "artifact": "NVIDIA earnings report 2024"
-  },
-  {
-    "category": "fetch",
-    "task": "Pull the main article from https://motherfuckingwebsite.com, ignoring navigation and ads.",
-    "artifact": "https://motherfuckingwebsite.com"
-  },
-  {
-    "category": "fetch",
-    "task": "Retrieve the page at https://react.dev/learn and convert it to markdown.",
-    "artifact": "https://react.dev/learn"
-  },
-  {
-    "category": "search",
-    "task": "Search the web for FAISS IVF vs HNSW index tradeoffs and summarize the top 3 results.",
-    "artifact": "FAISS IVF vs HNSW index tradeoffs"
   },
   {
     "category": "search",
@@ -140,274 +30,14 @@
     "artifact": "comparison of vector databases 2024"
   },
   {
-    "category": "filesystem",
-    "task": "Count the number of lines in data/fixtures/config.json.",
-    "artifact": "data/fixtures/config.json"
-  },
-  {
-    "category": "search",
-    "task": "Find me the most authoritative source for mcp model context protocol server specification.",
-    "artifact": "mcp model context protocol server specification"
-  },
-  {
-    "category": "search",
-    "task": "Do a web search for rust vs go performance comparison and compile what you find.",
-    "artifact": "rust vs go performance comparison"
-  },
-  {
-    "category": "pdf",
-    "task": "List all the fillable fields and their current values in data/pdfs/fillable_sample.pdf.",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Search online for comparison of vector databases 2024 and return the URLs of relevant pages.",
-    "artifact": "comparison of vector databases 2024"
-  },
-  {
-    "category": "pdf",
-    "task": "Read the form at data/pdfs/form_example.pdf and tell me what information it requires.",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "fetch",
-    "task": "Fetch the page at https://www.paulgraham.com/greatwork.html and tell me how many words are on it.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
-  },
-  {
-    "category": "fetch",
-    "task": "I need a clean, readable version of the article at https://www.paulgraham.com/greatwork.html.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
-  },
-  {
-    "category": "search",
-    "task": "Search online for OpenAI latest model release 2024 and return the URLs of relevant pages.",
-    "artifact": "OpenAI latest model release 2024"
-  },
-  {
-    "category": "filesystem",
-    "task": "Get the file size and modification date of data/fixtures/large_log.txt.",
-    "artifact": "data/fixtures/large_log.txt"
-  },
-  {
-    "category": "search",
-    "task": "Find the official source for mcp model context protocol server specification.",
-    "artifact": "mcp model context protocol server specification"
-  },
-  {
-    "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/form_example.pdf",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Search online for Python requests library timeout parameter and return the URLs of relevant pages.",
-    "artifact": "Python requests library timeout parameter"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract the filled-in values from all form fields in data/pdfs/attention.pdf.",
-    "artifact": "data/pdfs/attention.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Get the file size and modification date of data/fixtures/config.json.",
-    "artifact": "data/fixtures/config.json"
-  },
-  {
-    "category": "filesystem",
-    "task": "Check if data/fixtures/project/ exists and tell me its type (file or directory).",
-    "artifact": "data/fixtures/project/"
-  },
-  {
-    "category": "filesystem",
-    "task": "Count the number of lines in data/fixtures/project/tests/.",
-    "artifact": "data/fixtures/project/tests/"
-  },
-  {
-    "category": "search",
-    "task": "Find the official source for OpenAI latest model release 2024.",
-    "artifact": "OpenAI latest model release 2024"
-  },
-  {
-    "category": "filesystem",
-    "task": "Show me what's in data/fixtures/deeply/nested/path/to/file.txt.",
-    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
-  },
-  {
-    "category": "search",
-    "task": "Search for FAISS IVF vs HNSW index tradeoffs and return structured results I can work with.",
-    "artifact": "FAISS IVF vs HNSW index tradeoffs"
-  },
-  {
     "category": "fetch",
     "task": "Summarize the main content of this page: https://www.paulgraham.com/greatwork.html",
     "artifact": "https://www.paulgraham.com/greatwork.html"
   },
   {
-    "category": "search",
-    "task": "Do a web search for comparison of vector databases 2024 and compile what you find.",
-    "artifact": "comparison of vector databases 2024"
-  },
-  {
-    "category": "search",
-    "task": "Find me the most authoritative source for NVIDIA earnings report 2024.",
-    "artifact": "NVIDIA earnings report 2024"
-  },
-  {
-    "category": "pdf",
-    "task": "Get the metadata (author, title, page count) from data/pdfs/fillable_sample.pdf.",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Search for the string 'TODO' in all files under data/fixtures/config.json.",
-    "artifact": "data/fixtures/config.json"
-  },
-  {
-    "category": "search",
-    "task": "Find recent information about rust vs go performance comparison.",
-    "artifact": "rust vs go performance comparison"
-  },
-  {
-    "category": "filesystem",
-    "task": "Read the contents of data/fixtures/deeply/nested/path/to/file.txt.",
-    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
-  },
-  {
-    "category": "pdf",
-    "task": "How many pages does data/pdfs/dummy.pdf have?",
-    "artifact": "data/pdfs/dummy.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "List all the files in data/fixtures/big_data.json.",
-    "artifact": "data/fixtures/big_data.json"
-  },
-  {
-    "category": "search",
-    "task": "Search online for rust vs go performance comparison and return the URLs of relevant pages.",
-    "artifact": "rust vs go performance comparison"
-  },
-  {
-    "category": "search",
-    "task": "Search the web for RFC 7231 HTTP semantics and summarize the top 3 results.",
-    "artifact": "RFC 7231 HTTP semantics"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/fillable_sample.pdf.",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "fetch",
-    "task": "Read https://motherfuckingwebsite.com and give me a bullet-point summary.",
-    "artifact": "https://motherfuckingwebsite.com"
-  },
-  {
-    "category": "filesystem",
-    "task": "Check if data/fixtures/data.csv exists and tell me its type (file or directory).",
-    "artifact": "data/fixtures/data.csv"
-  },
-  {
-    "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/fillable_sample.pdf",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Read data/fixtures/project/src/ and tell me what it contains.",
-    "artifact": "data/fixtures/project/src/"
-  },
-  {
-    "category": "filesystem",
-    "task": "Read data/fixtures/project/docs/ and tell me what it contains.",
-    "artifact": "data/fixtures/project/docs/"
-  },
-  {
-    "category": "search",
-    "task": "Search online for comparison of vector databases 2024 and return the URLs of relevant pages.",
-    "artifact": "comparison of vector databases 2024"
-  },
-  {
-    "category": "pdf",
-    "task": "Read this research paper and explain the methodology: data/pdfs/form_example.pdf",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Count the number of lines in data/fixtures/README.md.",
-    "artifact": "data/fixtures/README.md"
-  },
-  {
-    "category": "search",
-    "task": "Find recent information about RFC 7231 HTTP semantics.",
-    "artifact": "RFC 7231 HTTP semantics"
-  },
-  {
-    "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/fillable_sample.pdf",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Search the web for rust vs go performance comparison and summarize the top 3 results.",
-    "artifact": "rust vs go performance comparison"
-  },
-  {
-    "category": "filesystem",
-    "task": "Search recursively in data/fixtures/project/ for files containing 'test'.",
-    "artifact": "data/fixtures/project/"
-  },
-  {
-    "category": "pdf",
-    "task": "Read this research paper and explain the methodology: data/pdfs/w9.pdf",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "I need the full text of data/pdfs/attention.pdf for indexing.",
-    "artifact": "data/pdfs/attention.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Search the web and find mcp model context protocol server specification.",
-    "artifact": "mcp model context protocol server specification"
-  },
-  {
-    "category": "pdf",
-    "task": "Get the metadata (author, title, page count) from data/pdfs/attention.pdf.",
-    "artifact": "data/pdfs/attention.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Count the number of lines in data/fixtures/data.csv.",
-    "artifact": "data/fixtures/data.csv"
-  },
-  {
-    "category": "pdf",
-    "task": "I need the full text of data/pdfs/attention.pdf for indexing.",
-    "artifact": "data/pdfs/attention.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "Read data/pdfs/form_example.pdf and find any mentions of specific dates or deadlines.",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "fetch",
-    "task": "Get the content of https://www.gnu.org/philosophy/free-sw.html and tell me what it's about.",
-    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
-  },
-  {
-    "category": "search",
-    "task": "Look up mcp model context protocol server specification and give me the top results.",
-    "artifact": "mcp model context protocol server specification"
-  },
-  {
-    "category": "filesystem",
-    "task": "Get the file size and modification date of data/fixtures/data.csv.",
-    "artifact": "data/fixtures/data.csv"
+    "category": "wikipedia",
+    "task": "Get the full Wikipedia article on Python (programming language).",
+    "artifact": "Python (programming language)"
   },
   {
     "category": "search",
@@ -415,34 +45,24 @@
     "artifact": "best open source alternatives to Figma"
   },
   {
-    "category": "search",
-    "task": "Find me the most authoritative source for comparison of vector databases 2024.",
-    "artifact": "comparison of vector databases 2024"
+    "category": "fetch",
+    "task": "I want the raw HTML source code of https://www.gnu.org/philosophy/free-sw.html.",
+    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
   },
   {
-    "category": "filesystem",
-    "task": "Count the number of lines in data/fixtures/big_data.json.",
-    "artifact": "data/fixtures/big_data.json"
+    "category": "arxiv",
+    "task": "Find papers on arXiv about retrieval augmented generation.",
+    "artifact": "retrieval augmented generation"
   },
   {
-    "category": "filesystem",
-    "task": "Read data/fixtures/data.csv and tell me what it contains.",
-    "artifact": "data/fixtures/data.csv"
+    "category": "excel",
+    "task": "Format the header row of data/fixtures/employee_records.xlsx (sheet: Employees) to be bold with a blue background.",
+    "artifact": "data/fixtures/employee_records.xlsx"
   },
   {
     "category": "fetch",
-    "task": "Go to https://www.paulgraham.com/greatwork.html and extract the key points.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
-  },
-  {
-    "category": "filesystem",
-    "task": "Get the file size and modification date of data/fixtures/big_data.json.",
-    "artifact": "data/fixtures/big_data.json"
-  },
-  {
-    "category": "filesystem",
-    "task": "Show me the directory tree structure of data/fixtures/data.csv.",
-    "artifact": "data/fixtures/data.csv"
+    "task": "Scrape https://medium.com/@karpathy/software-2-0-a64152b37c35 and tell me the page title and first paragraph.",
+    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
   },
   {
     "category": "filesystem",
@@ -450,64 +70,49 @@
     "artifact": "data/fixtures/data.csv"
   },
   {
-    "category": "fetch",
-    "task": "Summarize the main content of this page: https://www.paulgraham.com/greatwork.html",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
+    "category": "wikipedia",
+    "task": "Get the full Wikipedia article on Convolutional neural network.",
+    "artifact": "Convolutional neural network"
   },
   {
-    "category": "fetch",
-    "task": "I need a clean, readable version of the article at https://motherfuckingwebsite.com.",
-    "artifact": "https://motherfuckingwebsite.com"
+    "category": "excel",
+    "task": "How many rows and columns are in data/fixtures/sales_data.xlsx (sheet: Sales)?",
+    "artifact": "data/fixtures/sales_data.xlsx"
   },
   {
-    "category": "fetch",
-    "task": "Scrape https://www.paulgraham.com/greatwork.html and tell me the page title and first paragraph.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
+    "category": "excel",
+    "task": "Read the data from data/fixtures/grades.xlsx (sheet: Grades) and tell me what it contains.",
+    "artifact": "data/fixtures/grades.xlsx"
   },
   {
     "category": "search",
-    "task": "Search online for OpenAI latest model release 2024 and return the URLs of relevant pages.",
+    "task": "Look up mcp model context protocol server specification and give me the top results.",
+    "artifact": "mcp model context protocol server specification"
+  },
+  {
+    "category": "fetch",
+    "task": "Fetch the page at https://en.wikipedia.org/wiki/Large_language_model and tell me how many words are on it.",
+    "artifact": "https://en.wikipedia.org/wiki/Large_language_model"
+  },
+  {
+    "category": "search",
+    "task": "Search for OpenAI latest model release 2024 and return structured results I can work with.",
     "artifact": "OpenAI latest model release 2024"
   },
   {
-    "category": "filesystem",
-    "task": "Count the number of lines in data/fixtures/large_log.txt.",
-    "artifact": "data/fixtures/large_log.txt"
+    "category": "arxiv",
+    "task": "Get the abstract of arXiv paper 1706.03762.",
+    "artifact": "1706.03762"
   },
   {
-    "category": "fetch",
-    "task": "Pull the main article from https://medium.com/@karpathy/software-2-0-a64152b37c35, ignoring navigation and ads.",
-    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Reinforcement learning and summarize it.",
+    "artifact": "Reinforcement learning"
   },
   {
-    "category": "pdf",
-    "task": "Pull out the key statistics and figures mentioned in data/pdfs/fillable_sample.pdf.",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "fetch",
-    "task": "I need a clean, readable version of the article at https://react.dev/learn.",
-    "artifact": "https://react.dev/learn"
-  },
-  {
-    "category": "pdf",
-    "task": "Get the metadata (author, title, page count) from data/pdfs/dummy.pdf.",
-    "artifact": "data/pdfs/dummy.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Search recursively in data/fixtures/deeply/nested/path/to/file.txt for files containing 'test'.",
-    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
-  },
-  {
-    "category": "pdf",
-    "task": "List all the fillable fields and their current values in data/pdfs/w9.pdf.",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Do a web search for RFC 7231 HTTP semantics and compile what you find.",
-    "artifact": "RFC 7231 HTTP semantics"
+    "category": "wikipedia",
+    "task": "Get the summary of the Wikipedia article on Convolutional neural network.",
+    "artifact": "Convolutional neural network"
   },
   {
     "category": "filesystem",
@@ -515,39 +120,64 @@
     "artifact": "data/fixtures/project/docs/"
   },
   {
-    "category": "search",
-    "task": "Search online for NVIDIA earnings report 2024 and return the URLs of relevant pages.",
-    "artifact": "NVIDIA earnings report 2024"
+    "category": "excel",
+    "task": "Create a pie chart in data/fixtures/inventory.xlsx (sheet: Current Stock) showing the distribution of values in the first numeric column.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Look up neural network on Wikipedia and give me the top results.",
+    "artifact": "neural network"
   },
   {
     "category": "fetch",
-    "task": "Pull the main article from https://medium.com/@karpathy/software-2-0-a64152b37c35, ignoring navigation and ads.",
-    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
+    "task": "Get the content of https://news.ycombinator.com and tell me what it's about.",
+    "artifact": "https://news.ycombinator.com"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for articles about neural network.",
+    "artifact": "neural network"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to general relativity.",
+    "artifact": "general relativity"
   },
   {
     "category": "filesystem",
-    "task": "Find all .py files under data/fixtures/project/docs/.",
+    "task": "Read data/fixtures/project/docs/ and tell me what it contains.",
     "artifact": "data/fixtures/project/docs/"
   },
   {
     "category": "pdf",
-    "task": "Get the metadata (author, title, page count) from data/pdfs/fillable_sample.pdf.",
+    "task": "Pull out the key statistics and figures mentioned in data/pdfs/fillable_sample.pdf.",
     "artifact": "data/pdfs/fillable_sample.pdf"
   },
   {
-    "category": "search",
-    "task": "Do a web search for how to implement RAG with LangChain and compile what you find.",
-    "artifact": "how to implement RAG with LangChain"
+    "category": "filesystem",
+    "task": "List all the files in data/fixtures/project/tests/test_main.py.",
+    "artifact": "data/fixtures/project/tests/test_main.py"
   },
   {
     "category": "fetch",
-    "task": "Retrieve the page at https://motherfuckingwebsite.com and convert it to markdown.",
+    "task": "Read https://motherfuckingwebsite.com and give me a bullet-point summary.",
     "artifact": "https://motherfuckingwebsite.com"
   },
   {
-    "category": "search",
-    "task": "Search the web for FAISS IVF vs HNSW index tradeoffs and summarize the top 3 results.",
-    "artifact": "FAISS IVF vs HNSW index tradeoffs"
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/w9.pdf and search for mentions of 'model'.",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search for the string 'TODO' in all files under data/fixtures/.",
+    "artifact": "data/fixtures/"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Generative adversarial network and summarize it.",
+    "artifact": "Generative adversarial network"
   },
   {
     "category": "fetch",
@@ -556,243 +186,38 @@
   },
   {
     "category": "fetch",
-    "task": "I want the raw HTML source code of https://motherfuckingwebsite.com.",
-    "artifact": "https://motherfuckingwebsite.com"
-  },
-  {
-    "category": "filesystem",
-    "task": "Search recursively in data/fixtures/project/tests/ for files containing 'test'.",
-    "artifact": "data/fixtures/project/tests/"
-  },
-  {
-    "category": "fetch",
-    "task": "Read https://motherfuckingwebsite.com and give me a bullet-point summary.",
-    "artifact": "https://motherfuckingwebsite.com"
-  },
-  {
-    "category": "fetch",
-    "task": "Go to https://www.paulgraham.com/greatwork.html and extract all headings and subheadings.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/attention.pdf.",
-    "artifact": "data/pdfs/attention.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "Pull out the key statistics and figures mentioned in data/pdfs/dummy.pdf.",
-    "artifact": "data/pdfs/dummy.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Show me what's in data/fixtures/project/src/.",
-    "artifact": "data/fixtures/project/src/"
-  },
-  {
-    "category": "filesystem",
-    "task": "Count the number of lines in data/fixtures/README.md.",
-    "artifact": "data/fixtures/README.md"
-  },
-  {
-    "category": "pdf",
-    "task": "How many pages does data/pdfs/w9.pdf have?",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "search",
-    "task": "Search for OpenAI latest model release 2024 and return structured results I can work with.",
-    "artifact": "OpenAI latest model release 2024"
-  },
-  {
-    "category": "fetch",
-    "task": "Scrape https://motherfuckingwebsite.com and tell me the page title and first paragraph.",
-    "artifact": "https://motherfuckingwebsite.com"
-  },
-  {
-    "category": "fetch",
-    "task": "Read https://news.ycombinator.com and give me a bullet-point summary.",
-    "artifact": "https://news.ycombinator.com"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/w9.pdf and search for mentions of 'model'.",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "I need the full text of data/pdfs/fillable_sample.pdf for indexing.",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Check if data/fixtures/config.json exists and tell me its type (file or directory).",
-    "artifact": "data/fixtures/config.json"
-  },
-  {
-    "category": "fetch",
-    "task": "Get the content of https://www.gnu.org/philosophy/free-sw.html and tell me what it's about.",
-    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
-  },
-  {
-    "category": "pdf",
-    "task": "How many pages does data/pdfs/fillable_sample.pdf have?",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "fetch",
-    "task": "Summarize the main content of this page: https://www.paulgraham.com/greatwork.html",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
-  },
-  {
-    "category": "filesystem",
-    "task": "Show me what's in data/fixtures/project/docs/index.md.",
-    "artifact": "data/fixtures/project/docs/index.md"
-  },
-  {
-    "category": "fetch",
-    "task": "Fetch the page at https://motherfuckingwebsite.com and tell me how many words are on it.",
-    "artifact": "https://motherfuckingwebsite.com"
-  },
-  {
-    "category": "filesystem",
-    "task": "Show me the directory tree structure of data/fixtures/big_data.json.",
-    "artifact": "data/fixtures/big_data.json"
-  },
-  {
-    "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/w9.pdf",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "fetch",
-    "task": "Go to https://react.dev/learn and extract the key points.",
-    "artifact": "https://react.dev/learn"
-  },
-  {
-    "category": "fetch",
-    "task": "Pull the main article from https://react.dev/learn, ignoring navigation and ads.",
-    "artifact": "https://react.dev/learn"
-  },
-  {
-    "category": "search",
-    "task": "I need you to research how to implement RAG with LangChain and give me a summary.",
-    "artifact": "how to implement RAG with LangChain"
-  },
-  {
-    "category": "filesystem",
-    "task": "What files are in data/fixtures/project/tests/?",
-    "artifact": "data/fixtures/project/tests/"
-  },
-  {
-    "category": "filesystem",
-    "task": "Read data/fixtures/data.csv and tell me what it contains.",
-    "artifact": "data/fixtures/data.csv"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/fillable_sample.pdf.",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "I need the full text of data/pdfs/w9.pdf for indexing.",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "I need the full text of data/pdfs/dummy.pdf for indexing.",
-    "artifact": "data/pdfs/dummy.pdf"
-  },
-  {
-    "category": "fetch",
     "task": "I need a clean, readable version of the article at https://medium.com/@karpathy/software-2-0-a64152b37c35.",
     "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
   },
   {
-    "category": "search",
-    "task": "Search the web and find NVIDIA earnings report 2024.",
-    "artifact": "NVIDIA earnings report 2024"
+    "category": "pdf",
+    "task": "Pull out the key statistics and figures mentioned in data/pdfs/w9.pdf.",
+    "artifact": "data/pdfs/w9.pdf"
   },
   {
-    "category": "search",
-    "task": "Look up how to implement RAG with LangChain and give me the top results.",
-    "artifact": "how to implement RAG with LangChain"
-  },
-  {
-    "category": "fetch",
-    "task": "Get the content of https://motherfuckingwebsite.com and tell me what it's about.",
-    "artifact": "https://motherfuckingwebsite.com"
-  },
-  {
-    "category": "filesystem",
-    "task": "Check if data/fixtures/README.md exists and tell me its type (file or directory).",
-    "artifact": "data/fixtures/README.md"
-  },
-  {
-    "category": "search",
-    "task": "Find the official source for NVIDIA earnings report 2024.",
-    "artifact": "NVIDIA earnings report 2024"
-  },
-  {
-    "category": "search",
-    "task": "Search the web for NVIDIA earnings report 2024 and summarize the top 3 results.",
-    "artifact": "NVIDIA earnings report 2024"
-  },
-  {
-    "category": "search",
-    "task": "Do a web search for best open source alternatives to Figma and compile what you find.",
-    "artifact": "best open source alternatives to Figma"
-  },
-  {
-    "category": "filesystem",
-    "task": "List all the files in data/fixtures/README.md.",
-    "artifact": "data/fixtures/README.md"
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Large language model and summarize it.",
+    "artifact": "Large language model"
   },
   {
     "category": "fetch",
-    "task": "Read https://www.gnu.org/philosophy/free-sw.html and give me a bullet-point summary.",
-    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
+    "task": "Get the content of https://en.wikipedia.org/wiki/Large_language_model and tell me what it's about.",
+    "artifact": "https://en.wikipedia.org/wiki/Large_language_model"
   },
   {
-    "category": "fetch",
-    "task": "Get the content of https://www.paulgraham.com/greatwork.html and tell me what it's about.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
+    "category": "excel",
+    "task": "Read the first 10 rows from data/fixtures/budget.xlsx (sheet: Budget 2025).",
+    "artifact": "data/fixtures/budget.xlsx"
+  },
+  {
+    "category": "excel",
+    "task": "Read the data from data/fixtures/employee_records.xlsx (sheet: Employees) and tell me what it contains.",
+    "artifact": "data/fixtures/employee_records.xlsx"
   },
   {
     "category": "search",
-    "task": "Find the official source for rust vs go performance comparison.",
+    "task": "Search online for rust vs go performance comparison and return the URLs of relevant pages.",
     "artifact": "rust vs go performance comparison"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/w9.pdf.",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "Read this PDF and summarize its key findings: data/pdfs/dummy.pdf",
-    "artifact": "data/pdfs/dummy.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Find all .py files under data/fixtures/project/src/main.py.",
-    "artifact": "data/fixtures/project/src/main.py"
-  },
-  {
-    "category": "fetch",
-    "task": "Read https://react.dev/learn and give me a bullet-point summary.",
-    "artifact": "https://react.dev/learn"
-  },
-  {
-    "category": "pdf",
-    "task": "Search for the word 'attention' in data/pdfs/fillable_sample.pdf.",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "Read data/pdfs/w9.pdf and extract the abstract and conclusion.",
-    "artifact": "data/pdfs/w9.pdf"
   },
   {
     "category": "pdf",
@@ -800,54 +225,9 @@
     "artifact": "data/pdfs/fillable_sample.pdf"
   },
   {
-    "category": "filesystem",
-    "task": "Search recursively in data/fixtures/config.json for files containing 'test'.",
-    "artifact": "data/fixtures/config.json"
-  },
-  {
-    "category": "filesystem",
-    "task": "Read the contents of data/fixtures/project/tests/.",
-    "artifact": "data/fixtures/project/tests/"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/dummy.pdf.",
-    "artifact": "data/pdfs/dummy.pdf"
-  },
-  {
-    "category": "fetch",
-    "task": "Scrape https://news.ycombinator.com and tell me the page title and first paragraph.",
-    "artifact": "https://news.ycombinator.com"
-  },
-  {
-    "category": "fetch",
-    "task": "I want the raw HTML source code of https://www.gnu.org/philosophy/free-sw.html.",
-    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
-  },
-  {
-    "category": "search",
-    "task": "Search online for NVIDIA earnings report 2024 and return the URLs of relevant pages.",
-    "artifact": "NVIDIA earnings report 2024"
-  },
-  {
-    "category": "search",
-    "task": "Search the web and find Python requests library timeout parameter.",
-    "artifact": "Python requests library timeout parameter"
-  },
-  {
-    "category": "fetch",
-    "task": "Retrieve the page at https://www.paulgraham.com/greatwork.html and convert it to markdown.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
-  },
-  {
-    "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/form_example.pdf",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "How many pages does data/pdfs/fillable_sample.pdf have?",
-    "artifact": "data/pdfs/fillable_sample.pdf"
+    "category": "excel",
+    "task": "Create a line chart in data/fixtures/grades.xlsx (sheet: Grades) comparing all numeric columns.",
+    "artifact": "data/fixtures/grades.xlsx"
   },
   {
     "category": "search",
@@ -856,38 +236,133 @@
   },
   {
     "category": "pdf",
-    "task": "Read this research paper and explain the methodology: data/pdfs/form_example.pdf",
+    "task": "Get the metadata (author, title, page count) from data/pdfs/dummy.pdf.",
+    "artifact": "data/pdfs/dummy.pdf"
+  },
+  {
+    "category": "search",
+    "task": "Find recent information about NVIDIA earnings report 2024.",
+    "artifact": "NVIDIA earnings report 2024"
+  },
+  {
+    "category": "search",
+    "task": "Do a web search for RFC 7231 HTTP semantics and compile what you find.",
+    "artifact": "RFC 7231 HTTP semantics"
+  },
+  {
+    "category": "filesystem",
+    "task": "Count the number of lines in data/fixtures/README.md.",
+    "artifact": "data/fixtures/README.md"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the LaTeX source of arXiv paper 2312.10997.",
+    "artifact": "2312.10997"
+  },
+  {
+    "category": "fetch",
+    "task": "Fetch the page at https://motherfuckingwebsite.com and tell me how many words are on it.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pie chart in data/fixtures/inventory.xlsx (sheet: Current Stock) showing the distribution of values in the first numeric column.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "excel",
+    "task": "Create a line chart in data/fixtures/sales_data.xlsx (sheet: Sales) comparing all numeric columns.",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "Get the content of https://www.gnu.org/philosophy/free-sw.html and tell me what it's about.",
+    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
+  },
+  {
+    "category": "filesystem",
+    "task": "Read data/fixtures/data.csv and tell me what it contains.",
+    "artifact": "data/fixtures/data.csv"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pivot table from data/fixtures/sales_data.xlsx (sheet: Sales) summarizing the data.",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "search",
+    "task": "Do a web search for Stripe PaymentIntents API documentation and compile what you find.",
+    "artifact": "Stripe PaymentIntents API documentation"
+  },
+  {
+    "category": "filesystem",
+    "task": "Show me what's in data/fixtures/data.csv.",
+    "artifact": "data/fixtures/data.csv"
+  },
+  {
+    "category": "pdf",
+    "task": "Read data/pdfs/form_example.pdf and find any mentions of specific dates or deadlines.",
     "artifact": "data/pdfs/form_example.pdf"
   },
   {
     "category": "fetch",
-    "task": "Retrieve the page at https://www.paulgraham.com/greatwork.html and convert it to markdown.",
-    "artifact": "https://www.paulgraham.com/greatwork.html"
+    "task": "Retrieve the page at https://react.dev/learn and convert it to markdown.",
+    "artifact": "https://react.dev/learn"
   },
   {
-    "category": "fetch",
-    "task": "Go to https://medium.com/@karpathy/software-2-0-a64152b37c35 and extract the key points.",
-    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
+    "category": "arxiv",
+    "task": "Get the abstract of arXiv paper 2302.13971.",
+    "artifact": "2302.13971"
   },
   {
-    "category": "fetch",
-    "task": "Scrape https://en.wikipedia.org/wiki/Large_language_model and tell me the page title and first paragraph.",
-    "artifact": "https://en.wikipedia.org/wiki/Large_language_model"
+    "category": "excel",
+    "task": "How many rows and columns are in data/fixtures/grades.xlsx (sheet: Grades)?",
+    "artifact": "data/fixtures/grades.xlsx"
   },
   {
-    "category": "pdf",
-    "task": "List all the fillable fields and their current values in data/pdfs/attention.pdf.",
-    "artifact": "data/pdfs/attention.pdf"
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Natural language processing and summarize it.",
+    "artifact": "Natural language processing"
   },
   {
-    "category": "fetch",
-    "task": "Go to https://motherfuckingwebsite.com and extract the key points.",
-    "artifact": "https://motherfuckingwebsite.com"
+    "category": "search",
+    "task": "Do a web search for best open source alternatives to Figma and compile what you find.",
+    "artifact": "best open source alternatives to Figma"
+  },
+  {
+    "category": "search",
+    "task": "Search the web for NVIDIA earnings report 2024 and summarize the top 3 results.",
+    "artifact": "NVIDIA earnings report 2024"
+  },
+  {
+    "category": "arxiv",
+    "task": "Download and read the full text of arXiv paper 1706.03762.",
+    "artifact": "1706.03762"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to neural network.",
+    "artifact": "neural network"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for attention mechanism transformers and give me paper titles and abstracts.",
+    "artifact": "attention mechanism transformers"
   },
   {
     "category": "search",
     "task": "Search for OpenAI latest model release 2024 and return structured results I can work with.",
     "artifact": "OpenAI latest model release 2024"
+  },
+  {
+    "category": "fetch",
+    "task": "Scrape https://news.ycombinator.com and tell me the page title and first paragraph.",
+    "artifact": "https://news.ycombinator.com"
+  },
+  {
+    "category": "search",
+    "task": "Search the web for FAISS IVF vs HNSW index tradeoffs and summarize the top 3 results.",
+    "artifact": "FAISS IVF vs HNSW index tradeoffs"
   },
   {
     "category": "search",
@@ -896,43 +371,13 @@
   },
   {
     "category": "fetch",
-    "task": "I want the raw HTML source code of https://react.dev/learn.",
-    "artifact": "https://react.dev/learn"
-  },
-  {
-    "category": "filesystem",
-    "task": "List all the files in data/fixtures/project/tests/test_main.py.",
-    "artifact": "data/fixtures/project/tests/test_main.py"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/form_example.pdf and search for mentions of 'model'.",
-    "artifact": "data/pdfs/form_example.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "Extract all the text from data/pdfs/w9.pdf and search for mentions of 'model'.",
-    "artifact": "data/pdfs/w9.pdf"
-  },
-  {
-    "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/fillable_sample.pdf",
-    "artifact": "data/pdfs/fillable_sample.pdf"
-  },
-  {
-    "category": "filesystem",
-    "task": "Search recursively in data/fixtures/large_log.txt for files containing 'test'.",
-    "artifact": "data/fixtures/large_log.txt"
-  },
-  {
-    "category": "fetch",
-    "task": "Read https://www.paulgraham.com/greatwork.html and give me a bullet-point summary.",
+    "task": "Fetch the page at https://www.paulgraham.com/greatwork.html and tell me how many words are on it.",
     "artifact": "https://www.paulgraham.com/greatwork.html"
   },
   {
-    "category": "fetch",
-    "task": "Scrape https://news.ycombinator.com and tell me the page title and first paragraph.",
-    "artifact": "https://news.ycombinator.com"
+    "category": "wikipedia",
+    "task": "Search Wikipedia for CRISPR gene editing and list the most relevant articles.",
+    "artifact": "CRISPR gene editing"
   },
   {
     "category": "fetch",
@@ -940,48 +385,348 @@
     "artifact": "https://news.ycombinator.com"
   },
   {
-    "category": "filesystem",
-    "task": "What files are in data/fixtures/project/?",
-    "artifact": "data/fixtures/project/"
-  },
-  {
-    "category": "filesystem",
-    "task": "Show me what's in data/fixtures/data.csv.",
-    "artifact": "data/fixtures/data.csv"
-  },
-  {
-    "category": "search",
-    "task": "Do a web search for Stripe PaymentIntents API documentation and compile what you find.",
-    "artifact": "Stripe PaymentIntents API documentation"
-  },
-  {
-    "category": "search",
-    "task": "Do a web search for RFC 7231 HTTP semantics and compile what you find.",
-    "artifact": "RFC 7231 HTTP semantics"
+    "category": "arxiv",
+    "task": "What are the sections of arXiv paper 2312.10997?",
+    "artifact": "2312.10997"
   },
   {
     "category": "pdf",
-    "task": "I need the full text of data/pdfs/form_example.pdf for indexing.",
+    "task": "How many pages does data/pdfs/w9.pdf have?",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "fetch",
+    "task": "I want the raw HTML source code of https://motherfuckingwebsite.com.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "pdf",
+    "task": "List all the fillable fields and their current values in data/pdfs/w9.pdf.",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "search",
+    "task": "Research rust vs go performance comparison and give me links to the best resources.",
+    "artifact": "rust vs go performance comparison"
+  },
+  {
+    "category": "excel",
+    "task": "Read all data from data/fixtures/inventory.xlsx (sheet: Current Stock).",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "pdf",
+    "task": "Read this research paper and explain the methodology: data/pdfs/w9.pdf",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "search",
+    "task": "Find me the most authoritative source for comparison of vector databases 2024.",
+    "artifact": "comparison of vector databases 2024"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pivot table from data/fixtures/sales_data.xlsx (sheet: Sales) summarizing the data.",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "search",
+    "task": "Search the web and find Python requests library timeout parameter.",
+    "artifact": "Python requests library timeout parameter"
+  },
+  {
+    "category": "excel",
+    "task": "Add a SUM formula to the bottom of the first numeric column in data/fixtures/inventory.xlsx (sheet: Current Stock).",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "excel",
+    "task": "Read all data from data/fixtures/employee_records.xlsx (sheet: Employees).",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "excel",
+    "task": "Get all cell values from data/fixtures/grades.xlsx (sheet: Grades).",
+    "artifact": "data/fixtures/grades.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "Pull the main article from https://motherfuckingwebsite.com, ignoring navigation and ads.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the LaTeX source of arXiv paper 1606.07792.",
+    "artifact": "1606.07792"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search for the string 'TODO' in all files under data/fixtures/deeply/nested/path/to/file.txt.",
+    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+  },
+  {
+    "category": "search",
+    "task": "Find the official source for NVIDIA earnings report 2024.",
+    "artifact": "NVIDIA earnings report 2024"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to CRISPR gene editing.",
+    "artifact": "CRISPR gene editing"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the summary of the Wikipedia article on Transformer (deep learning model).",
+    "artifact": "Transformer (deep learning model)"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Look up general relativity on Wikipedia and give me the top results.",
+    "artifact": "general relativity"
+  },
+  {
+    "category": "pdf",
+    "task": "What form fields are in this PDF: data/pdfs/fillable_sample.pdf",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "pdf",
+    "task": "Get the metadata (author, title, page count) from data/pdfs/attention.pdf.",
+    "artifact": "data/pdfs/attention.pdf"
+  },
+  {
+    "category": "pdf",
+    "task": "Read data/pdfs/w9.pdf and extract the abstract and conclusion.",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up wide and deep learning recommender systems on arXiv and show me the top results.",
+    "artifact": "wide and deep learning recommender systems"
+  },
+  {
+    "category": "pdf",
+    "task": "List all the fillable fields and their current values in data/pdfs/fillable_sample.pdf.",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "arxiv",
+    "task": "What are the sections of arXiv paper 1706.03762?",
+    "artifact": "1706.03762"
+  },
+  {
+    "category": "filesystem",
+    "task": "Get the file size and modification date of data/fixtures/data.csv.",
+    "artifact": "data/fixtures/data.csv"
+  },
+  {
+    "category": "arxiv",
+    "task": "Find papers on arXiv about wide and deep learning recommender systems.",
+    "artifact": "wide and deep learning recommender systems"
+  },
+  {
+    "category": "excel",
+    "task": "Convert the data range in data/fixtures/inventory.xlsx (sheet: Current Stock) into a formatted Excel table.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for vision language models and give me paper titles and abstracts.",
+    "artifact": "vision language models"
+  },
+  {
+    "category": "filesystem",
+    "task": "Show me the directory tree structure of data/fixtures/data.csv.",
+    "artifact": "data/fixtures/data.csv"
+  },
+  {
+    "category": "fetch",
+    "task": "Read https://news.ycombinator.com and give me a bullet-point summary.",
+    "artifact": "https://news.ycombinator.com"
+  },
+  {
+    "category": "pdf",
+    "task": "What form fields are in this PDF: data/pdfs/fillable_sample.pdf",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "excel",
+    "task": "Create a bar chart in data/fixtures/employee_records.xlsx (sheet: Employees) from the data.",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for recent papers about graph neural networks.",
+    "artifact": "graph neural networks"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the full Wikipedia article on Transformer (deep learning model).",
+    "artifact": "Transformer (deep learning model)"
+  },
+  {
+    "category": "filesystem",
+    "task": "Find all .py files under data/fixtures/project/src/main.py.",
+    "artifact": "data/fixtures/project/src/main.py"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search recursively in data/fixtures/config.json for files containing 'test'.",
+    "artifact": "data/fixtures/config.json"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the summary of the Wikipedia article on Convolutional neural network.",
+    "artifact": "Convolutional neural network"
+  },
+  {
+    "category": "excel",
+    "task": "Read data/fixtures/budget.xlsx (sheet: Budget 2025) and summarize the data.",
+    "artifact": "data/fixtures/budget.xlsx"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the sections and headings of the Wikipedia article on Python (programming language).",
+    "artifact": "Python (programming language)"
+  },
+  {
+    "category": "excel",
+    "task": "Add a SUM formula to the bottom of the first numeric column in data/fixtures/grades.xlsx (sheet: Grades).",
+    "artifact": "data/fixtures/grades.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "What are the sections of arXiv paper 1606.07792?",
+    "artifact": "1606.07792"
+  },
+  {
+    "category": "pdf",
+    "task": "What form fields are in this PDF: data/pdfs/form_example.pdf",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "List all the files in data/fixtures/big_data.json.",
+    "artifact": "data/fixtures/big_data.json"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up diffusion models image generation on arXiv and show me the top results.",
+    "artifact": "diffusion models image generation"
+  },
+  {
+    "category": "fetch",
+    "task": "Read https://www.gnu.org/philosophy/free-sw.html and give me a bullet-point summary.",
+    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
+  },
+  {
+    "category": "excel",
+    "task": "Add a formula to calculate the total across all rows in data/fixtures/sales_data.xlsx (sheet: Sales).",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for articles about mRNA vaccine.",
+    "artifact": "mRNA vaccine"
+  },
+  {
+    "category": "fetch",
+    "task": "Get the content of https://www.paulgraham.com/greatwork.html and tell me what it's about.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "excel",
+    "task": "Read the first 10 rows from data/fixtures/employee_records.xlsx (sheet: Employees).",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for federated learning privacy and give me paper titles and abstracts.",
+    "artifact": "federated learning privacy"
+  },
+  {
+    "category": "excel",
+    "task": "Read data/fixtures/budget.xlsx (sheet: Budget 2025) and summarize the data.",
+    "artifact": "data/fixtures/budget.xlsx"
+  },
+  {
+    "category": "filesystem",
+    "task": "Show me what's in data/fixtures/project/src/.",
+    "artifact": "data/fixtures/project/src/"
+  },
+  {
+    "category": "arxiv",
+    "task": "Read arXiv paper 2302.13971 and summarize the methodology.",
+    "artifact": "2302.13971"
+  },
+  {
+    "category": "fetch",
+    "task": "Pull the main article from https://medium.com/@karpathy/software-2-0-a64152b37c35, ignoring navigation and ads.",
+    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
+  },
+  {
+    "category": "search",
+    "task": "Do a web search for rust vs go performance comparison and compile what you find.",
+    "artifact": "rust vs go performance comparison"
+  },
+  {
+    "category": "fetch",
+    "task": "Go to https://news.ycombinator.com and extract all headings and subheadings.",
+    "artifact": "https://news.ycombinator.com"
+  },
+  {
+    "category": "pdf",
+    "task": "Read the form at data/pdfs/form_example.pdf and tell me what information it requires.",
     "artifact": "data/pdfs/form_example.pdf"
   },
   {
     "category": "fetch",
-    "task": "Fetch the page at https://en.wikipedia.org/wiki/Large_language_model and tell me how many words are on it.",
-    "artifact": "https://en.wikipedia.org/wiki/Large_language_model"
+    "task": "I want the raw HTML source code of https://react.dev/learn.",
+    "artifact": "https://react.dev/learn"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the abstract of arXiv paper 2307.09288.",
+    "artifact": "2307.09288"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for recent papers about chain of thought prompting.",
+    "artifact": "chain of thought prompting"
   },
   {
     "category": "filesystem",
-    "task": "Find all .py files under data/fixtures/deeply/nested/path/to/file.txt.",
-    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+    "task": "Read data/fixtures/data.csv and tell me what it contains.",
+    "artifact": "data/fixtures/data.csv"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the abstract of arXiv paper 1706.03762.",
+    "artifact": "1706.03762"
+  },
+  {
+    "category": "filesystem",
+    "task": "Show me what's in data/fixtures/project/docs/index.md.",
+    "artifact": "data/fixtures/project/docs/index.md"
   },
   {
     "category": "pdf",
-    "task": "What form fields are in this PDF: data/pdfs/dummy.pdf",
-    "artifact": "data/pdfs/dummy.pdf"
+    "task": "What form fields are in this PDF: data/pdfs/w9.pdf",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "search",
+    "task": "Find the official source for OpenAI latest model release 2024.",
+    "artifact": "OpenAI latest model release 2024"
+  },
+  {
+    "category": "search",
+    "task": "Search for FAISS IVF vs HNSW index tradeoffs and return structured results I can work with.",
+    "artifact": "FAISS IVF vs HNSW index tradeoffs"
   },
   {
     "category": "pdf",
-    "task": "Pull out the key statistics and figures mentioned in data/pdfs/w9.pdf.",
+    "task": "Extract all the text from data/pdfs/w9.pdf and search for mentions of 'model'.",
     "artifact": "data/pdfs/w9.pdf"
   },
   {
@@ -990,13 +735,1018 @@
     "artifact": "https://www.paulgraham.com/greatwork.html"
   },
   {
+    "category": "excel",
+    "task": "Format the header row of data/fixtures/inventory.xlsx (sheet: Current Stock) to be bold with a blue background.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the abstract of arXiv paper 2302.13971.",
+    "artifact": "2302.13971"
+  },
+  {
+    "category": "search",
+    "task": "Find recent information about RFC 7231 HTTP semantics.",
+    "artifact": "RFC 7231 HTTP semantics"
+  },
+  {
+    "category": "filesystem",
+    "task": "Check if data/fixtures/README.md exists and tell me its type (file or directory).",
+    "artifact": "data/fixtures/README.md"
+  },
+  {
     "category": "filesystem",
     "task": "Count the number of lines in data/fixtures/project/.",
     "artifact": "data/fixtures/project/"
   },
   {
     "category": "search",
+    "task": "Search online for comparison of vector databases 2024 and return the URLs of relevant pages.",
+    "artifact": "comparison of vector databases 2024"
+  },
+  {
+    "category": "excel",
+    "task": "Format the header row of data/fixtures/budget.xlsx (sheet: Budget 2025) to be bold with a blue background.",
+    "artifact": "data/fixtures/budget.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "Summarize the main content of this page: https://www.paulgraham.com/greatwork.html",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for recent papers about chain of thought prompting.",
+    "artifact": "chain of thought prompting"
+  },
+  {
+    "category": "filesystem",
+    "task": "Show me the directory tree structure of data/fixtures/big_data.json.",
+    "artifact": "data/fixtures/big_data.json"
+  },
+  {
+    "category": "fetch",
+    "task": "Go to https://www.paulgraham.com/greatwork.html and extract all headings and subheadings.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the abstract of arXiv paper 2302.13971.",
+    "artifact": "2302.13971"
+  },
+  {
+    "category": "pdf",
+    "task": "I need the full text of data/pdfs/w9.pdf for indexing.",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the summary of the Wikipedia article on Attention (machine learning).",
+    "artifact": "Attention (machine learning)"
+  },
+  {
+    "category": "search",
+    "task": "Search online for Python requests library timeout parameter and return the URLs of relevant pages.",
+    "artifact": "Python requests library timeout parameter"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Transfer learning and summarize it.",
+    "artifact": "Transfer learning"
+  },
+  {
+    "category": "search",
+    "task": "Find the official source for mcp model context protocol server specification.",
+    "artifact": "mcp model context protocol server specification"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for wide and deep learning recommender systems and give me paper titles and abstracts.",
+    "artifact": "wide and deep learning recommender systems"
+  },
+  {
+    "category": "search",
     "task": "Search online for OpenAI latest model release 2024 and return the URLs of relevant pages.",
     "artifact": "OpenAI latest model release 2024"
+  },
+  {
+    "category": "fetch",
+    "task": "Go to https://react.dev/learn and extract the key points.",
+    "artifact": "https://react.dev/learn"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Pull the key facts from the Wikipedia page on Reinforcement learning.",
+    "artifact": "Reinforcement learning"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Pull the key facts from the Wikipedia page on Reinforcement learning.",
+    "artifact": "Reinforcement learning"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up sparse mixture of experts on arXiv and show me the top results.",
+    "artifact": "sparse mixture of experts"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Pull the key facts from the Wikipedia page on Reinforcement learning.",
+    "artifact": "Reinforcement learning"
+  },
+  {
+    "category": "pdf",
+    "task": "I need the full text of data/pdfs/attention.pdf for indexing.",
+    "artifact": "data/pdfs/attention.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "Count the number of lines in data/fixtures/README.md.",
+    "artifact": "data/fixtures/README.md"
+  },
+  {
+    "category": "fetch",
+    "task": "Go to https://www.paulgraham.com/greatwork.html and extract the key points.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the abstract of arXiv paper 1706.03762.",
+    "artifact": "1706.03762"
+  },
+  {
+    "category": "search",
+    "task": "Look up how to implement RAG with LangChain and give me the top results.",
+    "artifact": "how to implement RAG with LangChain"
+  },
+  {
+    "category": "search",
+    "task": "Find recent information about rust vs go performance comparison.",
+    "artifact": "rust vs go performance comparison"
+  },
+  {
+    "category": "pdf",
+    "task": "Read this research paper and explain the methodology: data/pdfs/form_example.pdf",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "arxiv",
+    "task": "Download and read the full text of arXiv paper 2307.09288.",
+    "artifact": "2307.09288"
+  },
+  {
+    "category": "excel",
+    "task": "Convert the data range in data/fixtures/sales_data.xlsx (sheet: Sales) into a formatted Excel table.",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "search",
+    "task": "Search online for comparison of vector databases 2024 and return the URLs of relevant pages.",
+    "artifact": "comparison of vector databases 2024"
+  },
+  {
+    "category": "search",
+    "task": "Search online for best open source alternatives to Figma and return the URLs of relevant pages.",
+    "artifact": "best open source alternatives to Figma"
+  },
+  {
+    "category": "excel",
+    "task": "How many rows and columns are in data/fixtures/grades.xlsx (sheet: Grades)?",
+    "artifact": "data/fixtures/grades.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "Fetch the page at https://news.ycombinator.com and tell me how many words are on it.",
+    "artifact": "https://news.ycombinator.com"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search recursively in data/fixtures/project/tests/ for files containing 'test'.",
+    "artifact": "data/fixtures/project/tests/"
+  },
+  {
+    "category": "filesystem",
+    "task": "Find all .py files under data/fixtures/project/docs/.",
+    "artifact": "data/fixtures/project/docs/"
+  },
+  {
+    "category": "pdf",
+    "task": "Read this research paper and explain the methodology: data/pdfs/form_example.pdf",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search recursively in data/fixtures/large_log.txt for files containing 'test'.",
+    "artifact": "data/fixtures/large_log.txt"
+  },
+  {
+    "category": "filesystem",
+    "task": "Read the contents of data/fixtures/deeply/nested/path/to/file.txt.",
+    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pivot table from data/fixtures/employee_records.xlsx (sheet: Employees) summarizing the data.",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "Go to https://medium.com/@karpathy/software-2-0-a64152b37c35 and extract the key points.",
+    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
+  },
+  {
+    "category": "search",
+    "task": "Search the web and find NVIDIA earnings report 2024.",
+    "artifact": "NVIDIA earnings report 2024"
+  },
+  {
+    "category": "pdf",
+    "task": "How many pages does data/pdfs/attention.pdf have?",
+    "artifact": "data/pdfs/attention.pdf"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for articles about CRISPR gene editing.",
+    "artifact": "CRISPR gene editing"
+  },
+  {
+    "category": "excel",
+    "task": "Add a SUM formula to the bottom of the first numeric column in data/fixtures/sales_data.xlsx (sheet: Sales).",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "filesystem",
+    "task": "What files are in data/fixtures/project/?",
+    "artifact": "data/fixtures/project/"
+  },
+  {
+    "category": "fetch",
+    "task": "Retrieve the page at https://www.paulgraham.com/greatwork.html and convert it to markdown.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "excel",
+    "task": "Get all cell values from data/fixtures/inventory.xlsx (sheet: Current Stock).",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "pdf",
+    "task": "I need the full text of data/pdfs/form_example.pdf for indexing.",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to quantum computing.",
+    "artifact": "quantum computing"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/form_example.pdf and search for mentions of 'model'.",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up wide and deep learning recommender systems on arXiv and show me the top results.",
+    "artifact": "wide and deep learning recommender systems"
+  },
+  {
+    "category": "arxiv",
+    "task": "Download and read the full text of arXiv paper 2302.13971.",
+    "artifact": "2302.13971"
+  },
+  {
+    "category": "fetch",
+    "task": "Pull the main article from https://react.dev/learn, ignoring navigation and ads.",
+    "artifact": "https://react.dev/learn"
+  },
+  {
+    "category": "excel",
+    "task": "Read the data from data/fixtures/grades.xlsx (sheet: Grades) and tell me what it contains.",
+    "artifact": "data/fixtures/grades.xlsx"
+  },
+  {
+    "category": "filesystem",
+    "task": "Find all .py files under data/fixtures/deeply/nested/path/to/file.txt.",
+    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+  },
+  {
+    "category": "pdf",
+    "task": "I need the full text of data/pdfs/attention.pdf for indexing.",
+    "artifact": "data/pdfs/attention.pdf"
+  },
+  {
+    "category": "fetch",
+    "task": "Retrieve the page at https://motherfuckingwebsite.com and convert it to markdown.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "arxiv",
+    "task": "Download and read the full text of arXiv paper 2307.09288.",
+    "artifact": "2307.09288"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for photosynthesis and list the most relevant articles.",
+    "artifact": "photosynthesis"
+  },
+  {
+    "category": "filesystem",
+    "task": "Check if data/fixtures/project/ exists and tell me its type (file or directory).",
+    "artifact": "data/fixtures/project/"
+  },
+  {
+    "category": "pdf",
+    "task": "Read this research paper and explain the methodology: data/pdfs/form_example.pdf",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "fetch",
+    "task": "I need a clean, readable version of the article at https://react.dev/learn.",
+    "artifact": "https://react.dev/learn"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the summary of the Wikipedia article on Reinforcement learning.",
+    "artifact": "Reinforcement learning"
+  },
+  {
+    "category": "pdf",
+    "task": "What form fields are in this PDF: data/pdfs/dummy.pdf",
+    "artifact": "data/pdfs/dummy.pdf"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for general relativity and list the most relevant articles.",
+    "artifact": "general relativity"
+  },
+  {
+    "category": "filesystem",
+    "task": "Read the contents of data/fixtures/deeply/nested/path/to/file.txt.",
+    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+  },
+  {
+    "category": "filesystem",
+    "task": "Count the number of lines in data/fixtures/config.json.",
+    "artifact": "data/fixtures/config.json"
+  },
+  {
+    "category": "pdf",
+    "task": "What form fields are in this PDF: data/pdfs/fillable_sample.pdf",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Attention (machine learning) and summarize it.",
+    "artifact": "Attention (machine learning)"
+  },
+  {
+    "category": "excel",
+    "task": "Read the data from data/fixtures/inventory.xlsx (sheet: Current Stock) and tell me what it contains.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "search",
+    "task": "Do a web search for how to implement RAG with LangChain and compile what you find.",
+    "artifact": "how to implement RAG with LangChain"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up vision language models on arXiv and show me the top results.",
+    "artifact": "vision language models"
+  },
+  {
+    "category": "search",
+    "task": "Search online for NVIDIA earnings report 2024 and return the URLs of relevant pages.",
+    "artifact": "NVIDIA earnings report 2024"
+  },
+  {
+    "category": "search",
+    "task": "Search the web for rust vs go performance comparison and summarize the top 3 results.",
+    "artifact": "rust vs go performance comparison"
+  },
+  {
+    "category": "search",
+    "task": "Do a web search for comparison of vector databases 2024 and compile what you find.",
+    "artifact": "comparison of vector databases 2024"
+  },
+  {
+    "category": "arxiv",
+    "task": "Extract the introduction from arXiv paper 1606.07792.",
+    "artifact": "1606.07792"
+  },
+  {
+    "category": "filesystem",
+    "task": "Get the file size and modification date of data/fixtures/big_data.json.",
+    "artifact": "data/fixtures/big_data.json"
+  },
+  {
+    "category": "excel",
+    "task": "How many rows and columns are in data/fixtures/sales_data.xlsx (sheet: Sales)?",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for articles about climate change.",
+    "artifact": "climate change"
+  },
+  {
+    "category": "fetch",
+    "task": "Scrape https://en.wikipedia.org/wiki/Large_language_model and tell me the page title and first paragraph.",
+    "artifact": "https://en.wikipedia.org/wiki/Large_language_model"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search for the string 'TODO' in all files under data/fixtures/config.json.",
+    "artifact": "data/fixtures/config.json"
+  },
+  {
+    "category": "pdf",
+    "task": "Pull out the key statistics and figures mentioned in data/pdfs/dummy.pdf.",
+    "artifact": "data/pdfs/dummy.pdf"
+  },
+  {
+    "category": "search",
+    "task": "Find me the most authoritative source for NVIDIA earnings report 2024.",
+    "artifact": "NVIDIA earnings report 2024"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract the filled-in values from all form fields in data/pdfs/attention.pdf.",
+    "artifact": "data/pdfs/attention.pdf"
+  },
+  {
+    "category": "excel",
+    "task": "Create a line chart in data/fixtures/budget.xlsx (sheet: Budget 2025) comparing all numeric columns.",
+    "artifact": "data/fixtures/budget.xlsx"
+  },
+  {
+    "category": "filesystem",
+    "task": "Get the file size and modification date of data/fixtures/large_log.txt.",
+    "artifact": "data/fixtures/large_log.txt"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Look up CRISPR gene editing on Wikipedia and give me the top results.",
+    "artifact": "CRISPR gene editing"
+  },
+  {
+    "category": "wikipedia",
+    "task": "What does Wikipedia say about Large language model?",
+    "artifact": "Large language model"
+  },
+  {
+    "category": "search",
+    "task": "Find the official source for rust vs go performance comparison.",
+    "artifact": "rust vs go performance comparison"
+  },
+  {
+    "category": "filesystem",
+    "task": "Read the contents of data/fixtures/project/tests/.",
+    "artifact": "data/fixtures/project/tests/"
+  },
+  {
+    "category": "fetch",
+    "task": "Scrape https://www.paulgraham.com/greatwork.html and tell me the page title and first paragraph.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the LaTeX source of arXiv paper 2405.16089.",
+    "artifact": "2405.16089"
+  },
+  {
+    "category": "filesystem",
+    "task": "Read data/fixtures/project/src/ and tell me what it contains.",
+    "artifact": "data/fixtures/project/src/"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for artificial intelligence and list the most relevant articles.",
+    "artifact": "artificial intelligence"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for articles about machine learning.",
+    "artifact": "machine learning"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/fillable_sample.pdf.",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "search",
+    "task": "Find me the most authoritative source for best open source alternatives to Figma.",
+    "artifact": "best open source alternatives to Figma"
+  },
+  {
+    "category": "fetch",
+    "task": "Get the content of https://motherfuckingwebsite.com and tell me what it's about.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/form_example.pdf and search for mentions of 'model'.",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "excel",
+    "task": "Add a SUM formula to the bottom of the first numeric column in data/fixtures/sales_data.xlsx (sheet: Sales).",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for reinforcement learning from human feedback and give me paper titles and abstracts.",
+    "artifact": "reinforcement learning from human feedback"
+  },
+  {
+    "category": "search",
+    "task": "Search online for OpenAI latest model release 2024 and return the URLs of relevant pages.",
+    "artifact": "OpenAI latest model release 2024"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for wide and deep learning recommender systems and give me paper titles and abstracts.",
+    "artifact": "wide and deep learning recommender systems"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pie chart in data/fixtures/inventory.xlsx (sheet: Current Stock) showing the distribution of values in the first numeric column.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "filesystem",
+    "task": "Get the file size and modification date of data/fixtures/config.json.",
+    "artifact": "data/fixtures/config.json"
+  },
+  {
+    "category": "fetch",
+    "task": "Go to https://react.dev/learn and extract all headings and subheadings.",
+    "artifact": "https://react.dev/learn"
+  },
+  {
+    "category": "fetch",
+    "task": "Get the content of https://www.gnu.org/philosophy/free-sw.html and tell me what it's about.",
+    "artifact": "https://www.gnu.org/philosophy/free-sw.html"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pie chart in data/fixtures/inventory.xlsx (sheet: Current Stock) showing the distribution of values in the first numeric column.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the LaTeX source of arXiv paper 2005.14165.",
+    "artifact": "2005.14165"
+  },
+  {
+    "category": "pdf",
+    "task": "Get the metadata (author, title, page count) from data/pdfs/fillable_sample.pdf.",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "List all the files in data/fixtures/project/tests/.",
+    "artifact": "data/fixtures/project/tests/"
+  },
+  {
+    "category": "fetch",
+    "task": "Read https://react.dev/learn and give me a bullet-point summary.",
+    "artifact": "https://react.dev/learn"
+  },
+  {
+    "category": "fetch",
+    "task": "Scrape https://news.ycombinator.com and tell me the page title and first paragraph.",
+    "artifact": "https://news.ycombinator.com"
+  },
+  {
+    "category": "filesystem",
+    "task": "Count the number of lines in data/fixtures/big_data.json.",
+    "artifact": "data/fixtures/big_data.json"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to mRNA vaccine.",
+    "artifact": "mRNA vaccine"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/dummy.pdf.",
+    "artifact": "data/pdfs/dummy.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "Count the number of lines in data/fixtures/data.csv.",
+    "artifact": "data/fixtures/data.csv"
+  },
+  {
+    "category": "pdf",
+    "task": "Search for the word 'attention' in data/pdfs/fillable_sample.pdf.",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "excel",
+    "task": "How many rows and columns are in data/fixtures/employee_records.xlsx (sheet: Employees)?",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for recent papers about chain of thought prompting.",
+    "artifact": "chain of thought prompting"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for articles about climate change.",
+    "artifact": "climate change"
+  },
+  {
+    "category": "search",
+    "task": "Search online for OpenAI latest model release 2024 and return the URLs of relevant pages.",
+    "artifact": "OpenAI latest model release 2024"
+  },
+  {
+    "category": "search",
+    "task": "Find me the most authoritative source for mcp model context protocol server specification.",
+    "artifact": "mcp model context protocol server specification"
+  },
+  {
+    "category": "filesystem",
+    "task": "Count the number of lines in data/fixtures/project/tests/.",
+    "artifact": "data/fixtures/project/tests/"
+  },
+  {
+    "category": "fetch",
+    "task": "I need a clean, readable version of the article at https://motherfuckingwebsite.com.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/fillable_sample.pdf.",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Natural language processing and summarize it.",
+    "artifact": "Natural language processing"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the full Wikipedia article on Natural language processing.",
+    "artifact": "Natural language processing"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search recursively in data/fixtures/deeply/nested/path/to/file.txt for files containing 'test'.",
+    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the full Wikipedia article on Transfer learning.",
+    "artifact": "Transfer learning"
+  },
+  {
+    "category": "excel",
+    "task": "Read the data from data/fixtures/inventory.xlsx (sheet: Current Stock) and tell me what it contains.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "search",
+    "task": "Research Stripe PaymentIntents API documentation and give me links to the best resources.",
+    "artifact": "Stripe PaymentIntents API documentation"
+  },
+  {
+    "category": "excel",
+    "task": "Format the header row of data/fixtures/sales_data.xlsx (sheet: Sales) to be bold with a blue background.",
+    "artifact": "data/fixtures/sales_data.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "Read https://motherfuckingwebsite.com and give me a bullet-point summary.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for articles about photosynthesis.",
+    "artifact": "photosynthesis"
+  },
+  {
+    "category": "filesystem",
+    "task": "List all the files in data/fixtures/README.md.",
+    "artifact": "data/fixtures/README.md"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pivot table from data/fixtures/employee_records.xlsx (sheet: Employees) summarizing the data.",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for vision language models and give me paper titles and abstracts.",
+    "artifact": "vision language models"
+  },
+  {
+    "category": "arxiv",
+    "task": "What are the sections of arXiv paper 1706.03762?",
+    "artifact": "1706.03762"
+  },
+  {
+    "category": "fetch",
+    "task": "Pull the main article from https://medium.com/@karpathy/software-2-0-a64152b37c35, ignoring navigation and ads.",
+    "artifact": "https://medium.com/@karpathy/software-2-0-a64152b37c35"
+  },
+  {
+    "category": "filesystem",
+    "task": "Count the number of lines in data/fixtures/large_log.txt.",
+    "artifact": "data/fixtures/large_log.txt"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/attention.pdf.",
+    "artifact": "data/pdfs/attention.pdf"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up diffusion models image generation on arXiv and show me the top results.",
+    "artifact": "diffusion models image generation"
+  },
+  {
+    "category": "arxiv",
+    "task": "What are the sections of arXiv paper 2005.14165?",
+    "artifact": "2005.14165"
+  },
+  {
+    "category": "arxiv",
+    "task": "Find papers on arXiv about graph neural networks.",
+    "artifact": "graph neural networks"
+  },
+  {
+    "category": "pdf",
+    "task": "Get the metadata (author, title, page count) from data/pdfs/form_example.pdf.",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "Find all .py files under data/fixtures/config.json.",
+    "artifact": "data/fixtures/config.json"
+  },
+  {
+    "category": "search",
+    "task": "Research FAISS IVF vs HNSW index tradeoffs and give me links to the best resources.",
+    "artifact": "FAISS IVF vs HNSW index tradeoffs"
+  },
+  {
+    "category": "pdf",
+    "task": "How many pages does data/pdfs/fillable_sample.pdf have?",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "pdf",
+    "task": "Extract all the text from data/pdfs/w9.pdf.",
+    "artifact": "data/pdfs/w9.pdf"
+  },
+  {
+    "category": "pdf",
+    "task": "What form fields are in this PDF: data/pdfs/dummy.pdf",
+    "artifact": "data/pdfs/dummy.pdf"
+  },
+  {
+    "category": "filesystem",
+    "task": "Show me what's in data/fixtures/deeply/nested/path/to/file.txt.",
+    "artifact": "data/fixtures/deeply/nested/path/to/file.txt"
+  },
+  {
+    "category": "search",
+    "task": "Search the web for FAISS IVF vs HNSW index tradeoffs and summarize the top 3 results.",
+    "artifact": "FAISS IVF vs HNSW index tradeoffs"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up graph neural networks on arXiv and show me the top results.",
+    "artifact": "graph neural networks"
+  },
+  {
+    "category": "pdf",
+    "task": "How many pages does data/pdfs/dummy.pdf have?",
+    "artifact": "data/pdfs/dummy.pdf"
+  },
+  {
+    "category": "fetch",
+    "task": "Retrieve the page at https://www.paulgraham.com/greatwork.html and convert it to markdown.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "arxiv",
+    "task": "Extract the introduction from arXiv paper 2405.16089.",
+    "artifact": "2405.16089"
+  },
+  {
+    "category": "pdf",
+    "task": "I need the full text of data/pdfs/dummy.pdf for indexing.",
+    "artifact": "data/pdfs/dummy.pdf"
+  },
+  {
+    "category": "excel",
+    "task": "Create a line chart in data/fixtures/employee_records.xlsx (sheet: Employees) comparing all numeric columns.",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "excel",
+    "task": "Format the header row of data/fixtures/grades.xlsx (sheet: Grades) to be bold with a blue background.",
+    "artifact": "data/fixtures/grades.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "I need a clean, readable version of the article at https://www.paulgraham.com/greatwork.html.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "excel",
+    "task": "Create a pivot table from data/fixtures/inventory.xlsx (sheet: Current Stock) summarizing the data.",
+    "artifact": "data/fixtures/inventory.xlsx"
+  },
+  {
+    "category": "fetch",
+    "task": "Go to https://motherfuckingwebsite.com and extract the key points.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "fetch",
+    "task": "Read https://www.paulgraham.com/greatwork.html and give me a bullet-point summary.",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find related topics linked from the Wikipedia page on Large language model.",
+    "artifact": "Large language model"
+  },
+  {
+    "category": "excel",
+    "task": "Create a bar chart in data/fixtures/budget.xlsx (sheet: Budget 2025) from the data.",
+    "artifact": "data/fixtures/budget.xlsx"
+  },
+  {
+    "category": "filesystem",
+    "task": "Check if data/fixtures/data.csv exists and tell me its type (file or directory).",
+    "artifact": "data/fixtures/data.csv"
+  },
+  {
+    "category": "fetch",
+    "task": "Scrape https://motherfuckingwebsite.com and tell me the page title and first paragraph.",
+    "artifact": "https://motherfuckingwebsite.com"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Get the full Wikipedia article on Python (programming language).",
+    "artifact": "Python (programming language)"
+  },
+  {
+    "category": "pdf",
+    "task": "What form fields are in this PDF: data/pdfs/form_example.pdf",
+    "artifact": "data/pdfs/form_example.pdf"
+  },
+  {
+    "category": "excel",
+    "task": "How many rows and columns are in data/fixtures/grades.xlsx (sheet: Grades)?",
+    "artifact": "data/fixtures/grades.xlsx"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Read the Wikipedia page for Backpropagation and summarize it.",
+    "artifact": "Backpropagation"
+  },
+  {
+    "category": "search",
+    "task": "Search the web and find mcp model context protocol server specification.",
+    "artifact": "mcp model context protocol server specification"
+  },
+  {
+    "category": "fetch",
+    "task": "Summarize the main content of this page: https://www.paulgraham.com/greatwork.html",
+    "artifact": "https://www.paulgraham.com/greatwork.html"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to Renaissance.",
+    "artifact": "Renaissance"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for recent papers about retrieval augmented generation.",
+    "artifact": "retrieval augmented generation"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search recursively in data/fixtures/project/ for files containing 'test'.",
+    "artifact": "data/fixtures/project/"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for vision language models and give me paper titles and abstracts.",
+    "artifact": "vision language models"
+  },
+  {
+    "category": "search",
+    "task": "Search online for NVIDIA earnings report 2024 and return the URLs of relevant pages.",
+    "artifact": "NVIDIA earnings report 2024"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Search Wikipedia for climate change and list the most relevant articles.",
+    "artifact": "climate change"
+  },
+  {
+    "category": "pdf",
+    "task": "How many pages does data/pdfs/fillable_sample.pdf have?",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to CRISPR gene editing.",
+    "artifact": "CRISPR gene editing"
+  },
+  {
+    "category": "filesystem",
+    "task": "Check if data/fixtures/config.json exists and tell me its type (file or directory).",
+    "artifact": "data/fixtures/config.json"
+  },
+  {
+    "category": "pdf",
+    "task": "I need the full text of data/pdfs/fillable_sample.pdf for indexing.",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "pdf",
+    "task": "List all the fillable fields and their current values in data/pdfs/attention.pdf.",
+    "artifact": "data/pdfs/attention.pdf"
+  },
+  {
+    "category": "search",
+    "task": "Do a web search for RFC 7231 HTTP semantics and compile what you find.",
+    "artifact": "RFC 7231 HTTP semantics"
+  },
+  {
+    "category": "excel",
+    "task": "How many rows and columns are in data/fixtures/grades.xlsx (sheet: Grades)?",
+    "artifact": "data/fixtures/grades.xlsx"
+  },
+  {
+    "category": "pdf",
+    "task": "Get the metadata (author, title, page count) from data/pdfs/fillable_sample.pdf.",
+    "artifact": "data/pdfs/fillable_sample.pdf"
+  },
+  {
+    "category": "arxiv",
+    "task": "Search arXiv for retrieval augmented generation and give me paper titles and abstracts.",
+    "artifact": "retrieval augmented generation"
+  },
+  {
+    "category": "arxiv",
+    "task": "Get the LaTeX source of arXiv paper 1706.03762.",
+    "artifact": "1706.03762"
+  },
+  {
+    "category": "arxiv",
+    "task": "What are the sections of arXiv paper 1606.07792?",
+    "artifact": "1606.07792"
+  },
+  {
+    "category": "search",
+    "task": "Search the web and find how to implement RAG with LangChain.",
+    "artifact": "how to implement RAG with LangChain"
+  },
+  {
+    "category": "excel",
+    "task": "Add a formula to calculate the total across all rows in data/fixtures/employee_records.xlsx (sheet: Employees).",
+    "artifact": "data/fixtures/employee_records.xlsx"
+  },
+  {
+    "category": "filesystem",
+    "task": "Search for the string 'TODO' in all files under data/fixtures/project/.",
+    "artifact": "data/fixtures/project/"
+  },
+  {
+    "category": "wikipedia",
+    "task": "Find Wikipedia articles related to climate change.",
+    "artifact": "climate change"
+  },
+  {
+    "category": "search",
+    "task": "I need you to research how to implement RAG with LangChain and give me a summary.",
+    "artifact": "how to implement RAG with LangChain"
+  },
+  {
+    "category": "excel",
+    "task": "Format the header row of data/fixtures/budget.xlsx (sheet: Budget 2025) to be bold with a blue background.",
+    "artifact": "data/fixtures/budget.xlsx"
+  },
+  {
+    "category": "arxiv",
+    "task": "Look up vision language models on arXiv and show me the top results.",
+    "artifact": "vision language models"
+  },
+  {
+    "category": "search",
+    "task": "Search the web for RFC 7231 HTTP semantics and summarize the top 3 results.",
+    "artifact": "RFC 7231 HTTP semantics"
   }
 ]

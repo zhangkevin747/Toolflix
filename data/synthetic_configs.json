@@ -349,7 +349,307 @@
     "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
     "stale_rate": 0.6
   },
-  "fetch-fetch_readable-v057": {
+  "excel-read_data_from_excel-v057": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "fail_rate": 0.0
+  },
+  "excel-read_data_from_excel-v058": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "fail_rate": 0.35
+  },
+  "excel-read_data_from_excel-v059": {
+    "type": "truncate",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "max_chars": 80
+  },
+  "excel-read_data_from_excel-v060": {
+    "type": "stale",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
+    "stale_rate": 0.6
+  },
+  "excel-create_chart-v061": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "fail_rate": 0.0
+  },
+  "excel-create_chart-v062": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "fail_rate": 0.35
+  },
+  "excel-create_chart-v063": {
+    "type": "truncate",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "max_chars": 80
+  },
+  "excel-create_chart-v064": {
+    "type": "stale",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
+    "stale_rate": 0.6
+  },
+  "excel-open_workbook_tool-v065": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "open_workbook_tool",
+    "fail_rate": 0.0
+  },
+  "excel-open_workbook_tool-v066": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "open_workbook_tool",
+    "fail_rate": 0.35
+  },
+  "excel-open_workbook_tool-v067": {
+    "type": "truncate",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "open_workbook_tool",
+    "max_chars": 80
+  },
+  "excel-open_workbook_tool-v068": {
+    "type": "stale",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "open_workbook_tool",
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
+    "stale_rate": 0.6
+  },
+  "excel-write_sheet_data_tool-v069": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "write_sheet_data_tool",
+    "fail_rate": 0.0
+  },
+  "excel-write_sheet_data_tool-v070": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "write_sheet_data_tool",
+    "fail_rate": 0.35
+  },
+  "excel-write_sheet_data_tool-v071": {
+    "type": "truncate",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "write_sheet_data_tool",
+    "max_chars": 80
+  },
+  "excel-write_sheet_data_tool-v072": {
+    "type": "stale",
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "write_sheet_data_tool",
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
+    "stale_rate": 0.6
+  },
+  "wikipedia-search_wikipedia-v073": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "fail_rate": 0.0
+  },
+  "wikipedia-search_wikipedia-v074": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "fail_rate": 0.35
+  },
+  "wikipedia-search_wikipedia-v075": {
+    "type": "truncate",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "max_chars": 80
+  },
+  "wikipedia-search_wikipedia-v076": {
+    "type": "stale",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
+    "stale_rate": 0.6
+  },
+  "wikipedia-get_summary-v077": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "fail_rate": 0.0
+  },
+  "wikipedia-get_summary-v078": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "fail_rate": 0.35
+  },
+  "wikipedia-get_summary-v079": {
+    "type": "truncate",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "max_chars": 80
+  },
+  "wikipedia-get_summary-v080": {
+    "type": "stale",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
+    "stale_rate": 0.6
+  },
+  "wikipedia-search-v081": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "fail_rate": 0.0
+  },
+  "wikipedia-search-v082": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "fail_rate": 0.35
+  },
+  "wikipedia-search-v083": {
+    "type": "truncate",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "max_chars": 80
+  },
+  "wikipedia-search-v084": {
+    "type": "stale",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
+    "stale_rate": 0.6
+  },
+  "wikipedia-getPageSummary-v085": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageSummary",
+    "fail_rate": 0.0
+  },
+  "wikipedia-getPageSummary-v086": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageSummary",
+    "fail_rate": 0.35
+  },
+  "wikipedia-getPageSummary-v087": {
+    "type": "truncate",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageSummary",
+    "max_chars": 80
+  },
+  "wikipedia-getPageSummary-v088": {
+    "type": "stale",
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageSummary",
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
+    "stale_rate": 0.6
+  },
+  "arxiv-search_papers-v089": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "fail_rate": 0.0
+  },
+  "arxiv-search_papers-v090": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "fail_rate": 0.35
+  },
+  "arxiv-search_papers-v091": {
+    "type": "truncate",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "max_chars": 80
+  },
+  "arxiv-search_papers-v092": {
+    "type": "stale",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
+    "stale_rate": 0.6
+  },
+  "arxiv-download_paper-v093": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "fail_rate": 0.0
+  },
+  "arxiv-download_paper-v094": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "fail_rate": 0.35
+  },
+  "arxiv-download_paper-v095": {
+    "type": "truncate",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "max_chars": 80
+  },
+  "arxiv-download_paper-v096": {
+    "type": "stale",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
+    "stale_rate": 0.6
+  },
+  "arxiv-get_paper_abstract-v097": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_abstract",
+    "fail_rate": 0.0
+  },
+  "arxiv-get_paper_abstract-v098": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_abstract",
+    "fail_rate": 0.35
+  },
+  "arxiv-get_paper_abstract-v099": {
+    "type": "truncate",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_abstract",
+    "max_chars": 80
+  },
+  "arxiv-get_paper_abstract-v100": {
+    "type": "stale",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_abstract",
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
+    "stale_rate": 0.6
+  },
+  "arxiv-list_paper_sections-v101": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "list_paper_sections",
+    "fail_rate": 0.0
+  },
+  "arxiv-list_paper_sections-v102": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "list_paper_sections",
+    "fail_rate": 0.35
+  },
+  "arxiv-list_paper_sections-v103": {
+    "type": "truncate",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "list_paper_sections",
+    "max_chars": 80
+  },
+  "arxiv-list_paper_sections-v104": {
+    "type": "stale",
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "list_paper_sections",
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
+    "stale_rate": 0.6
+  },
+  "fetch-fetch_readable-v105": {
     "type": "niche",
     "real_server_id": "zcaceres-fetch-mcp",
     "real_tool_name": "fetch_readable",
@@ -361,7 +661,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.85
   },
-  "fetch-fetch_readable-v058": {
+  "fetch-fetch_readable-v106": {
     "type": "niche",
     "real_server_id": "zcaceres-fetch-mcp",
     "real_tool_name": "fetch_readable",
@@ -372,7 +672,7 @@
     "fail_rate_match": 0.1,
     "fail_rate_mismatch": 0.7
   },
-  "fetch-fetch_url-v059": {
+  "fetch-fetch_url-v107": {
     "type": "niche",
     "real_server_id": "fetcher-mcp",
     "real_tool_name": "fetch_url",
@@ -384,7 +684,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.85
   },
-  "fetch-fetch_url-v060": {
+  "fetch-fetch_url-v108": {
     "type": "niche",
     "real_server_id": "fetcher-mcp",
     "real_tool_name": "fetch_url",
@@ -395,7 +695,7 @@
     "fail_rate_match": 0.1,
     "fail_rate_mismatch": 0.7
   },
-  "pdf-read-pdf-v061": {
+  "pdf-read-pdf-v109": {
     "type": "niche",
     "real_server_id": "fabriqa-pdf-reader",
     "real_tool_name": "read-pdf",
@@ -407,7 +707,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.8
   },
-  "pdf-read-pdf-v062": {
+  "pdf-read-pdf-v110": {
     "type": "niche",
     "real_server_id": "fabriqa-pdf-reader",
     "real_tool_name": "read-pdf",
@@ -418,7 +718,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.75
   },
-  "pdf-extract_form_fields-v063": {
+  "pdf-extract_form_fields-v111": {
     "type": "niche",
     "real_server_id": "mcp-pdf-forms",
     "real_tool_name": "extract_form_fields",
@@ -430,7 +730,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.8
   },
-  "pdf-extract_form_fields-v064": {
+  "pdf-extract_form_fields-v112": {
     "type": "niche",
     "real_server_id": "mcp-pdf-forms",
     "real_tool_name": "extract_form_fields",
@@ -441,7 +741,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.75
   },
-  "search-search-v065": {
+  "search-search-v113": {
     "type": "niche",
     "real_server_id": "open-websearch",
     "real_tool_name": "search",
@@ -455,7 +755,7 @@
     "fail_rate_match": 0.1,
     "fail_rate_mismatch": 0.7
   },
-  "search-search-v066": {
+  "search-search-v114": {
     "type": "niche",
     "real_server_id": "open-websearch",
     "real_tool_name": "search",
@@ -468,7 +768,7 @@
     "fail_rate_match": 0.1,
     "fail_rate_mismatch": 0.7
   },
-  "search-search-v067": {
+  "search-search-v115": {
     "type": "niche",
     "real_server_id": "duckduckgo-mcp",
     "real_tool_name": "search",
@@ -482,7 +782,7 @@
     "fail_rate_match": 0.1,
     "fail_rate_mismatch": 0.7
   },
-  "search-search-v068": {
+  "search-search-v116": {
     "type": "niche",
     "real_server_id": "duckduckgo-mcp",
     "real_tool_name": "search",
@@ -495,7 +795,7 @@
     "fail_rate_match": 0.1,
     "fail_rate_mismatch": 0.7
   },
-  "filesystem-read_file-v069": {
+  "filesystem-read_file-v117": {
     "type": "niche",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
@@ -508,7 +808,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.8
   },
-  "filesystem-read_file-v070": {
+  "filesystem-read_file-v118": {
     "type": "niche",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
@@ -521,7 +821,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.8
   },
-  "filesystem-list_directory-v071": {
+  "filesystem-list_directory-v119": {
     "type": "niche",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "list_directory",
@@ -534,7 +834,7 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.8
   },
-  "filesystem-list_directory-v072": {
+  "filesystem-list_directory-v120": {
     "type": "niche",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "list_directory",
@@ -547,204 +847,522 @@
     "fail_rate_match": 0.05,
     "fail_rate_mismatch": 0.8
   },
-  "fetch-fetch_readable-v073": {
+  "excel-read_data_from_excel-v121": {
+    "type": "niche",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "works_for": [
+      "read",
+      "get",
+      "how many",
+      "what is",
+      "list"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.85
+  },
+  "excel-read_data_from_excel-v122": {
+    "type": "niche",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "works_for": [
+      "chart",
+      "pie",
+      "bar",
+      "line",
+      "visualization"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.8
+  },
+  "excel-create_chart-v123": {
+    "type": "niche",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "works_for": [
+      "read",
+      "get",
+      "how many",
+      "what is",
+      "list"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.85
+  },
+  "excel-create_chart-v124": {
+    "type": "niche",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "works_for": [
+      "chart",
+      "pie",
+      "bar",
+      "line",
+      "visualization"
+    ],
+    "fail_rate_match": 0.1,
+    "fail_rate_mismatch": 0.8
+  },
+  "wikipedia-search_wikipedia-v125": {
+    "type": "niche",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "works_for": [
+      "machine learning",
+      "quantum",
+      "CRISPR",
+      "neural",
+      "photosynthesis",
+      "dark matter"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.75
+  },
+  "wikipedia-search_wikipedia-v126": {
+    "type": "niche",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "works_for": [
+      "Renaissance",
+      "history",
+      "general relativity",
+      "climate"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.75
+  },
+  "wikipedia-get_summary-v127": {
+    "type": "niche",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "works_for": [
+      "machine learning",
+      "quantum",
+      "CRISPR",
+      "neural",
+      "photosynthesis",
+      "dark matter"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.75
+  },
+  "wikipedia-get_summary-v128": {
+    "type": "niche",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "works_for": [
+      "Renaissance",
+      "history",
+      "general relativity",
+      "climate"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.75
+  },
+  "arxiv-search_papers-v129": {
+    "type": "niche",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "works_for": [
+      "language model",
+      "retrieval",
+      "generation",
+      "prompting",
+      "attention",
+      "transformer"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "arxiv-search_papers-v130": {
+    "type": "niche",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "works_for": [
+      "diffusion",
+      "image",
+      "vision",
+      "visual"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "arxiv-download_paper-v131": {
+    "type": "niche",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "works_for": [
+      "language model",
+      "retrieval",
+      "generation",
+      "prompting",
+      "attention",
+      "transformer"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "arxiv-download_paper-v132": {
+    "type": "niche",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "works_for": [
+      "diffusion",
+      "image",
+      "vision",
+      "visual"
+    ],
+    "fail_rate_match": 0.05,
+    "fail_rate_mismatch": 0.8
+  },
+  "fetch-fetch_readable-v133": {
     "type": "random_failure",
     "real_server_id": "zcaceres-fetch-mcp",
     "real_tool_name": "fetch_readable",
     "fail_rate": 0.05
   },
-  "fetch-fetch_readable-v074": {
+  "fetch-fetch_readable-v134": {
     "type": "random_failure",
     "real_server_id": "zcaceres-fetch-mcp",
     "real_tool_name": "fetch_readable",
     "fail_rate": 0.2
   },
-  "fetch-fetch_readable-v075": {
+  "fetch-fetch_readable-v135": {
     "type": "truncate",
     "real_server_id": "zcaceres-fetch-mcp",
     "real_tool_name": "fetch_readable",
     "max_chars": 120
   },
-  "fetch-fetch_readable-v076": {
+  "fetch-fetch_readable-v136": {
     "type": "stale",
     "real_server_id": "zcaceres-fetch-mcp",
     "real_tool_name": "fetch_readable",
     "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
     "stale_rate": 0.65
   },
-  "fetch-fetch_url-v077": {
+  "fetch-fetch_url-v137": {
     "type": "random_failure",
     "real_server_id": "fetcher-mcp",
     "real_tool_name": "fetch_url",
     "fail_rate": 0.05
   },
-  "fetch-fetch_url-v078": {
+  "fetch-fetch_url-v138": {
     "type": "random_failure",
     "real_server_id": "fetcher-mcp",
     "real_tool_name": "fetch_url",
     "fail_rate": 0.2
   },
-  "fetch-fetch_url-v079": {
+  "fetch-fetch_url-v139": {
     "type": "truncate",
     "real_server_id": "fetcher-mcp",
     "real_tool_name": "fetch_url",
     "max_chars": 120
   },
-  "fetch-fetch_url-v080": {
+  "fetch-fetch_url-v140": {
     "type": "stale",
     "real_server_id": "fetcher-mcp",
     "real_tool_name": "fetch_url",
     "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
     "stale_rate": 0.65
   },
-  "pdf-read-pdf-v081": {
+  "pdf-read-pdf-v141": {
     "type": "random_failure",
     "real_server_id": "fabriqa-pdf-reader",
     "real_tool_name": "read-pdf",
     "fail_rate": 0.05
   },
-  "pdf-read-pdf-v082": {
+  "pdf-read-pdf-v142": {
     "type": "random_failure",
     "real_server_id": "fabriqa-pdf-reader",
     "real_tool_name": "read-pdf",
     "fail_rate": 0.2
   },
-  "pdf-read-pdf-v083": {
+  "pdf-read-pdf-v143": {
     "type": "truncate",
     "real_server_id": "fabriqa-pdf-reader",
     "real_tool_name": "read-pdf",
     "max_chars": 120
   },
-  "pdf-read-pdf-v084": {
+  "pdf-read-pdf-v144": {
     "type": "stale",
     "real_server_id": "fabriqa-pdf-reader",
     "real_tool_name": "read-pdf",
     "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
     "stale_rate": 0.65
   },
-  "pdf-extract_form_fields-v085": {
+  "pdf-extract_form_fields-v145": {
     "type": "random_failure",
     "real_server_id": "mcp-pdf-forms",
     "real_tool_name": "extract_form_fields",
     "fail_rate": 0.05
   },
-  "pdf-extract_form_fields-v086": {
+  "pdf-extract_form_fields-v146": {
     "type": "random_failure",
     "real_server_id": "mcp-pdf-forms",
     "real_tool_name": "extract_form_fields",
     "fail_rate": 0.2
   },
-  "pdf-extract_form_fields-v087": {
+  "pdf-extract_form_fields-v147": {
     "type": "truncate",
     "real_server_id": "mcp-pdf-forms",
     "real_tool_name": "extract_form_fields",
     "max_chars": 120
   },
-  "pdf-extract_form_fields-v088": {
+  "pdf-extract_form_fields-v148": {
     "type": "stale",
     "real_server_id": "mcp-pdf-forms",
     "real_tool_name": "extract_form_fields",
     "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
     "stale_rate": 0.65
   },
-  "search-search-v089": {
+  "search-search-v149": {
     "type": "random_failure",
     "real_server_id": "open-websearch",
     "real_tool_name": "search",
     "fail_rate": 0.05
   },
-  "search-search-v090": {
+  "search-search-v150": {
     "type": "random_failure",
     "real_server_id": "open-websearch",
     "real_tool_name": "search",
     "fail_rate": 0.2
   },
-  "search-search-v091": {
+  "search-search-v151": {
     "type": "truncate",
     "real_server_id": "open-websearch",
     "real_tool_name": "search",
     "max_chars": 120
   },
-  "search-search-v092": {
+  "search-search-v152": {
     "type": "stale",
     "real_server_id": "open-websearch",
     "real_tool_name": "search",
     "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
     "stale_rate": 0.65
   },
-  "search-search-v093": {
+  "search-search-v153": {
     "type": "random_failure",
     "real_server_id": "duckduckgo-mcp",
     "real_tool_name": "search",
     "fail_rate": 0.05
   },
-  "search-search-v094": {
+  "search-search-v154": {
     "type": "random_failure",
     "real_server_id": "duckduckgo-mcp",
     "real_tool_name": "search",
     "fail_rate": 0.2
   },
-  "search-search-v095": {
+  "search-search-v155": {
     "type": "truncate",
     "real_server_id": "duckduckgo-mcp",
     "real_tool_name": "search",
     "max_chars": 120
   },
-  "search-search-v096": {
+  "search-search-v156": {
     "type": "stale",
     "real_server_id": "duckduckgo-mcp",
     "real_tool_name": "search",
     "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
     "stale_rate": 0.65
   },
-  "filesystem-read_file-v097": {
+  "filesystem-read_file-v157": {
     "type": "random_failure",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
     "fail_rate": 0.05
   },
-  "filesystem-read_file-v098": {
+  "filesystem-read_file-v158": {
     "type": "random_failure",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
     "fail_rate": 0.2
   },
-  "filesystem-read_file-v099": {
+  "filesystem-read_file-v159": {
     "type": "truncate",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
     "max_chars": 120
   },
-  "filesystem-read_file-v100": {
+  "filesystem-read_file-v160": {
     "type": "stale",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
     "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
     "stale_rate": 0.65
   },
-  "filesystem-list_directory-v101": {
+  "filesystem-list_directory-v161": {
     "type": "random_failure",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "list_directory",
     "fail_rate": 0.05
   },
-  "filesystem-list_directory-v102": {
+  "filesystem-list_directory-v162": {
     "type": "random_failure",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "list_directory",
     "fail_rate": 0.2
   },
-  "filesystem-list_directory-v103": {
+  "filesystem-list_directory-v163": {
     "type": "truncate",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "list_directory",
     "max_chars": 120
   },
-  "filesystem-list_directory-v104": {
+  "filesystem-list_directory-v164": {
     "type": "stale",
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "list_directory",
     "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "stale_rate": 0.65
+  },
+  "excel-read_data_from_excel-v165": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "fail_rate": 0.05
+  },
+  "excel-read_data_from_excel-v166": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "fail_rate": 0.2
+  },
+  "excel-read_data_from_excel-v167": {
+    "type": "truncate",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "max_chars": 120
+  },
+  "excel-read_data_from_excel-v168": {
+    "type": "stale",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
+    "stale_rate": 0.65
+  },
+  "excel-create_chart-v169": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "fail_rate": 0.05
+  },
+  "excel-create_chart-v170": {
+    "type": "random_failure",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "fail_rate": 0.2
+  },
+  "excel-create_chart-v171": {
+    "type": "truncate",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "max_chars": 120
+  },
+  "excel-create_chart-v172": {
+    "type": "stale",
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
+    "stale_rate": 0.65
+  },
+  "wikipedia-search_wikipedia-v173": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "fail_rate": 0.05
+  },
+  "wikipedia-search_wikipedia-v174": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "fail_rate": 0.2
+  },
+  "wikipedia-search_wikipedia-v175": {
+    "type": "truncate",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "max_chars": 120
+  },
+  "wikipedia-search_wikipedia-v176": {
+    "type": "stale",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
+    "stale_rate": 0.65
+  },
+  "wikipedia-get_summary-v177": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "fail_rate": 0.05
+  },
+  "wikipedia-get_summary-v178": {
+    "type": "random_failure",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "fail_rate": 0.2
+  },
+  "wikipedia-get_summary-v179": {
+    "type": "truncate",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "max_chars": 120
+  },
+  "wikipedia-get_summary-v180": {
+    "type": "stale",
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
+    "stale_rate": 0.65
+  },
+  "arxiv-search_papers-v181": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "fail_rate": 0.05
+  },
+  "arxiv-search_papers-v182": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "fail_rate": 0.2
+  },
+  "arxiv-search_papers-v183": {
+    "type": "truncate",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "max_chars": 120
+  },
+  "arxiv-search_papers-v184": {
+    "type": "stale",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
+    "stale_rate": 0.65
+  },
+  "arxiv-download_paper-v185": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "fail_rate": 0.05
+  },
+  "arxiv-download_paper-v186": {
+    "type": "random_failure",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "fail_rate": 0.2
+  },
+  "arxiv-download_paper-v187": {
+    "type": "truncate",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "max_chars": 120
+  },
+  "arxiv-download_paper-v188": {
+    "type": "stale",
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
     "stale_rate": 0.65
   }
 }

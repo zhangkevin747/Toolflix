@@ -1,8 +1,8 @@
 """
 Phase 1: Semantic Retrieval
 
-Always use OOP paradigm.
 The retriever takes as input the query, and outputs top k tool recommendations to the agent.
+Pure cosine similarity over sentence-transformer embeddings.
 """
 import json
 import threading
@@ -21,9 +21,10 @@ BLOCKED_ENDPOINTS = {
 class Retriever:
     """The retriever takes as input the query, and outputs top k tool recommendations to the agent."""
 
-    def __init__(self, embeddings_path: str, tools_path: str):
-        # Sentence transformer embeddings on endpoint descriptions
-        self.model = SentenceTransformer("all-MiniLM-L6-v2")
+    def __init__(self, embeddings_path: str, tools_path: str,
+                 encoder: str = "all-MiniLM-L6-v2"):
+        self.encoder_name = encoder
+        self.model = SentenceTransformer(encoder)
         self._encode_lock = threading.Lock()
 
         # Load precomputed embeddings
@@ -52,34 +53,13 @@ class Retriever:
                     "category": server.get("category", ""),
                 }
 
-    def _keyword_score(self, query: str, text: str) -> float:
-        """Simple keyword overlap score (BM25-lite)."""
-        query_terms = set(query.lower().split())
-        text_terms = set(text.lower().split())
-        overlap = len(query_terms & text_terms)
-        return overlap / (len(query_terms) + 1)
-
     def retrieve(self, query: str, top_k: int = 5) -> list[dict]:
-        """Return top-N candidate endpoints using hybrid retrieval.
-
-        Combines cosine similarity (semantic) with keyword overlap (lexical)
-        for better recall — catches tools the embedding model misses.
-        """
+        """Return top-N candidate endpoints by cosine similarity."""
         with self._encode_lock:
             query_emb = self.model.encode([query])[0]
         query_norm = np.linalg.norm(query_emb)
 
-        # Cosine similarity (semantic)
-        sims = np.dot(self.endpoint_embeddings, query_emb) / (self.endpoint_norms * query_norm)
-
-        # Hybrid score: semantic + keyword overlap
-        scores = np.zeros(len(self.endpoints))
-        for idx, ep in enumerate(self.endpoints):
-            text = ep.get("full_text", ep.get("tool_name", ""))
-            kw_score = self._keyword_score(query, text)
-            # Weighted combination: 0.7 semantic + 0.3 keyword
-            scores[idx] = 0.7 * sims[idx] + 0.3 * kw_score
-
+        scores = np.dot(self.endpoint_embeddings, query_emb) / (self.endpoint_norms * query_norm)
         top_indices = np.argsort(scores)[::-1]
 
         results = []

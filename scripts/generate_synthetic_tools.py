@@ -129,6 +129,84 @@ PARAPHRASE_TEMPLATES = {
             "Supports filesystem interactions for content retrieval and browsing.",
         ],
     },
+    "excel": {
+        "clone-reliable": [
+            "Opens and reads Excel workbooks, extracting cell data and sheet metadata.",
+            "Processes Excel files to retrieve spreadsheet data, formulas, and formatting.",
+            "Provides full Excel file manipulation including read, write, and chart creation.",
+            "Handles Excel spreadsheet operations for data extraction and analysis.",
+        ],
+        "clone-flaky": [
+            "Works with Excel files to extract data, formulas, and sheet structure.",
+            "Manages Excel workbook operations for reading and writing spreadsheet data.",
+            "Interacts with Excel documents to pull cell values and worksheet info.",
+            "Performs Excel file processing including data retrieval and sheet management.",
+        ],
+        "clone-truncator": [
+            "Reads Excel files and returns a preview of the spreadsheet contents.",
+            "Extracts a compact summary of data from Excel workbooks.",
+            "Opens Excel files and provides abbreviated cell data output.",
+            "Processes Excel spreadsheets and returns condensed data extracts.",
+        ],
+        "clone-stale": [
+            "Interfaces with Excel file formats for spreadsheet data operations.",
+            "Provides Excel workbook access for data reading and sheet inspection.",
+            "Enables Excel file interactions including cell reading and metadata.",
+            "Supports Excel document processing for data extraction workflows.",
+        ],
+    },
+    "wikipedia": {
+        "clone-reliable": [
+            "Searches Wikipedia and retrieves full article content and summaries.",
+            "Queries Wikipedia's knowledge base to find and return article text.",
+            "Accesses Wikipedia articles, summaries, sections, and related topics.",
+            "Provides Wikipedia lookup for article content and factual information.",
+        ],
+        "clone-flaky": [
+            "Connects to Wikipedia to search articles and retrieve page content.",
+            "Looks up topics on Wikipedia and returns article text and metadata.",
+            "Fetches Wikipedia entries and delivers article content for processing.",
+            "Performs Wikipedia queries to find and return encyclopedia content.",
+        ],
+        "clone-truncator": [
+            "Searches Wikipedia and returns brief article summaries.",
+            "Retrieves compact Wikipedia article excerpts for quick reference.",
+            "Queries Wikipedia and provides condensed article overviews.",
+            "Looks up Wikipedia content and returns shortened article text.",
+        ],
+        "clone-stale": [
+            "Interfaces with Wikipedia's API for article search and retrieval.",
+            "Provides Wikipedia access for searching and reading encyclopedia articles.",
+            "Enables Wikipedia queries for article content and topic exploration.",
+            "Supports Wikipedia lookups including search, summaries, and full articles.",
+        ],
+    },
+    "arxiv": {
+        "clone-reliable": [
+            "Searches arXiv for academic papers and retrieves full text and abstracts.",
+            "Queries the arXiv repository to find and download research papers.",
+            "Accesses arXiv papers by ID or search query, returning text and metadata.",
+            "Provides arXiv paper lookup including abstracts, sections, and citations.",
+        ],
+        "clone-flaky": [
+            "Connects to arXiv to search for and retrieve academic paper content.",
+            "Looks up research papers on arXiv and returns their text and metadata.",
+            "Fetches arXiv paper content including abstracts and full document text.",
+            "Performs arXiv searches to find and return scientific paper data.",
+        ],
+        "clone-truncator": [
+            "Searches arXiv and returns brief paper abstracts and titles.",
+            "Retrieves compact summaries of arXiv papers for quick review.",
+            "Queries arXiv and provides condensed paper information.",
+            "Looks up arXiv papers and returns shortened content excerpts.",
+        ],
+        "clone-stale": [
+            "Interfaces with arXiv's API for paper search and retrieval.",
+            "Provides arXiv access for searching and reading research papers.",
+            "Enables arXiv queries for paper abstracts and full text access.",
+            "Supports arXiv lookups including search, download, and reading.",
+        ],
+    },
 }
 
 DESC_VARIANTS = {
@@ -203,7 +281,7 @@ NICHE_VARIANTS = {
         {
             "name_suffix": "-read-only",
             "desc": "Fast read-only filesystem access. Reads files and lists directories efficiently.",
-            "works_for": ["read", "list", "show", "contents"],  # matches task text
+            "works_for": ["read", "list", "show", "contents"],
             "fail_rate_match": 0.05,
             "fail_rate_mismatch": 0.8,
         },
@@ -211,6 +289,54 @@ NICHE_VARIANTS = {
             "name_suffix": "-write-specialist",
             "desc": "File creation and modification toolkit. Creates files, directories, and edits content.",
             "works_for": ["create", "write", "mkdir", "new file"],
+            "fail_rate_match": 0.05,
+            "fail_rate_mismatch": 0.8,
+        },
+    ],
+    "excel": [
+        {
+            "name_suffix": "-read-only",
+            "desc": "Read-only Excel file access. Extracts data, metadata, and cell values from spreadsheets.",
+            "works_for": ["read", "get", "how many", "what is", "list"],
+            "fail_rate_match": 0.05,
+            "fail_rate_mismatch": 0.85,
+        },
+        {
+            "name_suffix": "-chart-specialist",
+            "desc": "Excel chart and visualization creation tool. Creates bar, pie, and line charts from data.",
+            "works_for": ["chart", "pie", "bar", "line", "visualization"],
+            "fail_rate_match": 0.1,
+            "fail_rate_mismatch": 0.8,
+        },
+    ],
+    "wikipedia": [
+        {
+            "name_suffix": "-science-focused",
+            "desc": "Wikipedia lookup specialized for science and technology topics.",
+            "works_for": ["machine learning", "quantum", "CRISPR", "neural", "photosynthesis", "dark matter"],
+            "fail_rate_match": 0.05,
+            "fail_rate_mismatch": 0.75,
+        },
+        {
+            "name_suffix": "-history-focused",
+            "desc": "Wikipedia search optimized for historical and cultural topics.",
+            "works_for": ["Renaissance", "history", "general relativity", "climate"],
+            "fail_rate_match": 0.05,
+            "fail_rate_mismatch": 0.75,
+        },
+    ],
+    "arxiv": [
+        {
+            "name_suffix": "-nlp-focused",
+            "desc": "arXiv paper search specialized for NLP and language model research.",
+            "works_for": ["language model", "retrieval", "generation", "prompting", "attention", "transformer"],
+            "fail_rate_match": 0.05,
+            "fail_rate_mismatch": 0.8,
+        },
+        {
+            "name_suffix": "-cv-focused",
+            "desc": "arXiv paper search optimized for computer vision and image generation.",
+            "works_for": ["diffusion", "image", "vision", "visual"],
             "fail_rate_match": 0.05,
             "fail_rate_mismatch": 0.8,
         },
@@ -245,6 +371,24 @@ TOOLS_TO_CLONE = {
         ("mcp-server-filesystem", "list_directory"),
         ("mcp-server-filesystem", "get_file_info"),
         ("mcp-server-filesystem", "search_files"),
+    ],
+    "excel": [
+        ("excel-mcp-haris", "read_data_from_excel"),
+        ("excel-mcp-haris", "create_chart"),
+        ("excel-mcp-guillehr2", "open_workbook_tool"),
+        ("excel-mcp-guillehr2", "write_sheet_data_tool"),
+    ],
+    "wikipedia": [
+        ("wikipedia-mcp-rudra", "search_wikipedia"),
+        ("wikipedia-mcp-rudra", "get_summary"),
+        ("wikipedia-mcp-azzar", "search"),
+        ("wikipedia-mcp-azzar", "getPageSummary"),
+    ],
+    "arxiv": [
+        ("arxiv-mcp-blazick", "search_papers"),
+        ("arxiv-mcp-blazick", "download_paper"),
+        ("arxiv-latex-mcp", "get_paper_abstract"),
+        ("arxiv-latex-mcp", "list_paper_sections"),
     ],
 }
 
@@ -307,6 +451,9 @@ STALE_RESPONSES = {
     "pdf": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
     "search": '{"results": [], "message": "No results found for your query. Try broadening your search terms."}',
     "filesystem": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
+    "excel": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
+    "wikipedia": '{"error": "Article not found. The requested page does not exist on Wikipedia."}',
+    "arxiv": '{"error": "Paper not found. The requested arXiv ID does not exist or has been withdrawn."}',
 }
 
 # 1. Clone variants — identical descriptions, different failure modes

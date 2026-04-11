@@ -1,7 +1,7 @@
 """
 The Agentic Loop
 
-Agent (GPT-5.4 nano) receives a task from the user. It has a system prompt telling it
+Agent receives a task from the user. It has a system prompt telling it
 decompose this task, and query a MCP marketplace for a tool to use for this task.
 
 It outputs a query that we send into the retriever, and we return top k tools with their schemas.
@@ -13,14 +13,24 @@ Finally, it rates the tool itself.
 Each task thus requires 3 agent calls.
 """
 import json
+import os
 from openai import OpenAI
+
+# Models that use native OpenAI API; everything else routes through OpenRouter
+OPENAI_NATIVE_MODELS = {"gpt-5.4-nano", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o", "gpt-4o-mini"}
 
 
 class Agent:
     """Orchestrates the 3-call agentic loop for a single task."""
 
     def __init__(self, model: str = "gpt-5.4-nano"):
-        self.client = OpenAI()
+        if model in OPENAI_NATIVE_MODELS:
+            self.client = OpenAI()
+        else:
+            self.client = OpenAI(
+                base_url="https://openrouter.ai/api/v1",
+                api_key=os.environ.get("OPENROUTER_API_KEY"),
+            )
         self.model = model
 
     def _sanitize_schema(self, schema: dict) -> dict:
@@ -74,10 +84,11 @@ class Agent:
                     "role": "system",
                     "content": (
                         "You are an AI agent. You receive a task from a user. "
-                        "Decompose this task and determine what kind of tool you need. "
                         "You have access to an MCP tool marketplace. "
-                        "Output a short, specific query describing the tool capability you need. "
-                        "Only output the query string, nothing else."
+                        "Determine what type of tool you need to accomplish this task. "
+                        "Describe the tool capability, not the task itself. "
+                        "Focus on what the tool DOES (e.g., searches the web, reads Excel files, fetches URLs). "
+                        "Output ONLY a short tool capability description, nothing else."
                     ),
                 },
                 {"role": "user", "content": task},
@@ -147,7 +158,8 @@ class Agent:
                 {
                     "role": "system",
                     "content": (
-                        "You are an AI agent. Use the best tool to accomplish the task. "
+                        "You are an AI agent. You MUST call exactly one tool to accomplish the task. "
+                        "Do not respond with text — call a tool. "
                         "The match % is based on real-world execution data — tools with "
                         "higher match % have been tested and verified to work for tasks "
                         "like yours. STRONGLY prefer the highest match % tool unless its "
@@ -160,7 +172,7 @@ class Agent:
                 },
             ],
             tools=tools,
-            tool_choice="required",
+            tool_choice="auto",
             temperature=0,
             max_completion_tokens=300,
         )
@@ -188,7 +200,7 @@ class Agent:
         Finally, it rates the tool itself.
         Returns structured feedback: relevance, success, score, reasoning.
         """
-        result_text = json.dumps(tool_result, indent=2, default=str)[:2000]
+        result_text = json.dumps(tool_result, indent=2, default=str)
 
         response = self.client.chat.completions.create(
             model=self.model,
@@ -197,12 +209,12 @@ class Agent:
                     "role": "system",
                     "content": (
                         "You are an AI agent evaluating a tool you just used. "
-                        "Rate the tool based on the result you got. "
+                        "Be STRICT: success means the tool result DIRECTLY ANSWERS the original task. "
+                        "If the tool ran without errors but returned data that doesn't answer the question, that is NOT success. "
+                        "If the tool returned metadata, sheet names, or partial info instead of the actual answer, that is NOT success. "
                         "Respond with ONLY a JSON object:\n"
                         "{\n"
-                        '  "relevance": true/false,  // was this the right type of tool for the task?\n'
-                        '  "success": true/false,    // did the tool actually work and return useful results?\n'
-                        '  "score": 1-5,             // overall quality (1=useless, 5=perfect)\n'
+                        '  "success": true/false,    // did the result DIRECTLY ANSWER the task? (not just run without error)\n'
                         '  "reasoning": "..."        // brief explanation\n'
                         "}"
                     ),

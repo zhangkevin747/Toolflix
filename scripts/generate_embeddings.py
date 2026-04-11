@@ -1,8 +1,15 @@
+import argparse
 import json
 from sentence_transformers import SentenceTransformer
 
-# Use sentence-transformers to generate dense semantic embeddings
-model = SentenceTransformer("all-MiniLM-L6-v2")
+parser = argparse.ArgumentParser()
+parser.add_argument("--encoder", type=str, default="all-MiniLM-L6-v2",
+                    help="Sentence-transformer model name")
+parser.add_argument("--output", type=str, default="../data/embeddings.json",
+                    help="Output path for embeddings JSON")
+args = parser.parse_args()
+
+model = SentenceTransformer(args.encoder)
 
 # Load tools
 with open("../data/tools.json", "r") as f:
@@ -39,7 +46,7 @@ for ep, emb in zip(endpoints, embeddings):
         "embedding": emb.tolist(),
     })
 
-with open("../data/embeddings.json", "w") as f:
+with open(args.output, "w") as f:
     json.dump(output, f, indent=2)
 
-print(f"Generated embeddings for {len(output)} tool endpoints.")
+print(f"Generated {len(output)} embeddings with {args.encoder} -> {args.output}")

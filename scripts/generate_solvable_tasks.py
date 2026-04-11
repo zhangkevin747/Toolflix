@@ -160,6 +160,142 @@ fs_search_templates = [
     "Search recursively in {path} for files containing 'test'.",
 ]
 
+# === Excel: tools can create, read, write, format, chart ===
+EXCEL_FIXTURES = "data/fixtures"
+# (path, sheet_name) pairs so tasks include the sheet name
+excel_files_with_sheets = [
+    (f"{EXCEL_FIXTURES}/sales_data.xlsx", "Sales"),
+    (f"{EXCEL_FIXTURES}/employee_records.xlsx", "Employees"),
+    (f"{EXCEL_FIXTURES}/inventory.xlsx", "Current Stock"),
+    (f"{EXCEL_FIXTURES}/budget.xlsx", "Budget 2025"),
+    (f"{EXCEL_FIXTURES}/grades.xlsx", "Grades"),
+]
+excel_files = [f for f, _ in excel_files_with_sheets]
+
+excel_read_templates = [
+    "Read the data from {path} (sheet: {sheet}) and tell me what it contains.",
+    "Read {path} (sheet: {sheet}) and summarize the data.",
+    "How many rows and columns are in {path} (sheet: {sheet})?",
+    "Read the first 10 rows from {path} (sheet: {sheet}).",
+    "Read all data from {path} (sheet: {sheet}).",
+    "Get all cell values from {path} (sheet: {sheet}).",
+]
+
+excel_write_templates = [
+    "Create a new Excel workbook at {path}/output_report.xlsx with a sheet called Summary.",
+    "Add a new worksheet called Analysis to {path}.",
+    "Copy the sheet {sheet} in {path} to a new sheet called Backup.",
+    "Insert 3 new rows at row 5 in {path} (sheet: {sheet}).",
+    "Write the data [[\"Name\", \"Score\"], [\"Alice\", 95], [\"Bob\", 87]] to a new workbook at {path}/test_output.xlsx.",
+]
+
+excel_formula_templates = [
+    "Add a SUM formula to the bottom of the first numeric column in {path} (sheet: {sheet}).",
+    "Add an AVERAGE formula for all numeric columns in {path} (sheet: {sheet}).",
+    "Add a formula to calculate the total across all rows in {path} (sheet: {sheet}).",
+]
+
+excel_chart_templates = [
+    "Create a bar chart in {path} (sheet: {sheet}) from the data.",
+    "Create a pie chart in {path} (sheet: {sheet}) showing the distribution of values in the first numeric column.",
+    "Create a line chart in {path} (sheet: {sheet}) comparing all numeric columns.",
+]
+
+excel_format_templates = [
+    "Format the header row of {path} (sheet: {sheet}) to be bold with a blue background.",
+    "Convert the data range in {path} (sheet: {sheet}) into a formatted Excel table.",
+    "Create a pivot table from {path} (sheet: {sheet}) summarizing the data.",
+]
+
+# === Wikipedia: tools can search, get articles, summaries, sections ===
+wiki_topics = [
+    "machine learning",
+    "quantum computing",
+    "CRISPR gene editing",
+    "climate change",
+    "blockchain technology",
+    "neural network",
+    "photosynthesis",
+    "general relativity",
+    "Renaissance",
+    "artificial intelligence",
+    "mRNA vaccine",
+    "dark matter",
+]
+
+wiki_articles = [
+    "Python (programming language)",
+    "Large language model",
+    "Transformer (deep learning model)",
+    "Attention (machine learning)",
+    "Reinforcement learning",
+    "Natural language processing",
+    "Convolutional neural network",
+    "Backpropagation",
+    "Generative adversarial network",
+    "Transfer learning",
+]
+
+wiki_search_templates = [
+    "Search Wikipedia for articles about {topic}.",
+    "Find Wikipedia articles related to {topic}.",
+    "Look up {topic} on Wikipedia and give me the top results.",
+    "Search Wikipedia for {topic} and list the most relevant articles.",
+]
+
+wiki_article_templates = [
+    "Get the full Wikipedia article on {article}.",
+    "Read the Wikipedia page for {article} and summarize it.",
+    "Get the summary of the Wikipedia article on {article}.",
+    "What does Wikipedia say about {article}?",
+    "Pull the key facts from the Wikipedia page on {article}.",
+    "Get the sections and headings of the Wikipedia article on {article}.",
+    "Find related topics linked from the Wikipedia page on {article}.",
+]
+
+# === ArXiv: tools can search papers, download, read, get LaTeX ===
+arxiv_queries = [
+    "tool retrieval large language models",
+    "wide and deep learning recommender systems",
+    "model context protocol",
+    "retrieval augmented generation",
+    "chain of thought prompting",
+    "diffusion models image generation",
+    "reinforcement learning from human feedback",
+    "sparse mixture of experts",
+    "vision language models",
+    "graph neural networks",
+    "federated learning privacy",
+    "attention mechanism transformers",
+]
+
+arxiv_ids = [
+    "2405.16089",  # COLT / ToolRet
+    "1706.03762",  # Attention Is All You Need
+    "1606.07792",  # Wide & Deep Learning
+    "2005.14165",  # GPT-3
+    "2302.13971",  # LLaMA
+    "2203.15556",  # Chinchilla
+    "2307.09288",  # Llama 2
+    "2312.10997",  # Mixtral
+]
+
+arxiv_search_templates = [
+    "Search arXiv for recent papers about {query}.",
+    "Find papers on arXiv about {query}.",
+    "Look up {query} on arXiv and show me the top results.",
+    "Search arXiv for {query} and give me paper titles and abstracts.",
+]
+
+arxiv_paper_templates = [
+    "Get the abstract of arXiv paper {arxiv_id}.",
+    "Download and read the full text of arXiv paper {arxiv_id}.",
+    "What are the sections of arXiv paper {arxiv_id}?",
+    "Get the LaTeX source of arXiv paper {arxiv_id}.",
+    "Read arXiv paper {arxiv_id} and summarize the methodology.",
+    "Extract the introduction from arXiv paper {arxiv_id}.",
+]
+
 # === Generate tasks ===
 
 tasks = []
@@ -190,6 +326,28 @@ add("filesystem", fs_info_templates, fs_files, 100, "path")
 add("filesystem", fs_write_templates, fs_dirs, 80, "path")
 add("filesystem", fs_search_templates, fs_dirs, 100, "path")
 
+# Excel: 500 (with sheet names)
+def add_excel(templates, count):
+    for _ in range(count):
+        template = random.choice(templates)
+        path, sheet = random.choice(excel_files_with_sheets)
+        task = template.format(path=path, sheet=sheet)
+        tasks.append({"category": "excel", "task": task, "artifact": path})
+
+add_excel(excel_read_templates, 150)
+add_excel(excel_write_templates, 100)
+add_excel(excel_formula_templates, 80)
+add_excel(excel_chart_templates, 80)
+add_excel(excel_format_templates, 90)
+
+# Wikipedia: 500
+add("wikipedia", wiki_search_templates, wiki_topics, 200, "topic")
+add("wikipedia", wiki_article_templates, wiki_articles, 300, "article")
+
+# ArXiv: 500
+add("arxiv", arxiv_search_templates, arxiv_queries, 250, "query")
+add("arxiv", arxiv_paper_templates, arxiv_ids, 250, "arxiv_id")
+
 # Stratified interleave
 by_cat = {}
 for t in tasks:
@@ -202,8 +360,8 @@ for t in tasks:
 for cat in by_cat:
     random.shuffle(by_cat[cat])
 
+cats = ["fetch", "pdf", "search", "filesystem", "excel", "wikipedia", "arxiv"]
 stratified = []
-cats = ["fetch", "pdf", "search", "filesystem"]
 max_len = max(len(by_cat[c]) for c in cats)
 for i in range(max_len):
     for cat in cats:
@@ -228,7 +386,7 @@ def add_test(category, templates, artifacts, count, key="url"):
         task = template.format(**{key: artifact})
         test_tasks.append({"category": category, "task": task, "artifact": artifact})
 
-# 50 per category = 200 test tasks
+# 50 per category = 350 test tasks
 add_test("fetch", fetch_templates, fetch_urls, 50)
 add_test("pdf", pdf_text_templates + pdf_form_templates + pdf_search_templates + pdf_meta_templates,
          pdf_local, 50, "path")
@@ -236,6 +394,19 @@ add_test("search", search_templates, search_queries, 50, "query")
 
 all_fs_templates = fs_read_templates + fs_list_templates + fs_info_templates + fs_search_templates
 add_test("filesystem", all_fs_templates, fs_files + fs_dirs, 50, "path")
+
+all_excel_templates = excel_read_templates + excel_formula_templates + excel_chart_templates + excel_format_templates
+for _ in range(50):
+    template = random.choice(all_excel_templates)
+    path, sheet = random.choice(excel_files_with_sheets)
+    task = template.format(path=path, sheet=sheet)
+    test_tasks.append({"category": "excel", "task": task, "artifact": path})
+
+add_test("wikipedia", wiki_search_templates, wiki_topics, 25, "topic")
+add_test("wikipedia", wiki_article_templates, wiki_articles, 25, "article")
+
+add_test("arxiv", arxiv_search_templates, arxiv_queries, 25, "query")
+add_test("arxiv", arxiv_paper_templates, arxiv_ids, 25, "arxiv_id")
 
 random.shuffle(test_tasks)
 

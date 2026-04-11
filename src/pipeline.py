@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent.parent / ".env")
 
 from retriever import Retriever
-from reranker import Reranker
+from reranker import Reranker, MODEL_REGISTRY
 from mcp_client import MCPClient
 from agent import Agent
 
@@ -33,13 +33,15 @@ class Pipeline:
 
     def __init__(self, data_dir: str = "../data", retrieve_k: int = 100,
                  rerank_k: int = 5, use_reranker: bool = True,
-                 batch_train_every: int = 50, concurrency: int = 1):
+                 batch_train_every: int = 50, concurrency: int = 1,
+                 model: str = "gpt-5.4-nano", round_robin: bool = False):
         self.data_dir = Path(data_dir)
         self.retrieve_k = retrieve_k
         self.rerank_k = rerank_k
         self.use_reranker = use_reranker
         self.batch_train_every = batch_train_every
         self.concurrency = concurrency
+        self.model_name = model
 
         self.retriever = Retriever(
             embeddings_path=str(self.data_dir / "embeddings.json"),
@@ -60,11 +62,13 @@ class Pipeline:
                 embeddings_path=str(self.data_dir / "embeddings.json"),
                 feedback_path=str(self.data_dir / "feedback.jsonl"),
                 model_path=str(model_file) if model_file.exists() else None,
+                model_name=model,
                 log_fn=self._locked_print,
             )
 
+        self.round_robin = round_robin
         self.mcp_client = MCPClient(timeout=30)
-        self.agent = Agent()
+        self.agent = Agent(model=model)
 
         self.feedback_path = self.data_dir / "feedback.jsonl"
 
@@ -128,11 +132,20 @@ class Pipeline:
                     examples[key] = self._successful_calls[key]
         return examples
 
-    def run_task(self, task: str, category: str, artifact: str) -> dict:
+    def run_task(self, task: str, category: str, artifact: str,
+                 model_override: str = None) -> dict:
         """Run a single task through the 3-call agentic loop."""
 
+        # Use overridden model or default
+        if model_override and model_override != self.model_name:
+            agent = Agent(model=model_override)
+            task_model = model_override
+        else:
+            agent = self.agent
+            task_model = self.model_name
+
         # Call 1: Agent decomposes task into a query
-        query = self.agent.call_1_decompose(task)
+        query = agent.call_1_decompose(task)
 
         # Retrieve top 10
         candidates = self.retriever.retrieve(query, top_k=self.retrieve_k)
@@ -152,7 +165,6 @@ class Pipeline:
             with self._reranker_lock:
                 candidates = self.reranker.rerank(
                     candidates, query,
-                    query_category=category,
                     top_k=self.rerank_k,
                 )
         else:
@@ -160,7 +172,7 @@ class Pipeline:
 
         # Call 2: Agent selects and calls a tool (native function calling)
         example_calls = self._get_example_calls(candidates)
-        selection = self.agent.call_2_select_and_call(task, query, candidates, example_calls)
+        selection = agent.call_2_select_and_call(task, query, candidates, example_calls)
 
         tool_idx = int(selection.get("tool_index", 1)) - 1
         tool_idx = max(0, min(tool_idx, len(candidates) - 1))
@@ -179,12 +191,13 @@ class Pipeline:
         )
 
         # Call 3: Agent rates the tool
-        rating = self.agent.call_3_rate(task, selected_tool, tool_result)
+        rating = agent.call_3_rate(task, selected_tool, tool_result)
 
         feedback = {
             "task": task,
             "category": category,
             "artifact": artifact,
+            "model": task_model,
             "query": query,
             "retriever_candidates": all_retriever_candidates,
             "candidates": [
@@ -193,8 +206,6 @@ class Pipeline:
                     "tool_name": c["tool_name"],
                     "similarity": c.get("similarity", 0),
                     "rerank_score": c.get("rerank_score"),
-                    "relevance_score": c.get("relevance_score"),
-                    "quality_score": c.get("quality_score"),
                 }
                 for c in candidates
             ],
@@ -228,11 +239,16 @@ class Pipeline:
         category = t["category"]
         artifact = t.get("artifact", "")
 
+        # Round-robin model assignment
+        model_override = None
+        if self.round_robin:
+            model_override = MODEL_REGISTRY[i % len(MODEL_REGISTRY)]
+
         if category == "filesystem":
             self._reset_fixtures()
 
         try:
-            feedback = self.run_task(task_text, category, artifact)
+            feedback = self.run_task(task_text, category, artifact, model_override=model_override)
             self.save_feedback(feedback)
 
             if feedback["rating"].get("success"):
@@ -270,6 +286,7 @@ class Pipeline:
                 "task": task_text,
                 "category": category,
                 "artifact": artifact,
+                "model": model_override or self.model_name,
                 "error": str(e),
                 "timestamp": time.time(),
             })
@@ -316,11 +333,15 @@ if __name__ == "__main__":
     parser.add_argument("--skip", type=int, default=0, help="Number of tasks to skip")
     parser.add_argument("--tasks", type=str, default=None, help="Path to tasks JSON file")
     parser.add_argument("--output", type=str, default=None, help="Path to output feedback JSONL file")
+    parser.add_argument("--model", type=str, default="gpt-5.4-nano", help="LLM model name for agent")
+    parser.add_argument("--round-robin", action="store_true", help="Round-robin model assignment across MODEL_REGISTRY")
     args = parser.parse_args()
 
     pipeline = Pipeline(
         use_reranker=not args.no_reranker,
         concurrency=args.concurrency,
+        model=args.model,
+        round_robin=args.round_robin,
     )
 
     if args.train or args.train_only:
