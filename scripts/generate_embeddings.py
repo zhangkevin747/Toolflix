@@ -5,14 +5,15 @@ from sentence_transformers import SentenceTransformer
 parser = argparse.ArgumentParser()
 parser.add_argument("--encoder", type=str, default="all-MiniLM-L6-v2",
                     help="Sentence-transformer model name")
+parser.add_argument("--input", type=str, default="../data/tools.json",
+                    help="Input tools JSON")
 parser.add_argument("--output", type=str, default="../data/embeddings.json",
                     help="Output path for embeddings JSON")
 args = parser.parse_args()
 
 model = SentenceTransformer(args.encoder)
 
-# Load tools
-with open("../data/tools.json", "r") as f:
+with open(args.input, "r") as f:
     servers = json.load(f)
 
 endpoints = []

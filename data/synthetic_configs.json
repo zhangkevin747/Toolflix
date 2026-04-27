@@ -1,1368 +1,3777 @@
 {
-  "fetch-fetch_readable-v001": {
-    "type": "random_failure",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "fail_rate": 0.0
-  },
-  "fetch-fetch_readable-v002": {
-    "type": "random_failure",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "fail_rate": 0.35
-  },
-  "fetch-fetch_readable-v003": {
-    "type": "truncate",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "max_chars": 80
-  },
-  "fetch-fetch_readable-v004": {
-    "type": "stale",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
-    "stale_rate": 0.6
-  },
-  "fetch-fetch_url-v005": {
-    "type": "random_failure",
-    "real_server_id": "fetcher-mcp",
+  "fetch-synth-truncated-0001": {
+    "real_server_id": "fetch-mcp",
     "real_tool_name": "fetch_url",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "fetch-fetch_url-v006": {
-    "type": "random_failure",
-    "real_server_id": "fetcher-mcp",
+  "fetch-synth-hollow-0002": {
+    "real_server_id": "fetch-mcp",
     "real_tool_name": "fetch_url",
-    "fail_rate": 0.35
-  },
-  "fetch-fetch_url-v007": {
     "type": "truncate",
-    "real_server_id": "fetcher-mcp",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0003": {
+    "real_server_id": "fetch-mcp",
     "real_tool_name": "fetch_url",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "fetch-fetch_url-v008": {
-    "type": "stale",
-    "real_server_id": "fetcher-mcp",
+  "fetch-synth-stale-0004": {
+    "real_server_id": "fetch-mcp",
     "real_tool_name": "fetch_url",
-    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
-    "stale_rate": 0.6
-  },
-  "search-fetch_content-v009": {
-    "type": "random_failure",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "fetch_content",
-    "fail_rate": 0.0
-  },
-  "search-fetch_content-v010": {
-    "type": "random_failure",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "fetch_content",
-    "fail_rate": 0.35
-  },
-  "search-fetch_content-v011": {
-    "type": "truncate",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "fetch_content",
-    "max_chars": 80
-  },
-  "search-fetch_content-v012": {
     "type": "stale",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "fetch_content",
-    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
-    "stale_rate": 0.6
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
   },
-  "fetch-fetch-v013": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-fetch",
-    "real_tool_name": "fetch",
-    "fail_rate": 0.0
-  },
-  "fetch-fetch-v014": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-fetch",
-    "real_tool_name": "fetch",
-    "fail_rate": 0.35
-  },
-  "fetch-fetch-v015": {
+  "fetch-synth-truncated-0005": {
+    "real_server_id": "fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
     "type": "truncate",
-    "real_server_id": "mcp-server-fetch",
-    "real_tool_name": "fetch",
-    "max_chars": 80
+    "max_chars": 200
   },
-  "fetch-fetch-v016": {
-    "type": "stale",
-    "real_server_id": "mcp-server-fetch",
-    "real_tool_name": "fetch",
-    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
-    "stale_rate": 0.6
-  },
-  "pdf-read-pdf-v017": {
-    "type": "random_failure",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "fail_rate": 0.0
-  },
-  "pdf-read-pdf-v018": {
-    "type": "random_failure",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "fail_rate": 0.35
-  },
-  "pdf-read-pdf-v019": {
+  "fetch-synth-hollow-0006": {
+    "real_server_id": "fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
     "type": "truncate",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "max_chars": 80
+    "max_chars": 50
   },
-  "pdf-read-pdf-v020": {
+  "fetch-synth-flaky-0007": {
+    "real_server_id": "fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0008": {
+    "real_server_id": "fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
     "type": "stale",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
-    "stale_rate": 0.6
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
   },
-  "pdf-extract_form_fields-v021": {
-    "type": "random_failure",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "fail_rate": 0.0
-  },
-  "pdf-extract_form_fields-v022": {
-    "type": "random_failure",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "fail_rate": 0.35
-  },
-  "pdf-extract_form_fields-v023": {
+  "fetch-synth-truncated-0009": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_page",
     "type": "truncate",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "max_chars": 80
+    "max_chars": 200
   },
-  "pdf-extract_form_fields-v024": {
-    "type": "stale",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
-    "stale_rate": 0.6
-  },
-  "pdf-extract_text-v025": {
-    "type": "random_failure",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_text",
-    "fail_rate": 0.0
-  },
-  "pdf-extract_text-v026": {
-    "type": "random_failure",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_text",
-    "fail_rate": 0.35
-  },
-  "pdf-extract_text-v027": {
+  "fetch-synth-hollow-0010": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_page",
     "type": "truncate",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_text",
-    "max_chars": 80
+    "max_chars": 50
   },
-  "pdf-extract_text-v028": {
-    "type": "stale",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_text",
-    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
-    "stale_rate": 0.6
-  },
-  "pdf-read_pdf-v029": {
+  "fetch-synth-flaky-0011": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_page",
     "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0012": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_page",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0013": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_pattern",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0014": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_pattern",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0015": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_pattern",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0016": {
+    "real_server_id": "scrapling-fetch-mcp",
+    "real_tool_name": "s_fetch_pattern",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "pdf-synth-truncated-0017": {
     "real_server_id": "pdf-reader-mcp",
     "real_tool_name": "read_pdf",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "pdf-read_pdf-v030": {
-    "type": "random_failure",
+  "pdf-synth-hollow-0018": {
     "real_server_id": "pdf-reader-mcp",
     "real_tool_name": "read_pdf",
-    "fail_rate": 0.35
-  },
-  "pdf-read_pdf-v031": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0019": {
     "real_server_id": "pdf-reader-mcp",
     "real_tool_name": "read_pdf",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "pdf-read_pdf-v032": {
-    "type": "stale",
+  "pdf-synth-stale-0020": {
     "real_server_id": "pdf-reader-mcp",
     "real_tool_name": "read_pdf",
-    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
-    "stale_rate": 0.6
-  },
-  "search-search-v033": {
-    "type": "random_failure",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "fail_rate": 0.0
-  },
-  "search-search-v034": {
-    "type": "random_failure",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "fail_rate": 0.35
-  },
-  "search-search-v035": {
-    "type": "truncate",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "max_chars": 80
-  },
-  "search-search-v036": {
     "type": "stale",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
-    "stale_rate": 0.6
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
   },
-  "search-search-v037": {
-    "type": "random_failure",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "fail_rate": 0.0
-  },
-  "search-search-v038": {
-    "type": "random_failure",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "fail_rate": 0.35
-  },
-  "search-search-v039": {
+  "pdf-synth-truncated-0021": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "list_pdfs",
     "type": "truncate",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "max_chars": 80
+    "max_chars": 200
   },
-  "search-search-v040": {
-    "type": "stale",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
-    "stale_rate": 0.6
+  "pdf-synth-hollow-0022": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "list_pdfs",
+    "type": "truncate",
+    "max_chars": 50
   },
-  "filesystem-read_file-v041": {
+  "pdf-synth-flaky-0023": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "list_pdfs",
     "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0024": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "list_pdfs",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0025": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0026": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0027": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0028": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_form_fields",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0029": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "highlight_form_field",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0030": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "highlight_form_field",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0031": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "highlight_form_field",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0032": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "highlight_form_field",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0033": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "render_pdf_page",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0034": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "render_pdf_page",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0035": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "render_pdf_page",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0036": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "render_pdf_page",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0037": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0038": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0039": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0040": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "extract_text",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0041": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "search_text",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0042": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "search_text",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0043": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "search_text",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0044": {
+    "real_server_id": "mcp-pdf-forms",
+    "real_tool_name": "search_text",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "filesystem-synth-truncated-0045": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "view",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0046": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "view",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0047": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "view",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0048": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "view",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0049": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "create",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0050": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "create",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0051": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "create",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0052": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "create",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0053": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "str_replace",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0054": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "str_replace",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0055": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "str_replace",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0056": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "str_replace",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0057": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "insert",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0058": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "insert",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0059": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "insert",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0060": {
+    "real_server_id": "domdomegg-filesystem-mcp",
+    "real_tool_name": "insert",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "fetch-synth-truncated-0061": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0062": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0063": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0064": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_url",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0065": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_urls",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0066": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_urls",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0067": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_urls",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0068": {
+    "real_server_id": "fetcher-mcp",
+    "real_tool_name": "fetch_urls",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0069": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_html",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0070": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_html",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0071": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_html",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0072": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_html",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0073": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_markdown",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0074": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_markdown",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0075": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_markdown",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0076": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_markdown",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0077": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_txt",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0078": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_txt",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0079": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_txt",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0080": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_txt",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0081": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_json",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0082": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_json",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0083": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_json",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0084": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_json",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0085": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0086": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0087": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0088": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_readable",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0089": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0090": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0091": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0092": {
+    "real_server_id": "zcaceres-fetch-mcp",
+    "real_tool_name": "fetch_youtube_transcript",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0093": {
+    "real_server_id": "kazuph-mcp-fetch",
+    "real_tool_name": "imageFetch",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0094": {
+    "real_server_id": "kazuph-mcp-fetch",
+    "real_tool_name": "imageFetch",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0095": {
+    "real_server_id": "kazuph-mcp-fetch",
+    "real_tool_name": "imageFetch",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0096": {
+    "real_server_id": "kazuph-mcp-fetch",
+    "real_tool_name": "imageFetch",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "pdf-synth-truncated-0097": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-document",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0098": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-document",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0099": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-document",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0100": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-document",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0101": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-image",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0102": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-image",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0103": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-image",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0104": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-image",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0105": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-layout",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0106": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-layout",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0107": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-layout",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0108": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-layout",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0109": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-resume",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0110": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-resume",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0111": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-resume",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0112": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "pdf-resume",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0113": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "text-measure",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0114": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "text-measure",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0115": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "text-measure",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0116": {
+    "real_server_id": "mcp-z-mcp-pdf",
+    "real_tool_name": "text-measure",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "filesystem-synth-truncated-0117": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "filesystem-read_file-v042": {
-    "type": "random_failure",
+  "filesystem-synth-hollow-0118": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
-    "fail_rate": 0.35
-  },
-  "filesystem-read_file-v043": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0119": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "filesystem-read_file-v044": {
-    "type": "stale",
+  "filesystem-synth-stale-0120": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "read_file",
-    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
-    "stale_rate": 0.6
-  },
-  "filesystem-list_directory-v045": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "fail_rate": 0.0
-  },
-  "filesystem-list_directory-v046": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "fail_rate": 0.35
-  },
-  "filesystem-list_directory-v047": {
-    "type": "truncate",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "max_chars": 80
-  },
-  "filesystem-list_directory-v048": {
     "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0121": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_text_file",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0122": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_text_file",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0123": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_text_file",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0124": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_text_file",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0125": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_multiple_files",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0126": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_multiple_files",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0127": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_multiple_files",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0128": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "read_multiple_files",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0129": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "write_file",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0130": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "write_file",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0131": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "write_file",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0132": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "write_file",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0133": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "edit_file",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0134": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "edit_file",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0135": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "edit_file",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0136": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "edit_file",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0137": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "create_directory",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0138": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "create_directory",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0139": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "create_directory",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0140": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "create_directory",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0141": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "list_directory",
-    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
-    "stale_rate": 0.6
-  },
-  "filesystem-get_file_info-v049": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "get_file_info",
-    "fail_rate": 0.0
-  },
-  "filesystem-get_file_info-v050": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "get_file_info",
-    "fail_rate": 0.35
-  },
-  "filesystem-get_file_info-v051": {
     "type": "truncate",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "get_file_info",
-    "max_chars": 80
+    "max_chars": 200
   },
-  "filesystem-get_file_info-v052": {
-    "type": "stale",
+  "filesystem-synth-hollow-0142": {
     "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "get_file_info",
-    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
-    "stale_rate": 0.6
+    "real_tool_name": "list_directory",
+    "type": "truncate",
+    "max_chars": 50
   },
-  "filesystem-search_files-v053": {
+  "filesystem-synth-flaky-0143": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
     "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0144": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_directory",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0145": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "directory_tree",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0146": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "directory_tree",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0147": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "directory_tree",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0148": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "directory_tree",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0149": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "move_file",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0150": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "move_file",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0151": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "move_file",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0152": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "move_file",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0153": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "search_files",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "filesystem-search_files-v054": {
-    "type": "random_failure",
+  "filesystem-synth-hollow-0154": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "search_files",
-    "fail_rate": 0.35
-  },
-  "filesystem-search_files-v055": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0155": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "search_files",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "filesystem-search_files-v056": {
-    "type": "stale",
+  "filesystem-synth-stale-0156": {
     "real_server_id": "mcp-server-filesystem",
     "real_tool_name": "search_files",
-    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
-    "stale_rate": 0.6
-  },
-  "excel-read_data_from_excel-v057": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "fail_rate": 0.0
-  },
-  "excel-read_data_from_excel-v058": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "fail_rate": 0.35
-  },
-  "excel-read_data_from_excel-v059": {
-    "type": "truncate",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "max_chars": 80
-  },
-  "excel-read_data_from_excel-v060": {
     "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0157": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0158": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0159": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0160": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "get_file_info",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "filesystem-synth-truncated-0161": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_allowed_directories",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0162": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_allowed_directories",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0163": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_allowed_directories",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0164": {
+    "real_server_id": "mcp-server-filesystem",
+    "real_tool_name": "list_allowed_directories",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
+  },
+  "pdf-synth-truncated-0165": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0166": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0167": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0168": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "read-pdf",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0169": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "search-pdf",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0170": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "search-pdf",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0171": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "search-pdf",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0172": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "search-pdf",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "pdf-synth-truncated-0173": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "pdf-metadata",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "pdf-synth-hollow-0174": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "pdf-metadata",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "pdf-synth-flaky-0175": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "pdf-metadata",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "pdf-synth-stale-0176": {
+    "real_server_id": "fabriqa-pdf-reader",
+    "real_tool_name": "pdf-metadata",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format."
+  },
+  "fetch-synth-truncated-0177": {
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0178": {
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0179": {
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0180": {
+    "real_server_id": "mcp-server-fetch",
+    "real_tool_name": "fetch",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0181": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_html",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0182": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_html",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0183": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_html",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0184": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_html",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0185": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_json",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0186": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_json",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0187": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_json",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0188": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_json",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0189": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_txt",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0190": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_txt",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0191": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_txt",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0192": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_txt",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0193": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_markdown",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0194": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_markdown",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0195": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_markdown",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0196": {
+    "real_server_id": "tokenizin-mcp-npx-fetch",
+    "real_tool_name": "fetch_markdown",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0197": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "fetch",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0198": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "fetch",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0199": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "fetch",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0200": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "fetch",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "fetch-synth-truncated-0201": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "puppeteer",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "fetch-synth-hollow-0202": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "puppeteer",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "fetch-synth-flaky-0203": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "puppeteer",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "fetch-synth-stale-0204": {
+    "real_server_id": "matiasngf-mcp-fetch",
+    "real_tool_name": "puppeteer",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly."
+  },
+  "excel-synth-truncated-0205": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "apply_formula",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0206": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "apply_formula",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0207": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "apply_formula",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0208": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "apply_formula",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0209": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_formula_syntax",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0210": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_formula_syntax",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0211": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_formula_syntax",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0212": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_formula_syntax",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0213": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "format_range",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0214": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "format_range",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0215": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "format_range",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0216": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "format_range",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0217": {
     "real_server_id": "excel-mcp-haris",
     "real_tool_name": "read_data_from_excel",
-    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
-    "stale_rate": 0.6
-  },
-  "excel-create_chart-v061": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "fail_rate": 0.0
-  },
-  "excel-create_chart-v062": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "fail_rate": 0.35
-  },
-  "excel-create_chart-v063": {
     "type": "truncate",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "max_chars": 80
+    "max_chars": 200
   },
-  "excel-create_chart-v064": {
-    "type": "stale",
+  "excel-synth-hollow-0218": {
     "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
-    "stale_rate": 0.6
+    "real_tool_name": "read_data_from_excel",
+    "type": "truncate",
+    "max_chars": 50
   },
-  "excel-open_workbook_tool-v065": {
+  "excel-synth-flaky-0219": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
     "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0220": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "read_data_from_excel",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0221": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "write_data_to_excel",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0222": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "write_data_to_excel",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0223": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "write_data_to_excel",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0224": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "write_data_to_excel",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0225": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_workbook",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0226": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_workbook",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0227": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_workbook",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0228": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_workbook",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0229": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_worksheet",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0230": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_worksheet",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0231": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_worksheet",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0232": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_worksheet",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0233": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0234": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0235": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0236": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_chart",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0237": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_pivot_table",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0238": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_pivot_table",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0239": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_pivot_table",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0240": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_pivot_table",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0241": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_table",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0242": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_table",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0243": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_table",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0244": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "create_table",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0245": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_worksheet",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0246": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_worksheet",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0247": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_worksheet",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0248": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_worksheet",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0249": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_worksheet",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0250": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_worksheet",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0251": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_worksheet",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0252": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_worksheet",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0253": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "rename_worksheet",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0254": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "rename_worksheet",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0255": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "rename_worksheet",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0256": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "rename_worksheet",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0257": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_workbook_metadata",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0258": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_workbook_metadata",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0259": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_workbook_metadata",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0260": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_workbook_metadata",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0261": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "merge_cells",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0262": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "merge_cells",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0263": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "merge_cells",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0264": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "merge_cells",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0265": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "unmerge_cells",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0266": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "unmerge_cells",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0267": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "unmerge_cells",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0268": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "unmerge_cells",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0269": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_merged_cells",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0270": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_merged_cells",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0271": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_merged_cells",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0272": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_merged_cells",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0273": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_range",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0274": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_range",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0275": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_range",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0276": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "copy_range",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0277": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_range",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0278": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_range",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0279": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_range",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0280": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_range",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0281": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_excel_range",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0282": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_excel_range",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0283": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_excel_range",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0284": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "validate_excel_range",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0285": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_data_validation_info",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0286": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_data_validation_info",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0287": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_data_validation_info",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0288": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "get_data_validation_info",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0289": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_rows",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0290": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_rows",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0291": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_rows",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0292": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_rows",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0293": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_columns",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0294": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_columns",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0295": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_columns",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0296": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "insert_columns",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0297": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_rows",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0298": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_rows",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0299": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_rows",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0300": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_rows",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0301": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_columns",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0302": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_columns",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0303": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_columns",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0304": {
+    "real_server_id": "excel-mcp-haris",
+    "real_tool_name": "delete_sheet_columns",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0305": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_workbook_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0306": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_workbook_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0307": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_workbook_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0308": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_workbook_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0309": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "open_workbook_tool",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "excel-open_workbook_tool-v066": {
-    "type": "random_failure",
+  "excel-synth-hollow-0310": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "open_workbook_tool",
-    "fail_rate": 0.35
-  },
-  "excel-open_workbook_tool-v067": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0311": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "open_workbook_tool",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "excel-open_workbook_tool-v068": {
-    "type": "stale",
+  "excel-synth-stale-0312": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "open_workbook_tool",
-    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
-    "stale_rate": 0.6
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
   },
-  "excel-write_sheet_data_tool-v069": {
+  "excel-synth-truncated-0313": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "save_workbook_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0314": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "save_workbook_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0315": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "save_workbook_tool",
     "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0316": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "save_workbook_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0317": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "list_sheets_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0318": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "list_sheets_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0319": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "list_sheets_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0320": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "list_sheets_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0321": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_sheet_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0322": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_sheet_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0323": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_sheet_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0324": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_sheet_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0325": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "delete_sheet_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0326": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "delete_sheet_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0327": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "delete_sheet_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0328": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "delete_sheet_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0329": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "rename_sheet_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0330": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "rename_sheet_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0331": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "rename_sheet_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0332": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "rename_sheet_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0333": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "write_sheet_data_tool",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "excel-write_sheet_data_tool-v070": {
-    "type": "random_failure",
+  "excel-synth-hollow-0334": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "write_sheet_data_tool",
-    "fail_rate": 0.35
-  },
-  "excel-write_sheet_data_tool-v071": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0335": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "write_sheet_data_tool",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "excel-write_sheet_data_tool-v072": {
-    "type": "stale",
+  "excel-synth-stale-0336": {
     "real_server_id": "excel-mcp-guillehr2",
     "real_tool_name": "write_sheet_data_tool",
-    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
-    "stale_rate": 0.6
-  },
-  "wikipedia-search_wikipedia-v073": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "fail_rate": 0.0
-  },
-  "wikipedia-search_wikipedia-v074": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "fail_rate": 0.35
-  },
-  "wikipedia-search_wikipedia-v075": {
-    "type": "truncate",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "max_chars": 80
-  },
-  "wikipedia-search_wikipedia-v076": {
     "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0337": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "update_cell_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0338": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "update_cell_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0339": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "update_cell_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0340": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "update_cell_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0341": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_table_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0342": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_table_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0343": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_table_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0344": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_table_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0345": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_chart_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0346": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_chart_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0347": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_chart_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0348": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_chart_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0349": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_sheet_with_data_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0350": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_sheet_with_data_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0351": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_sheet_with_data_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0352": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_sheet_with_data_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0353": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_formatted_table_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0354": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_formatted_table_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0355": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_formatted_table_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0356": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_formatted_table_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0357": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_chart_from_data_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0358": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_chart_from_data_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0359": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_chart_from_data_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0360": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "create_chart_from_data_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0361": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "import_data_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0362": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "import_data_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0363": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "import_data_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0364": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "import_data_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0365": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_data_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0366": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_data_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0367": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_data_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0368": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_data_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0369": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "filter_data_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0370": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "filter_data_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0371": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "filter_data_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0372": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "filter_data_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0373": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_pdf_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0374": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_pdf_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0375": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_pdf_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0376": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "export_pdf_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0377": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "optimize_excel_file_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0378": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "optimize_excel_file_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0379": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "optimize_excel_file_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0380": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "optimize_excel_file_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0381": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formulas_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0382": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formulas_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0383": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formulas_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0384": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formulas_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0385": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_calculated_column_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0386": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_calculated_column_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0387": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_calculated_column_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0388": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_calculated_column_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "excel-synth-truncated-0389": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formula_tool",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "excel-synth-hollow-0390": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formula_tool",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "excel-synth-flaky-0391": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formula_tool",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "excel-synth-stale-0392": {
+    "real_server_id": "excel-mcp-guillehr2",
+    "real_tool_name": "add_formula_tool",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted."
+  },
+  "wikipedia-synth-truncated-0393": {
     "real_server_id": "wikipedia-mcp-rudra",
     "real_tool_name": "search_wikipedia",
-    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
-    "stale_rate": 0.6
-  },
-  "wikipedia-get_summary-v077": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "fail_rate": 0.0
-  },
-  "wikipedia-get_summary-v078": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "fail_rate": 0.35
-  },
-  "wikipedia-get_summary-v079": {
     "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0394": {
     "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "max_chars": 80
-  },
-  "wikipedia-get_summary-v080": {
-    "type": "stale",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
-    "stale_rate": 0.6
-  },
-  "wikipedia-search-v081": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-azzar",
-    "real_tool_name": "search",
-    "fail_rate": 0.0
-  },
-  "wikipedia-search-v082": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-azzar",
-    "real_tool_name": "search",
-    "fail_rate": 0.35
-  },
-  "wikipedia-search-v083": {
+    "real_tool_name": "search_wikipedia",
     "type": "truncate",
-    "real_server_id": "wikipedia-mcp-azzar",
-    "real_tool_name": "search",
-    "max_chars": 80
+    "max_chars": 50
   },
-  "wikipedia-search-v084": {
-    "type": "stale",
-    "real_server_id": "wikipedia-mcp-azzar",
-    "real_tool_name": "search",
-    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
-    "stale_rate": 0.6
-  },
-  "wikipedia-getPageSummary-v085": {
+  "wikipedia-synth-flaky-0395": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
     "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0396": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "search_wikipedia",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0397": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_article",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0398": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_article",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0399": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_article",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0400": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_article",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0401": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0402": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0403": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0404": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_summary",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0405": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_for_query",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0406": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_for_query",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0407": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_for_query",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0408": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_for_query",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0409": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_section",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0410": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_section",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0411": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_section",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0412": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "summarize_article_section",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0413": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "extract_key_facts",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0414": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "extract_key_facts",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0415": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "extract_key_facts",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0416": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "extract_key_facts",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0417": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_related_topics",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0418": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_related_topics",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0419": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_related_topics",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0420": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_related_topics",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0421": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_sections",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0422": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_sections",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0423": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_sections",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0424": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_sections",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0425": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_links",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0426": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_links",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0427": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_links",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0428": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_links",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0429": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_coordinates",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0430": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_coordinates",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0431": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_coordinates",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0432": {
+    "real_server_id": "wikipedia-mcp-rudra",
+    "real_tool_name": "get_coordinates",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0433": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0434": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0435": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0436": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "search",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0437": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPage",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0438": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPage",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0439": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPage",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0440": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPage",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0441": {
     "real_server_id": "wikipedia-mcp-azzar",
     "real_tool_name": "getPageSummary",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "wikipedia-getPageSummary-v086": {
-    "type": "random_failure",
+  "wikipedia-synth-hollow-0442": {
     "real_server_id": "wikipedia-mcp-azzar",
     "real_tool_name": "getPageSummary",
-    "fail_rate": 0.35
-  },
-  "wikipedia-getPageSummary-v087": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0443": {
     "real_server_id": "wikipedia-mcp-azzar",
     "real_tool_name": "getPageSummary",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "wikipedia-getPageSummary-v088": {
-    "type": "stale",
+  "wikipedia-synth-stale-0444": {
     "real_server_id": "wikipedia-mcp-azzar",
     "real_tool_name": "getPageSummary",
-    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
-    "stale_rate": 0.6
-  },
-  "arxiv-search_papers-v089": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "fail_rate": 0.0
-  },
-  "arxiv-search_papers-v090": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "fail_rate": 0.35
-  },
-  "arxiv-search_papers-v091": {
-    "type": "truncate",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "max_chars": 80
-  },
-  "arxiv-search_papers-v092": {
     "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0445": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageById",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0446": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageById",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0447": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageById",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0448": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPageById",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0449": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "random",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0450": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "random",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0451": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "random",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0452": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "random",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0453": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "pageLanguages",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0454": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "pageLanguages",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0455": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "pageLanguages",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0456": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "pageLanguages",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0457": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchSearch",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0458": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchSearch",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0459": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchSearch",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0460": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchSearch",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0461": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchGetPages",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0462": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchGetPages",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0463": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchGetPages",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0464": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "batchGetPages",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0465": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "searchNearby",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0466": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "searchNearby",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0467": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "searchNearby",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0468": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "searchNearby",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "wikipedia-synth-truncated-0469": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPagesInCategory",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "wikipedia-synth-hollow-0470": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPagesInCategory",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "wikipedia-synth-flaky-0471": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPagesInCategory",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "wikipedia-synth-stale-0472": {
+    "real_server_id": "wikipedia-mcp-azzar",
+    "real_tool_name": "getPagesInCategory",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}"
+  },
+  "arxiv-synth-truncated-0473": {
     "real_server_id": "arxiv-mcp-blazick",
     "real_tool_name": "search_papers",
-    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
-    "stale_rate": 0.6
-  },
-  "arxiv-download_paper-v093": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "fail_rate": 0.0
-  },
-  "arxiv-download_paper-v094": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "fail_rate": 0.35
-  },
-  "arxiv-download_paper-v095": {
     "type": "truncate",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "max_chars": 80
+    "max_chars": 200
   },
-  "arxiv-download_paper-v096": {
-    "type": "stale",
+  "arxiv-synth-hollow-0474": {
     "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
-    "stale_rate": 0.6
+    "real_tool_name": "search_papers",
+    "type": "truncate",
+    "max_chars": 50
   },
-  "arxiv-get_paper_abstract-v097": {
+  "arxiv-synth-flaky-0475": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
     "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0476": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "search_papers",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0477": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0478": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0479": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0480": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "download_paper",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0481": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "list_papers",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0482": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "list_papers",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0483": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "list_papers",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0484": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "list_papers",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0485": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "read_paper",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0486": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "read_paper",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0487": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "read_paper",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0488": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "read_paper",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0489": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "get_abstract",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0490": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "get_abstract",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0491": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "get_abstract",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0492": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "get_abstract",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0493": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "semantic_search",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0494": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "semantic_search",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0495": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "semantic_search",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0496": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "semantic_search",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0497": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "reindex",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0498": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "reindex",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0499": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "reindex",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0500": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "reindex",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0501": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "citation_graph",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0502": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "citation_graph",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0503": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "citation_graph",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0504": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "citation_graph",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0505": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "watch_topic",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0506": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "watch_topic",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0507": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "watch_topic",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0508": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "watch_topic",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0509": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "check_alerts",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0510": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "check_alerts",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0511": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "check_alerts",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0512": {
+    "real_server_id": "arxiv-mcp-blazick",
+    "real_tool_name": "check_alerts",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0513": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_prompt",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "arxiv-synth-hollow-0514": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_prompt",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0515": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_prompt",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0516": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_prompt",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
+  },
+  "arxiv-synth-truncated-0517": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "get_paper_abstract",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "arxiv-get_paper_abstract-v098": {
-    "type": "random_failure",
+  "arxiv-synth-hollow-0518": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "get_paper_abstract",
-    "fail_rate": 0.35
-  },
-  "arxiv-get_paper_abstract-v099": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0519": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "get_paper_abstract",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "arxiv-get_paper_abstract-v100": {
-    "type": "stale",
+  "arxiv-synth-stale-0520": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "get_paper_abstract",
-    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
-    "stale_rate": 0.6
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
   },
-  "arxiv-list_paper_sections-v101": {
-    "type": "random_failure",
+  "arxiv-synth-truncated-0521": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "list_paper_sections",
-    "fail_rate": 0.0
+    "type": "truncate",
+    "max_chars": 200
   },
-  "arxiv-list_paper_sections-v102": {
-    "type": "random_failure",
+  "arxiv-synth-hollow-0522": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "list_paper_sections",
-    "fail_rate": 0.35
-  },
-  "arxiv-list_paper_sections-v103": {
     "type": "truncate",
+    "max_chars": 50
+  },
+  "arxiv-synth-flaky-0523": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "list_paper_sections",
-    "max_chars": 80
+    "type": "random_failure",
+    "fail_rate": 0.5
   },
-  "arxiv-list_paper_sections-v104": {
-    "type": "stale",
+  "arxiv-synth-stale-0524": {
     "real_server_id": "arxiv-latex-mcp",
     "real_tool_name": "list_paper_sections",
-    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
-    "stale_rate": 0.6
-  },
-  "fetch-fetch_readable-v105": {
-    "type": "niche",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "works_for": [
-      "paulgraham.com",
-      "gnu.org",
-      "motherfuckingwebsite"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.85
-  },
-  "fetch-fetch_readable-v106": {
-    "type": "niche",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "works_for": [
-      "react.dev",
-      "news.ycombinator"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.7
-  },
-  "fetch-fetch_url-v107": {
-    "type": "niche",
-    "real_server_id": "fetcher-mcp",
-    "real_tool_name": "fetch_url",
-    "works_for": [
-      "paulgraham.com",
-      "gnu.org",
-      "motherfuckingwebsite"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.85
-  },
-  "fetch-fetch_url-v108": {
-    "type": "niche",
-    "real_server_id": "fetcher-mcp",
-    "real_tool_name": "fetch_url",
-    "works_for": [
-      "react.dev",
-      "news.ycombinator"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.7
-  },
-  "pdf-read-pdf-v109": {
-    "type": "niche",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "works_for": [
-      "w9.pdf",
-      "fillable_sample.pdf",
-      "form_example.pdf"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "pdf-read-pdf-v110": {
-    "type": "niche",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "works_for": [
-      "attention.pdf",
-      "dummy.pdf"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.75
-  },
-  "pdf-extract_form_fields-v111": {
-    "type": "niche",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "works_for": [
-      "w9.pdf",
-      "fillable_sample.pdf",
-      "form_example.pdf"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "pdf-extract_form_fields-v112": {
-    "type": "niche",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "works_for": [
-      "attention.pdf",
-      "dummy.pdf"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.75
-  },
-  "search-search-v113": {
-    "type": "niche",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "works_for": [
-      "Stripe",
-      "Python requests",
-      "RFC",
-      "FAISS",
-      "mcp model context"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.7
-  },
-  "search-search-v114": {
-    "type": "niche",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "works_for": [
-      "OpenAI",
-      "NVIDIA",
-      "log4j",
-      "CVE"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.7
-  },
-  "search-search-v115": {
-    "type": "niche",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "works_for": [
-      "Stripe",
-      "Python requests",
-      "RFC",
-      "FAISS",
-      "mcp model context"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.7
-  },
-  "search-search-v116": {
-    "type": "niche",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "works_for": [
-      "OpenAI",
-      "NVIDIA",
-      "log4j",
-      "CVE"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.7
-  },
-  "filesystem-read_file-v117": {
-    "type": "niche",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "read_file",
-    "works_for": [
-      "read",
-      "list",
-      "show",
-      "contents"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "filesystem-read_file-v118": {
-    "type": "niche",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "read_file",
-    "works_for": [
-      "create",
-      "write",
-      "mkdir",
-      "new file"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "filesystem-list_directory-v119": {
-    "type": "niche",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "works_for": [
-      "read",
-      "list",
-      "show",
-      "contents"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "filesystem-list_directory-v120": {
-    "type": "niche",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "works_for": [
-      "create",
-      "write",
-      "mkdir",
-      "new file"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "excel-read_data_from_excel-v121": {
-    "type": "niche",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "works_for": [
-      "read",
-      "get",
-      "how many",
-      "what is",
-      "list"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.85
-  },
-  "excel-read_data_from_excel-v122": {
-    "type": "niche",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "works_for": [
-      "chart",
-      "pie",
-      "bar",
-      "line",
-      "visualization"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.8
-  },
-  "excel-create_chart-v123": {
-    "type": "niche",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "works_for": [
-      "read",
-      "get",
-      "how many",
-      "what is",
-      "list"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.85
-  },
-  "excel-create_chart-v124": {
-    "type": "niche",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "works_for": [
-      "chart",
-      "pie",
-      "bar",
-      "line",
-      "visualization"
-    ],
-    "fail_rate_match": 0.1,
-    "fail_rate_mismatch": 0.8
-  },
-  "wikipedia-search_wikipedia-v125": {
-    "type": "niche",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "works_for": [
-      "machine learning",
-      "quantum",
-      "CRISPR",
-      "neural",
-      "photosynthesis",
-      "dark matter"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.75
-  },
-  "wikipedia-search_wikipedia-v126": {
-    "type": "niche",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "works_for": [
-      "Renaissance",
-      "history",
-      "general relativity",
-      "climate"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.75
-  },
-  "wikipedia-get_summary-v127": {
-    "type": "niche",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "works_for": [
-      "machine learning",
-      "quantum",
-      "CRISPR",
-      "neural",
-      "photosynthesis",
-      "dark matter"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.75
-  },
-  "wikipedia-get_summary-v128": {
-    "type": "niche",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "works_for": [
-      "Renaissance",
-      "history",
-      "general relativity",
-      "climate"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.75
-  },
-  "arxiv-search_papers-v129": {
-    "type": "niche",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "works_for": [
-      "language model",
-      "retrieval",
-      "generation",
-      "prompting",
-      "attention",
-      "transformer"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "arxiv-search_papers-v130": {
-    "type": "niche",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "works_for": [
-      "diffusion",
-      "image",
-      "vision",
-      "visual"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "arxiv-download_paper-v131": {
-    "type": "niche",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "works_for": [
-      "language model",
-      "retrieval",
-      "generation",
-      "prompting",
-      "attention",
-      "transformer"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "arxiv-download_paper-v132": {
-    "type": "niche",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "works_for": [
-      "diffusion",
-      "image",
-      "vision",
-      "visual"
-    ],
-    "fail_rate_match": 0.05,
-    "fail_rate_mismatch": 0.8
-  },
-  "fetch-fetch_readable-v133": {
-    "type": "random_failure",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "fail_rate": 0.05
-  },
-  "fetch-fetch_readable-v134": {
-    "type": "random_failure",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "fail_rate": 0.2
-  },
-  "fetch-fetch_readable-v135": {
-    "type": "truncate",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "max_chars": 120
-  },
-  "fetch-fetch_readable-v136": {
     "type": "stale",
-    "real_server_id": "zcaceres-fetch-mcp",
-    "real_tool_name": "fetch_readable",
-    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
   },
-  "fetch-fetch_url-v137": {
-    "type": "random_failure",
-    "real_server_id": "fetcher-mcp",
-    "real_tool_name": "fetch_url",
-    "fail_rate": 0.05
-  },
-  "fetch-fetch_url-v138": {
-    "type": "random_failure",
-    "real_server_id": "fetcher-mcp",
-    "real_tool_name": "fetch_url",
-    "fail_rate": 0.2
-  },
-  "fetch-fetch_url-v139": {
+  "arxiv-synth-truncated-0525": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_section",
     "type": "truncate",
-    "real_server_id": "fetcher-mcp",
-    "real_tool_name": "fetch_url",
-    "max_chars": 120
+    "max_chars": 200
   },
-  "fetch-fetch_url-v140": {
-    "type": "stale",
-    "real_server_id": "fetcher-mcp",
-    "real_tool_name": "fetch_url",
-    "stale_response": "Error: Connection reset by peer. The server closed the connection unexpectedly.",
-    "stale_rate": 0.65
-  },
-  "pdf-read-pdf-v141": {
-    "type": "random_failure",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "fail_rate": 0.05
-  },
-  "pdf-read-pdf-v142": {
-    "type": "random_failure",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "fail_rate": 0.2
-  },
-  "pdf-read-pdf-v143": {
+  "arxiv-synth-hollow-0526": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_section",
     "type": "truncate",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "max_chars": 120
+    "max_chars": 50
   },
-  "pdf-read-pdf-v144": {
+  "arxiv-synth-flaky-0527": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_section",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "arxiv-synth-stale-0528": {
+    "real_server_id": "arxiv-latex-mcp",
+    "real_tool_name": "get_paper_section",
     "type": "stale",
-    "real_server_id": "fabriqa-pdf-reader",
-    "real_tool_name": "read-pdf",
-    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}"
   },
-  "pdf-extract_form_fields-v145": {
-    "type": "random_failure",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "fail_rate": 0.05
-  },
-  "pdf-extract_form_fields-v146": {
-    "type": "random_failure",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "fail_rate": 0.2
-  },
-  "pdf-extract_form_fields-v147": {
+  "search-synth-truncated-0529": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_search",
     "type": "truncate",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "max_chars": 120
+    "max_chars": 200
   },
-  "pdf-extract_form_fields-v148": {
-    "type": "stale",
-    "real_server_id": "mcp-pdf-forms",
-    "real_tool_name": "extract_form_fields",
-    "stale_response": "Error: Unable to parse document. The file may be corrupted or in an unsupported format.",
-    "stale_rate": 0.65
-  },
-  "search-search-v149": {
-    "type": "random_failure",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "fail_rate": 0.05
-  },
-  "search-search-v150": {
-    "type": "random_failure",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "fail_rate": 0.2
-  },
-  "search-search-v151": {
+  "search-synth-hollow-0530": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_search",
     "type": "truncate",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "max_chars": 120
+    "max_chars": 50
   },
-  "search-search-v152": {
+  "search-synth-flaky-0531": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_search",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0532": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_search",
     "type": "stale",
-    "real_server_id": "open-websearch",
-    "real_tool_name": "search",
-    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
   },
-  "search-search-v153": {
-    "type": "random_failure",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "fail_rate": 0.05
-  },
-  "search-search-v154": {
-    "type": "random_failure",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "fail_rate": 0.2
-  },
-  "search-search-v155": {
+  "search-synth-truncated-0533": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_extract",
     "type": "truncate",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "max_chars": 120
+    "max_chars": 200
   },
-  "search-search-v156": {
-    "type": "stale",
-    "real_server_id": "duckduckgo-mcp",
-    "real_tool_name": "search",
-    "stale_response": "{\"results\": [], \"message\": \"No results found for your query. Try broadening your search terms.\"}",
-    "stale_rate": 0.65
-  },
-  "filesystem-read_file-v157": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "read_file",
-    "fail_rate": 0.05
-  },
-  "filesystem-read_file-v158": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "read_file",
-    "fail_rate": 0.2
-  },
-  "filesystem-read_file-v159": {
+  "search-synth-hollow-0534": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_extract",
     "type": "truncate",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "read_file",
-    "max_chars": 120
+    "max_chars": 50
   },
-  "filesystem-read_file-v160": {
+  "search-synth-flaky-0535": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_extract",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0536": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_extract",
     "type": "stale",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "read_file",
-    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
   },
-  "filesystem-list_directory-v161": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "fail_rate": 0.05
-  },
-  "filesystem-list_directory-v162": {
-    "type": "random_failure",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "fail_rate": 0.2
-  },
-  "filesystem-list_directory-v163": {
+  "search-synth-truncated-0537": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_crawl",
     "type": "truncate",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "max_chars": 120
+    "max_chars": 200
   },
-  "filesystem-list_directory-v164": {
-    "type": "stale",
-    "real_server_id": "mcp-server-filesystem",
-    "real_tool_name": "list_directory",
-    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource.",
-    "stale_rate": 0.65
-  },
-  "excel-read_data_from_excel-v165": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "fail_rate": 0.05
-  },
-  "excel-read_data_from_excel-v166": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "fail_rate": 0.2
-  },
-  "excel-read_data_from_excel-v167": {
+  "search-synth-hollow-0538": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_crawl",
     "type": "truncate",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "max_chars": 120
+    "max_chars": 50
   },
-  "excel-read_data_from_excel-v168": {
+  "search-synth-flaky-0539": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_crawl",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0540": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_crawl",
     "type": "stale",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "read_data_from_excel",
-    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
   },
-  "excel-create_chart-v169": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "fail_rate": 0.05
-  },
-  "excel-create_chart-v170": {
-    "type": "random_failure",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "fail_rate": 0.2
-  },
-  "excel-create_chart-v171": {
+  "search-synth-truncated-0541": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_map",
     "type": "truncate",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "max_chars": 120
+    "max_chars": 200
   },
-  "excel-create_chart-v172": {
-    "type": "stale",
-    "real_server_id": "excel-mcp-haris",
-    "real_tool_name": "create_chart",
-    "stale_response": "Error: Unable to open workbook. The file format may be unsupported or the file is corrupted.",
-    "stale_rate": 0.65
-  },
-  "wikipedia-search_wikipedia-v173": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "fail_rate": 0.05
-  },
-  "wikipedia-search_wikipedia-v174": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "fail_rate": 0.2
-  },
-  "wikipedia-search_wikipedia-v175": {
+  "search-synth-hollow-0542": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_map",
     "type": "truncate",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "max_chars": 120
+    "max_chars": 50
   },
-  "wikipedia-search_wikipedia-v176": {
+  "search-synth-flaky-0543": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_map",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0544": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_map",
     "type": "stale",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "search_wikipedia",
-    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
   },
-  "wikipedia-get_summary-v177": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "fail_rate": 0.05
-  },
-  "wikipedia-get_summary-v178": {
-    "type": "random_failure",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "fail_rate": 0.2
-  },
-  "wikipedia-get_summary-v179": {
+  "search-synth-truncated-0545": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_research",
     "type": "truncate",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "max_chars": 120
+    "max_chars": 200
   },
-  "wikipedia-get_summary-v180": {
-    "type": "stale",
-    "real_server_id": "wikipedia-mcp-rudra",
-    "real_tool_name": "get_summary",
-    "stale_response": "{\"error\": \"Article not found. The requested page does not exist on Wikipedia.\"}",
-    "stale_rate": 0.65
-  },
-  "arxiv-search_papers-v181": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "fail_rate": 0.05
-  },
-  "arxiv-search_papers-v182": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "fail_rate": 0.2
-  },
-  "arxiv-search_papers-v183": {
+  "search-synth-hollow-0546": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_research",
     "type": "truncate",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "max_chars": 120
+    "max_chars": 50
   },
-  "arxiv-search_papers-v184": {
+  "search-synth-flaky-0547": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_research",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0548": {
+    "real_server_id": "tavily-mcp",
+    "real_tool_name": "tavily_research",
     "type": "stale",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "search_papers",
-    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
   },
-  "arxiv-download_paper-v185": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "fail_rate": 0.05
-  },
-  "arxiv-download_paper-v186": {
-    "type": "random_failure",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "fail_rate": 0.2
-  },
-  "arxiv-download_paper-v187": {
+  "search-synth-truncated-0549": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search",
     "type": "truncate",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "max_chars": 120
+    "max_chars": 200
   },
-  "arxiv-download_paper-v188": {
+  "search-synth-hollow-0550": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0551": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0552": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search",
     "type": "stale",
-    "real_server_id": "arxiv-mcp-blazick",
-    "real_tool_name": "download_paper",
-    "stale_response": "{\"error\": \"Paper not found. The requested arXiv ID does not exist or has been withdrawn.\"}",
-    "stale_rate": 0.65
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0553": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_images",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0554": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_images",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0555": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_images",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0556": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_images",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0557": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_videos",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0558": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_videos",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0559": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_videos",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0560": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_videos",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0561": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_places",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0562": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_places",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0563": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_places",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0564": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_places",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0565": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_maps",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0566": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_maps",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0567": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_maps",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0568": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_maps",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0569": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_reviews",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0570": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_reviews",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0571": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_reviews",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0572": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_reviews",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0573": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_news",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0574": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_news",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0575": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_news",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0576": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_news",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0577": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_shopping",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0578": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_shopping",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0579": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_shopping",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0580": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_shopping",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0581": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_lens",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0582": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_lens",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0583": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_lens",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0584": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_lens",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0585": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_scholar",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0586": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_scholar",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0587": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_scholar",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0588": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_scholar",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0589": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_patents",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0590": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_patents",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0591": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_patents",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0592": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_patents",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0593": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_autocomplete",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0594": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_autocomplete",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0595": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_autocomplete",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0596": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "google_search_autocomplete",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "search-synth-truncated-0597": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "webpage_scrape",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "search-synth-hollow-0598": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "webpage_scrape",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "search-synth-flaky-0599": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "webpage_scrape",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "search-synth-stale-0600": {
+    "real_server_id": "serper-mcp",
+    "real_tool_name": "webpage_scrape",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "{\"results\": [], \"message\": \"No results found. Try broadening your search terms.\"}"
+  },
+  "filesystem-synth-truncated-0601": {
+    "real_server_id": "docx-reader-mcp",
+    "real_tool_name": "read_docx",
+    "type": "truncate",
+    "max_chars": 200
+  },
+  "filesystem-synth-hollow-0602": {
+    "real_server_id": "docx-reader-mcp",
+    "real_tool_name": "read_docx",
+    "type": "truncate",
+    "max_chars": 50
+  },
+  "filesystem-synth-flaky-0603": {
+    "real_server_id": "docx-reader-mcp",
+    "real_tool_name": "read_docx",
+    "type": "random_failure",
+    "fail_rate": 0.5
+  },
+  "filesystem-synth-stale-0604": {
+    "real_server_id": "docx-reader-mcp",
+    "real_tool_name": "read_docx",
+    "type": "stale",
+    "stale_rate": 0.7,
+    "stale_response": "Error: Permission denied. The process does not have sufficient privileges to access this resource."
   }
 }

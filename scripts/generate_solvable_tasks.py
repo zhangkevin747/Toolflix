@@ -20,14 +20,26 @@ fetch_urls = [
     "https://medium.com/@karpathy/software-2-0-a64152b37c35",
 ]
 
-# PDF: local files that our tools can read
-pdf_local = [
-    "data/pdfs/attention.pdf",
+# PDFs are split by type so training doesn't leak "all PDFs are forms" into
+# the reranker. Previously 72% of PDF tasks were against form PDFs, which
+# taught the model that `mcp-pdf-forms/extract_form_fields` was globally
+# reliable — that signal did not transfer to prose PDFs at eval time.
+pdf_prose = [
+    "data/pdfs/attention.pdf",       # Attention Is All You Need
+    "data/pdfs/1810.04805.pdf",      # BERT
+    "data/pdfs/1512.03385.pdf",      # ResNet
+    "data/pdfs/2005.14165.pdf",      # GPT-3
+    "data/pdfs/1606.07792.pdf",      # Wide & Deep
+    "data/pdfs/2201.11903.pdf",      # Chain-of-Thought
+    "data/pdfs/2302.13971.pdf",      # LLaMA
+    "data/pdfs/dummy.pdf",
+]
+pdf_forms = [
     "data/pdfs/w9.pdf",
     "data/pdfs/fillable_sample.pdf",
     "data/pdfs/form_example.pdf",
-    "data/pdfs/dummy.pdf",
 ]
+pdf_local = pdf_prose + pdf_forms  # kept for templates that don't care
 
 # No PDF URLs — local files only (verified to work with our tools)
 pdf_urls = []
@@ -310,11 +322,16 @@ def add(category, templates, artifacts, count, key="url"):
 # Fetch: 500
 add("fetch", fetch_templates, fetch_urls, 500)
 
-# PDF: 500 (mix of text, form, search, metadata)
-add("pdf", pdf_text_templates, pdf_local, 200, "path")
-add("pdf", pdf_form_templates, ["data/pdfs/w9.pdf", "data/pdfs/fillable_sample.pdf", "data/pdfs/form_example.pdf"], 120, "path")
-add("pdf", pdf_search_templates, pdf_local, 100, "path")
-add("pdf", pdf_meta_templates, pdf_local, 80, "path")
+# PDF: 500 — heavy on prose (matches eval distribution). Form tasks are
+# restricted to form PDFs only.
+#   text extraction on prose PDFs (the largest share, matching real use):   300
+#   search-inside on prose PDFs:                                             70
+#   metadata across all PDFs:                                                50
+#   form-field extraction — only on form PDFs:                               80
+add("pdf", pdf_text_templates, pdf_prose, 300, "path")
+add("pdf", pdf_search_templates, pdf_prose, 70, "path")
+add("pdf", pdf_meta_templates, pdf_local, 50, "path")
+add("pdf", pdf_form_templates, pdf_forms, 80, "path")
 
 # Search: 500
 add("search", search_templates, search_queries, 500, "query")
@@ -334,11 +351,15 @@ def add_excel(templates, count):
         task = template.format(path=path, sheet=sheet)
         tasks.append({"category": "excel", "task": task, "artifact": path})
 
-add_excel(excel_read_templates, 150)
-add_excel(excel_write_templates, 100)
-add_excel(excel_formula_templates, 80)
-add_excel(excel_chart_templates, 80)
-add_excel(excel_format_templates, 90)
+# Excel: training focuses on read-shaped tasks (what the eval actually exercises).
+# Write/chart/formula/formatting operations are genuine capabilities, but they
+# generate noisy failure labels that cross-contaminate read-task routing in the
+# learned representation. Keep a small share for diversity.
+add_excel(excel_read_templates, 350)
+add_excel(excel_formula_templates, 60)
+add_excel(excel_write_templates, 50)
+add_excel(excel_chart_templates, 20)
+add_excel(excel_format_templates, 20)
 
 # Wikipedia: 500
 add("wikipedia", wiki_search_templates, wiki_topics, 200, "topic")

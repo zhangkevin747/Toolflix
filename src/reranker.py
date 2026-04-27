@@ -1,19 +1,19 @@
 """
-Wide & Deep Reranker — Single-Head Architecture (Cheng et al. 2016)
+Wide & Deep Reranker (Cheng et al. 2016) — single head, pointwise logistic.
 
-Retriever returns top K candidates, reranker rescores, returns top 5 to agent.
+Retriever returns top K candidates; reranker rescores and returns top 5.
 
-Single prediction head: P(tool succeeds for this query with this model).
+Score:
+    logit = w_wide · x_wide  +  deep_mlp(x_deep)  +  b
+    P(success) = sigmoid(logit)
 
-Wide features (4): success_rate, normalized_usage, model_tool_success_rate, retriever_similarity.
-Deep features:
-  [emb_model (learned, 16d), emb_query (projected, 64d), emb_tool (projected, 64d),
-   emb_tool_learned (per-tool, 32d), dot(model, tool_learned), dot(query, tool)]
+Wide features (6): normalized_usage, success_rate, mt_success_rate,
+                   retriever_similarity, sim·sr, sim·mt_sr.
+Deep features: learned model embedding + projected pretrained query / tool
+               embeddings + pairwise dot products ⟨m,q⟩, ⟨m,t⟩, ⟨q,t⟩.
 
-Model embedding: nn.Embedding lookup (one-hot → dense 16d).
-Query/tool embeddings: pretrained sentence-transformer with learned linear projections.
-Training: pointwise logistic loss (BCEWithLogitsLoss), constant lr.
-UCB1 exploration bonus (Auer et al. 2002), constant beta.
+Training: pointwise BCEWithLogitsLoss, constant lr, differential LR on
+          wide path, UCB1 exploration (Auer et al. 2002) with constant β.
 """
 import json
 import math
@@ -47,6 +47,9 @@ class WideFeatures:
 
     def get_features(self, endpoint_key: str, model_name: str,
                      similarity: float = 0.0) -> list[float]:
+        """Return the 6 wide features: 3 aggregates + retriever similarity +
+        two sim-cross products that encode 'relevant AND reliable'.
+        """
         usage = self.usage_count[endpoint_key]
         success_rate = (
             self.success_count[endpoint_key] / usage if usage > 0 else 0.0
@@ -58,14 +61,21 @@ class WideFeatures:
             max_usage = max(self.usage_count.values()) if self.usage_count else 1
         normalized_usage = usage / max_usage if max_usage > 0 else 0.0
 
-        # model × tool cross-feature
+        # model × tool cross-feature (numeric aggregate, as Parjanya specified)
         mt_key = f"{model_name}||{endpoint_key}"
         mt_usage = self.model_tool_usage[mt_key]
         mt_success_rate = (
             self.model_tool_success[mt_key] / mt_usage if mt_usage > 0 else 0.0
         )
 
-        return [normalized_usage, success_rate, mt_success_rate, similarity]
+        return [
+            normalized_usage,
+            success_rate,
+            mt_success_rate,
+            similarity,
+            similarity * success_rate,
+            similarity * mt_success_rate,
+        ]
 
     def snapshot_norms(self):
         self._norm_max_usage = max(self.usage_count.values()) if self.usage_count else 1
@@ -96,11 +106,20 @@ class WideFeatures:
                 )
 
 
-WIDE_DIM = 4        # Number of wide features
-EMBED_DIM = 384     # Sentence transformer embedding dimension
-PROJ_DIM = 64       # Projection dimension for query/tool embeddings
-TOOL_EMB_DIM = 32   # Learned per-tool embedding dimension
-MODEL_EMB_DIM = 32  # Learned per-model embedding dimension (matches TOOL_EMB_DIM for dot product)
+# Wide features — six observed aggregates + similarity crosses.
+#   [0] normalized_usage
+#   [1] success_rate
+#   [2] mt_success_rate       (model x tool)
+#   [3] retriever_similarity  (cosine from retriever, as Parjanya spec'd)
+#   [4] similarity * sr       (memorizes "relevant AND reliable")
+#   [5] similarity * mt_sr    (same, model-specific)
+WIDE_DIM = 6
+EMBED_DIM = 384     # Pretrained sentence-transformer embedding dimension
+PROJ_DIM = 16       # Projection dimension for query/tool/model — small by
+                    # design. Limits how much W_q/W_t can reshape the
+                    # embedding geometry, which is where the anti-retriever
+                    # inversion came from.
+MODEL_EMB_DIM = PROJ_DIM  # Must match PROJ_DIM so <m,q> and <m,t> are well-defined.
 
 # Registry of supported models — index used for nn.Embedding lookup
 # Only models verified to support tool_choice="required" on OpenRouter
@@ -117,59 +136,67 @@ MODEL_TO_IDX = {m: i for i, m in enumerate(MODEL_REGISTRY)}
 
 class WideAndDeepModel(nn.Module):
     """
-    Single-head Wide & Deep scoring model.
+    Wide & Deep scoring (Cheng et al. 2016) — additive, standard form.
 
-    Deep features: learned model embedding, projected query/tool embeddings,
-    learned per-tool embedding, and pairwise dot products.
-    Wide features: success_rate, usage, model_tool_success_rate, similarity.
+        logit = wide_linear(x_wide) + deep_mlp(x_deep) + bias
+        P(success) = sigmoid(logit)
+
+    Training target: BCEWithLogitsLoss against binary success label.
+
+    Wide features (x_wide, 6 scalars):
+      [normalized_usage, success_rate, mt_success_rate,
+       retriever_similarity, sim * sr, sim * mt_sr]
+
+    Deep features (x_deep):
+      learned model embedding m_emb[m]              (d)
+      projected pretrained query embedding q_proj   (d)
+      projected pretrained tool  embedding t_proj   (d)
+      pairwise dot products <m,q>, <m,t>, <q,t>     (3)
+
+    Projection dim PROJ_DIM = 16 — small, to limit W_q/W_t reshaping
+    (the earlier anti-retriever inversion came from over-parameterized
+    projections fighting the retriever on adversarial training data).
+    m_emb dim equals PROJ_DIM so pairwise dots are well-defined.
     """
 
-    def __init__(self, num_endpoints: int, num_models: int = len(MODEL_REGISTRY)):
+    def __init__(self, num_models: int = len(MODEL_REGISTRY),
+                 wide_dim: int = WIDE_DIM):
         super().__init__()
 
-        # Learned model embedding (one-hot → dense)
         self.model_embeddings = nn.Embedding(num_models, MODEL_EMB_DIM)
-
-        # Learned projections for query and tool description embeddings
         self.query_proj = nn.Linear(EMBED_DIM, PROJ_DIM)
         self.tool_proj = nn.Linear(EMBED_DIM, PROJ_DIM)
 
-        # Per-tool learned embedding — initialized from description, diverges through training
-        self.tool_embeddings = nn.Embedding(num_endpoints, TOOL_EMB_DIM)
+        self.wide_linear = nn.Linear(wide_dim, 1, bias=False)
+        nn.init.zeros_(self.wide_linear.weight)
 
-        # Deep input: model emb + 2 projected embeddings + learned tool emb + 2 dot products
-        # model(16) + query(64) + tool(64) + tool_learned(32) + dot(m,t)(1) + dot(q,t)(1) = 178
-        deep_dim = MODEL_EMB_DIM + 2 * PROJ_DIM + TOOL_EMB_DIM + 2
-        total_dim = deep_dim + WIDE_DIM
-
-        self.mlp = nn.Sequential(
-            nn.Linear(total_dim, 64),
-            nn.ReLU(),
-            nn.Dropout(0.2),
-            nn.Linear(64, 32),
+        deep_dim = 3 * PROJ_DIM + 3
+        self.deep_mlp = nn.Sequential(
+            nn.Linear(deep_dim, 32),
             nn.ReLU(),
             nn.Linear(32, 1),
         )
+        nn.init.zeros_(self.deep_mlp[-1].weight)
+        nn.init.zeros_(self.deep_mlp[-1].bias)
+
+        self.bias = nn.Parameter(torch.tensor(0.0))
 
     def forward(self, wide_features: torch.Tensor,
                 model_idx: torch.Tensor,
                 query_emb: torch.Tensor,
-                tool_emb: torch.Tensor,
-                tool_idx: torch.Tensor) -> torch.Tensor:
-        """Returns score logit."""
-        m_emb = self.model_embeddings(model_idx)
-        q_proj = self.query_proj(query_emb)
-        t_proj = self.tool_proj(tool_emb)
-        t_learned = self.tool_embeddings(tool_idx)
+                tool_emb: torch.Tensor) -> torch.Tensor:
+        m = self.model_embeddings(model_idx)
+        q = self.query_proj(query_emb)
+        t = self.tool_proj(tool_emb)
 
-        # Pairwise dot products (model×tool, query×tool)
-        dot_mt = (m_emb * t_learned).sum(dim=1, keepdim=True)
-        dot_qt = (q_proj * t_proj).sum(dim=1, keepdim=True)
+        mq = (m * q).sum(dim=1, keepdim=True)
+        mt = (m * t).sum(dim=1, keepdim=True)
+        qt = (q * t).sum(dim=1, keepdim=True)
 
-        deep_input = torch.cat([m_emb, q_proj, t_proj, t_learned, dot_mt, dot_qt], dim=1)
-        full_input = torch.cat([deep_input, wide_features], dim=1)
-
-        return self.mlp(full_input)
+        deep_input = torch.cat([m, q, t, mq, mt, qt], dim=1)
+        deep_logit = self.deep_mlp(deep_input)
+        wide_logit = self.wide_linear(wide_features)
+        return wide_logit + deep_logit + self.bias
 
 
 class Reranker:
@@ -201,14 +228,7 @@ class Reranker:
         self.wide = WideFeatures()
         self.wide.load_from_feedback(feedback_path)
 
-        num_endpoints = len(self.endpoints)
-        self.model = WideAndDeepModel(num_endpoints)
-
-        # Initialize per-tool embeddings from description embeddings
-        with torch.no_grad():
-            proj = nn.Linear(EMBED_DIM, TOOL_EMB_DIM)
-            init_embs = proj(self.endpoint_desc_embs)
-            self.model.tool_embeddings.weight.copy_(init_embs)
+        self.model = WideAndDeepModel()
 
         self._replay_buffer = []
         self._trained_up_to = 0
@@ -238,21 +258,88 @@ class Reranker:
                     self._replay_buffer.append(record)
 
     def online_update(self, feedback: dict):
+        """Per-rollout update of the wide path only. Deep path is retrained
+        in batches of 50 via maybe_batch_train().
+
+        Wide aggregates (success_rate, usage, mt_sr) are updated first, then
+        the wide linear parameters take a single gradient step on the new
+        example. Deep parameters and model embeddings are untouched.
+        """
         selected = feedback.get("selected", {})
         if not selected:
             return
 
         endpoint_key = f"{selected['server_id']}/{selected['tool_name']}"
         rating = feedback.get("rating", {})
-
+        success = rating.get("success", False)
         model_name = feedback.get("model", self.model_name)
+
+        # Wide aggregates always update first (features depend on them).
         self.wide.update(
             endpoint_key=endpoint_key,
             model_name=model_name,
-            success=rating.get("success", False),
+            success=success,
+        )
+
+        # Single-example gradient step on wide-path parameters.
+        self._online_wide_step(
+            endpoint_key=endpoint_key,
+            model_name=model_name,
+            success=success,
+            feedback=feedback,
         )
 
         self._replay_buffer.append(feedback)
+
+    def _online_wide_step(self, endpoint_key: str, model_name: str,
+                          success: bool, feedback: dict):
+        """One SGD step on wide_linear using the current example only.
+        Deep MLP, projections, and model embeddings are frozen."""
+        idx = self.endpoint_to_idx.get(endpoint_key)
+        if idx is None:
+            return
+
+        # Similarity from the retriever candidate list (needed for wide features).
+        similarity = 0.0
+        for c in feedback.get("retriever_candidates", []):
+            if f"{c['server_id']}/{c['tool_name']}" == endpoint_key:
+                similarity = c.get("similarity", 0.0)
+                break
+
+        query_text = feedback.get("query", feedback.get("task", ""))
+        if not query_text:
+            return
+        q_emb = torch.tensor(self._safe_encode([query_text])[0], dtype=torch.float32).unsqueeze(0)
+        m_idx = torch.tensor([MODEL_TO_IDX.get(model_name, 0)], dtype=torch.long)
+        t_emb = self.endpoint_desc_embs[idx].unsqueeze(0)
+        wide_feats = torch.tensor(
+            [self.wide.get_features(endpoint_key, model_name, similarity)],
+            dtype=torch.float32,
+        )
+        label = torch.tensor([1.0 if success else 0.0], dtype=torch.float32)
+
+        if not hasattr(self, "_wide_optimizer"):
+            self._wide_optimizer = torch.optim.Adam(
+                self.model.wide_linear.parameters(), lr=1e-2, weight_decay=1e-4
+            )
+
+        self.model.train()
+        # Freeze deep + bias + embeddings: only wide_linear grads propagate.
+        for p in self.model.parameters():
+            p.requires_grad = False
+        for p in self.model.wide_linear.parameters():
+            p.requires_grad = True
+
+        self._wide_optimizer.zero_grad()
+        logit = self.model(wide_feats, m_idx, q_emb, t_emb).squeeze(-1)
+        loss = nn.functional.binary_cross_entropy_with_logits(logit, label)
+        loss.backward()
+        self._wide_optimizer.step()
+
+        # Restore grad flags so batch training can touch all params later.
+        for p in self.model.parameters():
+            p.requires_grad = True
+        self.model.eval()
 
     def maybe_batch_train(self, batch_size: int = 50):
         new_examples = len(self._replay_buffer) - self._trained_up_to
@@ -290,14 +377,14 @@ class Reranker:
                 "query_text": query_text,
                 "model_name": model_name,
                 "key": sel_key,
-                "idx": idx,
+                "tool_idx": idx,
                 "similarity": similarity,
                 "label": success,
             })
 
         return examples
 
-    def _train(self, records: list[dict], epochs: int = 20, lr: float = 1e-3):
+    def _train(self, records: list[dict], epochs: int = 20, lr: float = 2e-3):
         """Pointwise logistic loss training (Wide & Deep, Cheng et al. 2016).
 
         Logits are calibrated P(success) — enables confidence thresholding.
@@ -314,7 +401,7 @@ class Reranker:
         for e in examples:
             q_embs.append(query_emb_map[e["query_text"]])
             wide_feats.append(self.wide.get_features(e["key"], e["model_name"], e["similarity"]))
-            tool_idxs.append(e["idx"])
+            tool_idxs.append(e["tool_idx"])
             model_idxs.append(MODEL_TO_IDX.get(e["model_name"], 0))
             labels.append(e["label"])
 
@@ -322,19 +409,28 @@ class Reranker:
         model_idx_t = torch.tensor(model_idxs, dtype=torch.long)
         wide_tensor = torch.tensor(wide_feats, dtype=torch.float32)
         tool_tensor = self.endpoint_desc_embs[tool_idxs]
-        tool_idx_t = torch.tensor(tool_idxs, dtype=torch.long)
         label_tensor = torch.tensor(labels, dtype=torch.float32)
 
         n_examples = len(examples)
         n_pos = sum(1 for l in labels if l > 0)
 
-        optimizer = torch.optim.Adam(self.model.parameters(), lr=lr)
+        # Paper: wide trained with FTRL+L1, deep with AdaGrad. We approximate
+        # with parameter groups: higher LR + L1 weight decay on wide (encourages
+        # memorization of the good feature combinations, sparsity on the rest),
+        # lower LR + L2 on deep.
+        wide_params = list(self.model.wide_linear.parameters())
+        deep_params = [p for n, p in self.model.named_parameters()
+                       if not n.startswith("wide_linear.")]
+        optimizer = torch.optim.Adam([
+            {"params": wide_params, "lr": lr * 5.0, "weight_decay": 1e-4},
+            {"params": deep_params, "lr": lr,       "weight_decay": 1e-5},
+        ])
         loss_fn = nn.BCEWithLogitsLoss()
         self.model.train()
 
         for epoch in range(epochs):
             optimizer.zero_grad()
-            logits = self.model(wide_tensor, model_idx_t, q_tensor, tool_tensor, tool_idx_t).squeeze()
+            logits = self.model(wide_tensor, model_idx_t, q_tensor, tool_tensor).squeeze()
             loss = loss_fn(logits, label_tensor)
             loss.backward()
             optimizer.step()
@@ -347,8 +443,7 @@ class Reranker:
         records = [r for r in self._replay_buffer
                    if "selected" in r and "rating" in r]
         if records:
-            epochs = max(10, min(15, 20 - len(records) // 200))
-            self._train(records, epochs=epochs)
+            self._train(records)
 
     def rerank(self, candidates: list[dict], query: str,
                top_k: int = 5, explore: bool = True,
@@ -382,10 +477,9 @@ class Reranker:
             )
             wide_tensor = torch.tensor([wide_feat], dtype=torch.float32)
             tool_tensor = self.endpoint_desc_embs[idx].unsqueeze(0)
-            idx_tensor = torch.tensor([idx], dtype=torch.long)
 
             with torch.no_grad():
-                score_logit = self.model(wide_tensor, model_idx_tensor, query_tensor, tool_tensor, idx_tensor)
+                score_logit = self.model(wide_tensor, model_idx_tensor, query_tensor, tool_tensor)
 
             logit = score_logit.item()
             confidence = 1.0 / (1.0 + math.exp(-logit))  # sigmoid
@@ -394,7 +488,7 @@ class Reranker:
 
             if explore:
                 usage = self.wide.usage_count.get(key, 0)
-                beta = 0.3
+                beta = 0.05
                 exploration_bonus = beta * math.sqrt(math.log(total_selections + 1) / (usage + 1))
                 model_score += exploration_bonus
 
@@ -414,8 +508,8 @@ class Reranker:
 
         return filtered
 
-    def train_on_feedback(self, feedback_path: str, epochs: int = 30,
-                          lr: float = 1e-3):
+    def train_on_feedback(self, feedback_path: str, epochs: int = 20,
+                          lr: float = 2e-3):
         records = []
         with open(feedback_path) as f:
             for line in f:

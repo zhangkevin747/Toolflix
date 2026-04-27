@@ -31,7 +31,7 @@ from agent import Agent
 class Pipeline:
     """Runs the full agentic loop over a set of tasks."""
 
-    def __init__(self, data_dir: str = "../data", retrieve_k: int = 100,
+    def __init__(self, data_dir: str = "../data", retrieve_k: int = 50,
                  rerank_k: int = 5, use_reranker: bool = True,
                  batch_train_every: int = 50, concurrency: int = 1,
                  model: str = "gpt-5.4-nano", round_robin: bool = False):
@@ -67,7 +67,7 @@ class Pipeline:
             )
 
         self.round_robin = round_robin
-        self.mcp_client = MCPClient(timeout=30)
+        self.mcp_client = MCPClient(timeout=60)
         self.agent = Agent(model=model)
 
         self.feedback_path = self.data_dir / "feedback.jsonl"
@@ -270,7 +270,7 @@ class Pipeline:
             with self._print_lock:
                 print(f"[{completed}/{total}] ({category}) {task_text[:80]}...")
                 print(f"  -> {feedback['selected']['server_id']}/{feedback['selected']['tool_name']}")
-                print(f"  -> relevance={rating.get('relevance')}, success={rating.get('success')}, score={rating.get('score')}")
+                print(f"  -> success={rating.get('success')}")
                 print()
 
         except Exception as e:
@@ -363,3 +363,10 @@ if __name__ == "__main__":
                     skip = sum(1 for _ in f)
                 print(f"Resuming: skipping {skip} already-completed tasks.\n")
         pipeline.run(tasks_path=args.tasks, limit=args.limit, skip=skip)
+
+        if pipeline.reranker:
+            models_dir = pipeline.data_dir / "models"
+            os.makedirs(models_dir, exist_ok=True)
+            out_path = models_dir / "reranker.pt"
+            pipeline.reranker.save(str(out_path))
+            print(f"\n[pipeline] saved online-trained reranker -> {out_path}")

@@ -196,7 +196,7 @@ def evaluate_ranking(test_records: list[dict], rank_fn, top_k: int = 5, label: s
     print(f"  Pairwise accuracy:       {pairwise_acc:.4f}")
 
     print(f"\n  Per-category (selected in top {top_k}):")
-    for cat in ["fetch", "pdf", "search", "filesystem"]:
+    for cat in ["fetch", "pdf", "search", "filesystem", "excel", "wikipedia", "arxiv"]:
         cs = cat_stats[cat]
         if cs["total"] > 0:
             print(f"    {cat:12s}: {cs['selected_topk']}/{cs['total']} ({100*cs['selected_topk']/cs['total']:.1f}%)")
@@ -455,7 +455,6 @@ def main():
                 wide_feat = reranker.wide.get_features(key, reranker.model_name, c.get("similarity", 0.0))
                 wide_tensor = torch.tensor([wide_feat], dtype=torch.float32)
                 tool_tensor = reranker.endpoint_desc_embs[idx].unsqueeze(0)
-                idx_tensor = torch.tensor([idx], dtype=torch.long)
 
                 if zero_wide:
                     wide_tensor = torch.zeros_like(wide_tensor)
@@ -464,9 +463,9 @@ def main():
                     if zero_deep:
                         zero_query = torch.zeros_like(query_tensor)
                         zero_tool = torch.zeros_like(tool_tensor)
-                        score = reranker.model(wide_tensor, model_idx_tensor, zero_query, zero_tool, idx_tensor)
+                        score = reranker.model(wide_tensor, model_idx_tensor, zero_query, zero_tool)
                     else:
-                        score = reranker.model(wide_tensor, model_idx_tensor, query_tensor, tool_tensor, idx_tensor)
+                        score = reranker.model(wide_tensor, model_idx_tensor, query_tensor, tool_tensor)
 
                 scored.append({**c, "rerank_score": score.item()})
 

@@ -104,11 +104,22 @@ class MCPClient:
         # Post-call degradation (modify the real result)
         if fail_type == "truncate":
             max_chars = cfg.get("max_chars", 100)
-            if "content" in result:
+            # Truncate every text field in content[]
+            if "content" in result and isinstance(result["content"], list):
                 for item in result["content"]:
                     if item.get("type") == "text" and len(item.get("text", "")) > max_chars:
                         item["text"] = item["text"][:max_chars] + "... [content truncated]"
-            elif isinstance(result, dict) and "result" in result:
+            # CRITICAL: also strip structuredContent. Before this, the hollow
+            # synthetic truncated the visible `content` field but left the
+            # full data in `structuredContent`, so LLM judges saw the full
+            # response and marked it "success" — poisoning training. MCP
+            # clients and judges both read structuredContent when present,
+            # so the synthetic has to remove it to actually be hollow.
+            if isinstance(result, dict) and "structuredContent" in result:
+                result["structuredContent"] = {
+                    "note": "response truncated; full content unavailable",
+                }
+            if isinstance(result, dict) and "result" in result:
                 text = str(result["result"])
                 if len(text) > max_chars:
                     result["result"] = text[:max_chars] + "... [content truncated]"

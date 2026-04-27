@@ -17,7 +17,7 @@ import os
 from openai import OpenAI
 
 # Models that use native OpenAI API; everything else routes through OpenRouter
-OPENAI_NATIVE_MODELS = {"gpt-5.4-nano", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o", "gpt-4o-mini"}
+OPENAI_NATIVE_MODELS = {"gpt-5.4-nano", "gpt-5.4-nano", "gpt-4.1-mini", "gpt-4.1-nano", "gpt-4o", "gpt-4o-mini"}
 
 
 class Agent:
@@ -86,9 +86,10 @@ class Agent:
                         "You are an AI agent. You receive a task from a user. "
                         "You have access to an MCP tool marketplace. "
                         "Determine what type of tool you need to accomplish this task. "
-                        "Describe the tool capability, not the task itself. "
-                        "Focus on what the tool DOES (e.g., searches the web, reads Excel files, fetches URLs). "
-                        "Output ONLY a short tool capability description, nothing else."
+                        "Output ONLY a short (under 10 words) tool capability description. "
+                        "Do NOT include any task details, just the tool type. "
+                        "Examples: 'web search tool', 'fetch URL content', 'read PDF file', "
+                        "'read Excel spreadsheet', 'Wikipedia article lookup', 'arXiv paper search'."
                     ),
                 },
                 {"role": "user", "content": task},
@@ -208,29 +209,42 @@ class Agent:
                 {
                     "role": "system",
                     "content": (
-                        "You are an AI agent evaluating a tool you just used. "
-                        "Be STRICT: success means the tool result DIRECTLY ANSWERS the original task. "
-                        "If the tool ran without errors but returned data that doesn't answer the question, that is NOT success. "
-                        "If the tool returned metadata, sheet names, or partial info instead of the actual answer, that is NOT success. "
-                        "Respond with ONLY a JSON object:\n"
+                        "You evaluate whether a tool call produced output useful enough for an "
+                        "agent to make progress on the user's task.\n\n"
+                        "You are NOT evaluating whether the user's task is complete. An agent "
+                        "will take further steps — summarizing, counting, explaining, comparing, "
+                        "combining with other tools — using the tool's output. Your job is to "
+                        "judge the tool's contribution.\n\n"
+                        "A tool call SUCCEEDS if it returned enough of the right raw information "
+                        "that a reasonable next agent step could make progress on the task. "
+                        "Examples:\n"
+                        "  - Data in any format (prose, JSON, cells, records, tables, paragraphs), "
+                        "even if the user's ask used a transformation verb like \"summarize\", "
+                        "\"count\", \"explain\", \"compare\"\n"
+                        "  - Partial or truncated output, as long as the visible portion is clearly "
+                        "the right kind of content\n\n"
+                        "A tool call FAILS if:\n"
+                        "  - Error, timeout, or empty result\n"
+                        "  - Wrong kind of content — search-result snippets instead of the requested "
+                        "page, file metadata instead of file contents, a description of the target "
+                        "instead of the target itself\n"
+                        "  - Only a pointer to the information (a link, a path, a title) when the "
+                        "information itself was needed — the agent would have to make another tool "
+                        "call to get the actual data\n\n"
+                        "Respond with ONLY this JSON:\n"
                         "{\n"
-                        '  "success": true/false,    // did the result DIRECTLY ANSWER the task? (not just run without error)\n'
-                        '  "reasoning": "..."        // brief explanation\n'
+                        '  "success": true/false,\n'
+                        '  "reasoning": "<1-2 sentences>"\n'
                         "}"
                     ),
                 },
                 {
                     "role": "user",
-                    "content": (
-                        f"Task: {task}\n"
-                        f"Tool used: {tool_info['server_id']}/{tool_info['tool_name']}\n"
-                        f"Tool description: {tool_info['description']}\n"
-                        f"\nTool result:\n{result_text}"
-                    ),
+                    "content": f"Task: {task}\n\nTool result:\n{result_text}",
                 },
             ],
             temperature=0,
-            max_completion_tokens=200,
+            max_completion_tokens=300,
         )
 
         raw = response.choices[0].message.content.strip()
@@ -242,10 +256,49 @@ class Agent:
             rating = json.loads(raw)
         except json.JSONDecodeError:
             rating = {
-                "relevance": False,
                 "success": False,
-                "score": 1,
                 "reasoning": f"Failed to parse rating: {raw[:200]}",
             }
 
         return rating
+
+    def call_4_answer(self, task: str, tool_result: dict | None) -> str:
+        """Extract the agent's final reported answer from the tool output.
+
+        Used by the GAIA-GT evaluator to compare against ground_truth.
+        If tool_result is None (agent chose not to call a tool), the answer
+        is produced from parametric memory and task reasoning alone.
+        """
+        if tool_result is None:
+            system = (
+                "You answer questions using only reasoning and general knowledge. "
+                "Do not speculate if the answer requires external lookups. "
+                "Return JSON: {\"answer\": \"<short answer>\"}."
+            )
+            user = f"Task: {task}"
+        else:
+            result_text = json.dumps(tool_result, indent=2, default=str)
+            if len(result_text) > 8000:
+                result_text = result_text[:8000] + "\n...[truncated]"
+            system = (
+                "You extract a final concise answer to the task using the tool "
+                "output. Return only the minimal answer text the task asks for "
+                "(number, phrase, name, list). No preamble, no explanation.\n\n"
+                "Return JSON: {\"answer\": \"<short answer>\"}."
+            )
+            user = f"Task: {task}\n\nTool output:\n{result_text}"
+
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=[{"role": "system", "content": system},
+                      {"role": "user", "content": user}],
+            temperature=0,
+            max_completion_tokens=200,
+        )
+        raw = response.choices[0].message.content.strip()
+        if raw.startswith("```"):
+            raw = raw.split("\n", 1)[1].rsplit("```", 1)[0].strip()
+        try:
+            return str(json.loads(raw).get("answer", "")).strip()
+        except json.JSONDecodeError:
+            return raw
