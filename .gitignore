@@ -15,3 +15,7 @@ method.md
 method.tex 
 wideanddeep.pdf
 external/
+archive/
+.DS_Store
+__pycache__/
+*.pyc
