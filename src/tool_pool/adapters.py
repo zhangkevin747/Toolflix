@@ -1,3 +1,14 @@
+"""Reworded-but-working tool copies ("valid schema variants").
+
+To test that the bandit can handle tools that look different but do the same job,
+we make copies of a base tool with changed argument shapes: renamed fields (mild),
+a nested request object (medium), or one bundled object (aggressive). Each change
+comes with an *adapter* that translates the new arguments back to the base tool's
+real arguments, so the copy still executes. `adapt_arguments` runs that translation
+at call time; `visible_arguments_from_base` does the reverse (used to build a
+known-good call for the copy from the base tool's fixture).
+"""
+
 from __future__ import annotations
 
 from copy import deepcopy

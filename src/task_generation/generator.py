@@ -1,10 +1,18 @@
+"""Generate simple one-step tasks for each base tool, using an LLM.
+
+For a tool, the generator sees its description, a known-good fixture, and a preview
+of the tool's real output, then writes: a fuzzy `user_task` (a natural request that
+does NOT name the tool), a short `marketplace_query` (used for retrieval), a short
+`ground_truth_answer`, and an `evidence_quote` copied from the output. The answer must
+be grounded in the output. Training reward later comes from the LLM judge, not this
+answer — the answer is only for verification.
+"""
+
 from __future__ import annotations
 
 import json
-import os
 import re
 import time
-from pathlib import Path
 from typing import Any
 
 from openai import OpenAI
@@ -20,17 +28,6 @@ The marketplace query must be a short capability query for retrieving tools.
 The ground truth answer must be directly supported by the provided tool output.
 The training reward is not this answer; training uses an LLM reflection judge over whether the tool output helped.
 Return strict JSON only."""
-
-
-def load_dotenv(path: Path) -> None:
-    if not path.exists():
-        return
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
 class OpenAITaskGenerator:

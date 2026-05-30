@@ -1,3 +1,12 @@
+"""Known-good arguments for each base tool, so we can actually call it.
+
+A tool is useless to us if we can't produce one valid call. This module reviews each
+base tool (dropping ones that look stateful or unfixturable) and builds `fixture_args`
+for it — preferring hand-written values for known tools (the big `explicit_fixtures`
+table) and falling back to type-based guesses. It also drafts a suggested task and
+marketplace query. Output feeds the live-validation step and task generation.
+"""
+
 from __future__ import annotations
 
 import csv
@@ -6,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from .catalog import required_fields, schema_properties
-from .jsonl import write_jsonl
+from .io import write_jsonl
 from .models import ToolRecord
 
 
@@ -173,6 +182,24 @@ def explicit_fixtures(tool_id: str) -> dict[str, Any]:
         "time_mcp.get_current_time": {"timezone": "America/Los_Angeles"},
         "unit_converter.list_supported_units": {"unit_type": "length"},
         "scientific_computing.curl": {"f_str": "[y, -x, 0]", "point": [1, 2, 3]},
+        # --- Reclaimed tools (verified live 2026-05-30 with these real inputs) ---
+        "biomcp.openfda_adverse_getter": {"report_id": "10003914"},
+        "dex_paprika.getnetworks": {},
+        "dex_paprika.getstats": {},
+        "dex_paprika.getnetworkdexes": {"network": "ethereum"},
+        "dex_paprika.getnetworkpools": {"network": "ethereum"},
+        "dex_paprika.getdexpools": {"network": "ethereum", "dex": "uniswap_v3"},
+        "dex_paprika.gettokenpools": {"network": "ethereum", "tokenAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"},
+        "dex_paprika.getpooldetails": {"network": "ethereum", "poolAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640"},
+        "dex_paprika.getpooltransactions": {"network": "ethereum", "poolAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640"},
+        "dex_paprika.getpoolohlcv": {"network": "ethereum", "poolAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640", "start": "2024-01-01"},
+        "google_maps.maps_distance_matrix": {"origins": ["San Francisco, CA"], "destinations": ["Los Angeles, CA"]},
+        "google_maps.maps_directions": {"origin": "San Francisco, CA", "destination": "Los Angeles, CA"},
+        "google_maps.maps_reverse_geocode": {"latitude": 37.422, "longitude": -122.084},
+        "google_maps.search_nearby": {"center": {"value": "San Francisco, CA"}, "keyword": "coffee"},
+        "nixos.darwin_info": {"name": "system.defaults.dock.autohide"},
+        "scientific_computing.create_tensor": {"shape": [2, 2], "values": [1, 2, 3, 4], "name": "A"},
+        "scientific_computing.divergence": {"f_str": "[x, y, z]", "point": [1, 2, 3]},
     }
     return dict(fixtures.get(tool_id, {}))
 

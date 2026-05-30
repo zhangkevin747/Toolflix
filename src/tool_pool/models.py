@@ -1,3 +1,12 @@
+"""The data shapes used throughout pool construction.
+
+A ToolRecord is one raw MCP-Bench tool. A ListingRecord is one entry in our
+marketplace (a base tool, a reworded copy, a broken copy, or a distractor).
+AdapterSpec says how to translate a reworded variant's arguments back to the base
+tool; FaultSpec says how a broken variant fails. These are plain dataclasses so the
+rest of the code passes typed objects around instead of loose dicts.
+"""
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field

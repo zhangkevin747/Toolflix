@@ -1,3 +1,12 @@
+"""Sanity checks on the assembled pool.
+
+Catches the mistakes that silently creep into generated data: duplicate listing ids,
+missing descriptions, a reworded variant with no adapter, a broken variant with no
+fault spec, a base tool that doesn't point to itself, or counts that don't match the
+target shape. Returns errors/warnings rather than raising, so the build script can
+report them.
+"""
+
 from __future__ import annotations
 
 from collections import Counter

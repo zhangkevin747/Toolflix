@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+"""POOL STAGE 4/6 — actually call each base tool through its real MCP server.
+
+This is the step that proves a "gold" tool really works. A tool can look fine on
+paper and still fail when called (dead API, redirect, or an error returned as a
+normal-looking response). We connect to each server, call the tool with its fixture,
+and mark pass/fail — treating disguised error payloads (see `is_error_result`) as
+failures too. Tools that fail here get moved to the denylist.
+
+Needs:  external/mcp-bench servers running locally + any API keys in .env
+Reads:  data/pool/base_tools.jsonl + base_tool_fixtures.jsonl
+Writes: data/pool/live_base_validation.jsonl  (output previews reused everywhere downstream)
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -9,17 +22,13 @@ import sys
 from pathlib import Path
 from typing import Any
 
-ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "src"
-MCP_BENCH = ROOT / "external/mcp-bench"
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
-if str(MCP_BENCH) not in sys.path:
-    sys.path.insert(0, str(MCP_BENCH))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from tool_pool import io
 
-from tool_pool.jsonl import write_jsonl
+sys.path.insert(0, str(io.MCP_BENCH))  # so we can import MCP-Bench's server manager
 
 
+# MCP-Bench server name -> its folder under external/mcp-bench/mcp_servers/.
 DIR_MAPPING = {
     "Bibliomantic": "bibliomantic-mcp-server",
     "BioMCP": "biomcp",
@@ -53,44 +62,26 @@ DIR_MAPPING = {
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Live-call selected base MCP tools.")
-    parser.add_argument("--base-tools", type=Path, default=ROOT / "data/pool/base_tools.jsonl")
-    parser.add_argument("--fixtures", type=Path, default=ROOT / "data/pool/base_tool_fixtures.jsonl")
-    parser.add_argument("--out", type=Path, default=ROOT / "data/pool/live_base_validation.jsonl")
-    parser.add_argument("--only-server", default=None)
-    parser.add_argument("--limit", type=int, default=None)
-    parser.add_argument("--timeout", type=float, default=45.0)
-    return parser.parse_args()
-
-
-def load_dotenv(path: Path) -> None:
-    if not path.exists():
-        return
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
-
-
-def load_jsonl(path: Path) -> list[dict[str, Any]]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    p = argparse.ArgumentParser(description="Live-call selected base MCP tools.")
+    p.add_argument("--base-tools", type=Path, default=io.POOL_DIR / "base_tools.jsonl")
+    p.add_argument("--fixtures", type=Path, default=io.POOL_DIR / "base_tool_fixtures.jsonl")
+    p.add_argument("--out", type=Path, default=io.POOL_DIR / "live_base_validation.jsonl")
+    p.add_argument("--only-server", default=None)
+    p.add_argument("--limit", type=int, default=None)
+    p.add_argument("--timeout", type=float, default=45.0)
+    return p.parse_args()
 
 
 async def main_async() -> int:
     args = parse_args()
-    args.base_tools = args.base_tools.resolve()
-    args.fixtures = args.fixtures.resolve()
-    args.out = args.out.resolve()
-    load_dotenv(ROOT / ".env")
-    os.chdir(MCP_BENCH)
+    io.load_dotenv()
+    os.chdir(io.MCP_BENCH)
 
     from mcp_modules.server_manager import MultiServerManager
     from utils.local_server_config import LocalServerConfigLoader
 
-    base_tools = {row["tool_id"]: row for row in load_jsonl(args.base_tools)}
-    fixtures = load_jsonl(args.fixtures)
+    base_tools = {row["tool_id"]: row for row in io.load_jsonl(args.base_tools.resolve())}
+    fixtures = io.load_jsonl(args.fixtures.resolve())
     if args.only_server:
         fixtures = [row for row in fixtures if row["server"] == args.only_server]
     if args.limit is not None:
@@ -129,17 +120,16 @@ async def main_async() -> int:
                 except Exception:
                     pass
 
-    write_jsonl(args.out, results)
+    io.write_jsonl(args.out.resolve(), results)
     passed = sum(1 for row in results if row["status"] == "pass")
-    summary = {
-        "out": str(args.out),
+    print(json.dumps({
+        "out": str(args.out.resolve()),
         "total": len(results),
         "passed": passed,
         "failed": len(results) - passed,
         "by_status": count_by(results, "status"),
         "by_server": count_by(results, "server"),
-    }
-    print(json.dumps(summary, indent=2, sort_keys=True))
+    }, indent=2, sort_keys=True))
     return 0 if passed == len(results) else 1
 
 
@@ -147,12 +137,10 @@ def build_server_configs(loader: Any, servers: list[str]) -> list[dict[str, Any]
     configs = []
     for server in servers:
         raw = loader.local_commands[server]
-        command = raw.get("cmd", "").split()
-        env = {key: os.environ[key] for key in raw.get("env", []) if key in os.environ}
         config = {
             "name": server,
-            "command": command,
-            "env": env,
+            "command": raw.get("cmd", "").split(),
+            "env": {key: os.environ[key] for key in raw.get("env", []) if key in os.environ},
             "cwd": f"mcp_servers/{DIR_MAPPING.get(server, server.lower().replace(' ', '-'))}",
             "description": "",
         }
@@ -207,48 +195,32 @@ def serialize_preview(result: Any, limit: int = 1200) -> str:
 
 
 def is_error_result(result: Any, preview: str = "") -> bool:
+    """Many MCP servers return API errors as a normal, non-error response. Treat those
+    as failures by also scanning the text for error markers."""
     if getattr(result, "isError", False):
         return True
     if hasattr(result, "model_dump"):
         try:
-            dumped = result.model_dump()
-            if dumped.get("isError") is True:
+            if result.model_dump().get("isError") is True:
                 return True
         except Exception:
             pass
     if isinstance(result, dict) and result.get("isError") is True:
         return True
-    lower = preview.lower()
-    error_markers = [
-        "api error:",
-        "http error:",
-        "could not retrieve",
-        "error retrieving",
-        "connection error",
-        "failed to fetch",
-        "not found",
-        "no matches found",
-        "quota exceeded",
-        "temporary redirect",
-        "unauthorized",
-        "forbidden",
+    markers = [
+        "api error:", "http error:", "could not retrieve", "error retrieving",
+        "connection error", "failed to fetch", "not found", "no matches found",
+        "quota exceeded", "temporary redirect", "unauthorized", "forbidden",
     ]
-    if any(marker in lower for marker in error_markers):
-        return True
-    return False
+    return any(marker in preview.lower() for marker in markers)
 
 
 def count_by(rows: list[dict[str, Any]], key: str) -> dict[str, int]:
     counts: dict[str, int] = {}
     for row in rows:
-        value = str(row.get(key))
-        counts[value] = counts.get(value, 0) + 1
+        counts[str(row.get(key))] = counts.get(str(row.get(key)), 0) + 1
     return counts
 
 
-def main() -> int:
-    return asyncio.run(main_async())
-
-
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(asyncio.run(main_async()))

@@ -1,3 +1,11 @@
+"""Marketplace descriptions for the synthetic copies.
+
+Every reworded and broken copy gets a paraphrased description built from templated
+prefixes and "interface profile" labels. The point: a broken tool's description must
+look just as legitimate as a good one's, so the only way to tell them apart is by
+trying them. These are deterministic (no LLM) so the pool rebuilds identically.
+"""
+
 from __future__ import annotations
 
 from .models import ToolRecord

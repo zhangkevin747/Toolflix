@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+"""TASK STAGE 1/3 — generate simple one-tool tasks with an LLM.
+
+For each base tool that passed live validation, ask the generator model for a fuzzy
+user task grounded in that tool's real output. Validates as it goes and writes the
+raw task set.
+
+Needs:  OPENAI_API_KEY (in .env)
+Reads:  data/pool/* (listings, base_tools, fixtures, live_base_validation)
+Writes: data/tasks/tasks.jsonl + data/tasks/manifest.json
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -7,106 +18,70 @@ import os
 import sys
 from collections import defaultdict
 from pathlib import Path
-from typing import Any
 
-ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "src"
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
-
-from task_generation.generator import OpenAITaskGenerator, load_dotenv, retry_generate
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from tool_pool import io
+from task_generation.generator import OpenAITaskGenerator, retry_generate
 from task_generation.validate import searchable_live_output, validate_tasks
-from tool_pool.jsonl import write_jsonl
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate simple one-tool fuzzy ToolBandit tasks.")
-    parser.add_argument("--pool-dir", type=Path, default=ROOT / "data/pool")
-    parser.add_argument("--out", type=Path, default=ROOT / "data/tasks/tasks.jsonl")
-    parser.add_argument("--summary", type=Path, default=ROOT / "data/tasks/manifest.json")
-    parser.add_argument("--model", default=os.getenv("TOOLBANDIT_GENERATOR_MODEL", "gpt-4.1-mini"))
-    parser.add_argument("--temperature", type=float, default=0.2)
-    parser.add_argument("--tasks-per-tool", type=int, default=2)
-    parser.add_argument("--limit-tools", type=int, default=None)
-    parser.add_argument("--start-index", type=int, default=0)
-    parser.add_argument("--retries", type=int, default=3)
-    return parser.parse_args()
-
-
-def load_jsonl(path: Path) -> list[dict[str, Any]]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def main() -> int:
-    args = parse_args()
-    load_dotenv(ROOT / ".env")
+    p = argparse.ArgumentParser(description="Generate simple one-tool fuzzy ToolBandit tasks.")
+    p.add_argument("--pool-dir", type=Path, default=io.POOL_DIR)
+    p.add_argument("--out", type=Path, default=io.TASKS_DIR / "tasks.jsonl")
+    p.add_argument("--summary", type=Path, default=io.TASKS_DIR / "manifest.json")
+    p.add_argument("--model", default=os.getenv("TOOLBANDIT_GENERATOR_MODEL", "gpt-4.1-mini"))
+    p.add_argument("--temperature", type=float, default=0.2)
+    p.add_argument("--tasks-per-tool", type=int, default=2)
+    p.add_argument("--limit-tools", type=int, default=None)
+    p.add_argument("--start-index", type=int, default=0)
+    p.add_argument("--retries", type=int, default=3)
+    args = p.parse_args()
+    io.load_dotenv()
 
-    pool_dir = args.pool_dir.resolve()
-    listings = load_jsonl(pool_dir / "listings.jsonl")
-    base_tools = load_jsonl(pool_dir / "base_tools.jsonl")
-    fixtures = {row["tool_id"]: row for row in load_jsonl(pool_dir / "base_tool_fixtures.jsonl")}
-    live_rows = load_jsonl(pool_dir / "live_base_validation.jsonl")
-    live_by_tool = {row["tool_id"]: row for row in live_rows if row.get("status") == "pass"}
+    pool = args.pool_dir.resolve()
+    listings = io.load_jsonl(pool / "listings.jsonl")
+    fixtures = {r["tool_id"]: r for r in io.load_jsonl(pool / "base_tool_fixtures.jsonl")}
+    live_by_tool = {r["tool_id"]: r for r in io.load_jsonl(pool / "live_base_validation.jsonl") if r.get("status") == "pass"}
 
-    gold_listing_ids_by_base: dict[str, list[str]] = defaultdict(list)
+    # For each base family, the "gold" listings (the base tool + its working variants).
+    gold_by_base: dict[str, list[str]] = defaultdict(list)
     for listing in listings:
         if listing["variant_type"] in {"base_gold", "valid_schema_variant"}:
-            base_id = listing["base_tool_id"] or listing["listing_id"]
-            gold_listing_ids_by_base[base_id].append(listing["listing_id"])
+            gold_by_base[listing["base_tool_id"] or listing["listing_id"]].append(listing["listing_id"])
 
-    base_tools = [
-        tool for tool in base_tools
-        if tool["tool_id"] in fixtures and tool["tool_id"] in live_by_tool
-    ]
+    # Only generate for base tools that have both a fixture and a passing live call.
+    base_tools = [t for t in io.load_jsonl(pool / "base_tools.jsonl")
+                  if t["tool_id"] in fixtures and t["tool_id"] in live_by_tool]
     if args.limit_tools is not None:
         base_tools = base_tools[: args.limit_tools]
 
     generator = OpenAITaskGenerator(args.model, temperature=args.temperature)
-    tasks = []
-    skipped = []
-    task_index = args.start_index
-
+    tasks, skipped, index = [], [], args.start_index
     for tool in base_tools:
-        fixture = fixtures[tool["tool_id"]]
-        live_output = live_by_tool[tool["tool_id"]]["output_preview"]
-        gold_listing_ids = sorted(gold_listing_ids_by_base.get(tool["tool_id"], [tool["tool_id"]]))
+        gold_ids = sorted(gold_by_base.get(tool["tool_id"], [tool["tool_id"]]))
         try:
-            generated = retry_generate(
-                lambda: generator.generate_for_tool(
-                    tool=tool,
-                    fixture=fixture,
-                    live_output_preview=live_output,
-                    gold_listing_ids=gold_listing_ids,
-                    task_index=task_index,
-                    tasks_per_tool=args.tasks_per_tool,
-                ),
-                retries=args.retries,
-            )
+            generated = retry_generate(lambda: generator.generate_for_tool(
+                tool=tool, fixture=fixtures[tool["tool_id"]],
+                live_output_preview=live_by_tool[tool["tool_id"]]["output_preview"],
+                gold_listing_ids=gold_ids, task_index=index, tasks_per_tool=args.tasks_per_tool,
+            ), retries=args.retries)
         except Exception as exc:
             skipped.append({"tool_id": tool["tool_id"], "reason": str(exc)})
             continue
-
         if not generated:
             skipped.append({"tool_id": tool["tool_id"], "reason": "generator returned no grounded task"})
             continue
-        tasks.extend(task.to_json() for task in generated)
-        task_index += len(generated)
+        tasks.extend(t.to_json() for t in generated)
+        index += len(generated)
 
-    base_tool_ids = {tool["tool_id"] for tool in base_tools}
-    listing_ids = {listing["listing_id"] for listing in listings}
-    live_outputs_by_tool = {
-        tool_id: searchable_live_output(row["output_preview"])
-        for tool_id, row in live_by_tool.items()
-    }
     errors = validate_tasks(
         tasks,
-        base_tool_ids=base_tool_ids,
-        listing_ids=listing_ids,
-        live_outputs_by_tool=live_outputs_by_tool,
+        base_tool_ids={t["tool_id"] for t in base_tools},
+        listing_ids={l["listing_id"] for l in listings},
+        live_outputs_by_tool={tid: searchable_live_output(r["output_preview"]) for tid, r in live_by_tool.items()},
     )
-
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    write_jsonl(args.out, tasks)
+    io.write_jsonl(args.out, tasks)
 
     summary = {
         "status": "ready" if not errors else "needs_attention",

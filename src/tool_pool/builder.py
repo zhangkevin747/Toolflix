@@ -1,3 +1,12 @@
+"""Assembles the whole marketplace by combining the other modules.
+
+`build_pool` puts together the ~482 listings: the 50 base gold tools, a sample of
+reworded variants (catalog -> adapters -> descriptions), the broken variants spread
+across base tools (faults + descriptions), and the background distractors. It's pure
+and deterministic given a seed, so the pool rebuilds byte-for-byte. `write_pool`
+saves the JSONL files. This is the single entry point the build script calls.
+"""
+
 from __future__ import annotations
 
 import random
@@ -12,7 +21,7 @@ from .descriptions import (
     fallback_description,
 )
 from .faults import expanded_failure_labels, make_fault_spec
-from .jsonl import write_jsonl
+from .io import write_jsonl
 from .models import AdapterTestRecord, ListingRecord, ToolRecord
 
 
@@ -27,6 +36,7 @@ class PoolBuildConfig:
     seed: int = 13
     max_valid_candidates_per_base: int = 3
     exclude_tool_ids: set[str] | None = None
+    include_tool_ids: list[str] | None = None
 
 
 @dataclass
@@ -40,7 +50,9 @@ class PoolBuildResult:
 def build_pool(config: PoolBuildConfig) -> PoolBuildResult:
     rng = random.Random(config.seed)
     tools = load_mcp_tools(config.catalog_path)
-    base_tools = select_base_tools(tools, config.base_count, config.exclude_tool_ids)
+    base_tools = select_base_tools(
+        tools, config.base_count, config.exclude_tool_ids, config.include_tool_ids
+    )
     base_ids = {tool.tool_id for tool in base_tools}
     background = select_background_tools(tools, base_ids, config.background_count)
 

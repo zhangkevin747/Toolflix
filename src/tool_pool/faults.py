@@ -1,3 +1,13 @@
+"""Broken tool copies ("corrupted variants") and how they fail.
+
+Real marketplaces have unreliable tools, so we manufacture them. The failure mix
+follows a published MCP reliability study: mostly schema mismatches and timeouts,
+some auth/quota and upstream errors, a few protocol bugs. Each broken copy gets a
+FaultSpec with a failure type and a `p_fail` probability — many fail only sometimes,
+like real flaky servers. `should_fail` decides, deterministically from a seed, whether
+a given call fails, so runs are reproducible.
+"""
+
 from __future__ import annotations
 
 import random

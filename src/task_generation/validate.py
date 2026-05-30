@@ -1,7 +1,14 @@
+"""Check generated tasks before they're used.
+
+The LLM sometimes writes tasks whose answer isn't actually in the tool output, or
+points at a tool that isn't in the pool. This rejects those: required fields present,
+gold tool/listings exist, reward source is the judge, and — most importantly — the
+evidence quote (or the answer) really appears in the tool's live output.
+"""
+
 from __future__ import annotations
 
 import json
-from pathlib import Path
 from typing import Any
 
 
@@ -17,10 +24,6 @@ REQUIRED_FIELDS = {
     "expected_answer_source",
     "reward_source",
 }
-
-
-def load_jsonl(path: Path) -> list[dict[str, Any]]:
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def validate_tasks(

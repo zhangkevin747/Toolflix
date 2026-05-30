@@ -1,10 +1,19 @@
+"""Step 1 of building the pool: read MCP-Bench's tools and pick which to use.
+
+`load_mcp_tools` parses MCP-Bench's catalog into ToolRecords and tags each with a
+rough category. `select_base_tools` chooses the ~50 "base gold" tools we'll build
+on: it skips anything stateful/mutating/unstable (writes, deletes, browser, etc.),
+prefers tools with a short simple schema and a real description, and spreads the
+picks across categories. `select_background_tools` takes leftover tools as filler.
+"""
+
 from __future__ import annotations
 
 import re
 from pathlib import Path
 from typing import Any
 
-from .jsonl import read_json
+from .io import read_json
 from .models import ToolRecord
 
 
@@ -95,12 +104,26 @@ def select_base_tools(
     records: list[ToolRecord],
     count: int,
     exclude_tool_ids: set[str] | None = None,
+    include_tool_ids: list[str] | None = None,
 ) -> list[ToolRecord]:
     exclude_tool_ids = exclude_tool_ids or set()
+
+    # Force-include specific tools first (bypassing the eligibility filters below),
+    # in the given order. Used to pin a curated, live-verified base set.
+    by_id = {record.tool_id: record for record in records}
+    selected: list[ToolRecord] = []
+    seen: set[str] = set()
+    for tool_id in include_tool_ids or []:
+        record = by_id.get(tool_id)
+        if record and tool_id not in exclude_tool_ids and tool_id not in seen:
+            selected.append(record)
+            seen.add(tool_id)
+
     eligible = [
         record
         for record in records
-        if record.description
+        if record.tool_id not in seen
+        and record.description
         and schema_properties(record.input_schema)
         and not record.tool_id.startswith("openapi_explorer.")
         and record.tool_id not in exclude_tool_ids
@@ -110,8 +133,7 @@ def select_base_tools(
     for record in sorted(eligible, key=base_tool_score, reverse=True):
         by_category.setdefault(record.category, []).append(record)
 
-    selected: list[ToolRecord] = []
-    seen: set[str] = set()
+    # `selected`/`seen` already hold the force-included tools; auto-fill the rest.
     categories = sorted(by_category)
     while len(selected) < count:
         progressed = False

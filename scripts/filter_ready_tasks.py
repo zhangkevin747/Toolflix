@@ -1,49 +1,52 @@
 #!/usr/bin/env python3
+"""TASK STAGE 3/3 — keep only the tasks that passed validation.
+
+Reads the validation errors, drops every task they name, and writes the clean
+"ready" set that training actually uses.
+
+Reads:  data/tasks/tasks.jsonl + data/tasks/validation.json
+Writes: data/tasks/tasks_ready.jsonl + data/tasks/ready_manifest.json
+"""
+
 from __future__ import annotations
 
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 
-
-ROOT = Path(__file__).resolve().parents[1]
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Filter generated tasks to the currently validated ready subset.")
-    parser.add_argument("--tasks", type=Path, default=ROOT / "data/tasks/tasks.jsonl")
-    parser.add_argument("--validation", type=Path, default=ROOT / "data/tasks/validation.json")
-    parser.add_argument("--out", type=Path, default=ROOT / "data/tasks/tasks_ready.jsonl")
-    parser.add_argument("--summary", type=Path, default=ROOT / "data/tasks/ready_manifest.json")
-    return parser.parse_args()
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from tool_pool import io
 
 
 def main() -> int:
-    args = parse_args()
-    tasks = [json.loads(line) for line in args.tasks.read_text(encoding="utf-8").splitlines() if line.strip()]
-    validation = json.loads(args.validation.read_text(encoding="utf-8"))
-    bad_task_ids = set()
+    p = argparse.ArgumentParser(description="Filter generated tasks to the validated ready subset.")
+    p.add_argument("--tasks", type=Path, default=io.TASKS_DIR / "tasks.jsonl")
+    p.add_argument("--validation", type=Path, default=io.TASKS_DIR / "validation.json")
+    p.add_argument("--out", type=Path, default=io.TASKS_DIR / "tasks_ready.jsonl")
+    p.add_argument("--summary", type=Path, default=io.TASKS_DIR / "ready_manifest.json")
+    args = p.parse_args()
+
+    tasks = io.load_jsonl(args.tasks)
+    validation = io.read_json(args.validation)
+
+    # Each validation error starts with the offending task_id (or names a duplicate).
+    bad_ids = set()
     for error in validation.get("validation_errors", []):
-        duplicate = re.search(r"duplicate task_id (\S+)", error)
-        if duplicate:
-            bad_task_ids.add(duplicate.group(1))
-        else:
-            bad_task_ids.add(error.split(":", 1)[0])
-    ready = [task for task in tasks if task["task_id"] not in bad_task_ids]
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    with args.out.open("w", encoding="utf-8") as handle:
-        for task in ready:
-            handle.write(json.dumps(task, ensure_ascii=False, sort_keys=True) + "\n")
+        dup = re.search(r"duplicate task_id (\S+)", error)
+        bad_ids.add(dup.group(1) if dup else error.split(":", 1)[0])
+
+    ready = [t for t in tasks if t["task_id"] not in bad_ids]
+    io.write_jsonl(args.out, ready)
 
     summary = {
         "status": "ready",
-        "source_tasks": str(args.tasks.resolve()),
-        "output": str(args.out.resolve()),
         "raw_task_count": len(tasks),
         "ready_task_count": len(ready),
         "filtered_task_count": len(tasks) - len(ready),
-        "filtered_task_ids": sorted(bad_task_ids),
+        "filtered_task_ids": sorted(bad_ids),
+        "output": str(args.out.resolve()),
     }
     args.summary.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2, sort_keys=True))
